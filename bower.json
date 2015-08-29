@@ -1,0 +1,13 @@
+{
+  "name": "steklo.dev",
+  "dependencies": {
+    "bootstrap": "*",
+    "fontawesome": "*",
+    "bootswatch": "gh-pages",
+    "bootswatch-dist": "paper",
+    "jquery-bootswatch": "*",
+    "paper-less": "*",
+	  "bootstrap-social": "*",
+  	"lightbox": "*"
+  }
+}

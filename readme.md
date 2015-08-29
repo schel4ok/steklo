@@ -1,3 +1,40 @@
+Устанавливать node_modules очень геморройно. Постоянно какие-то ошибки.  
+
+На винде если есть ошибки, то надо удалить:
+* папку node_modules из проекта
+* C:\Users\Администратор\AppData\Roaming\npm
+* C:\Users\Администратор\AppData\Roaming\npm-cache
+* деинсталлировать nodejs из панели управления
+
+Потом заново установить nodejs, перезапустить openserver, запустить консоль, перейти в папку проекта и запустить команду npm install
+
+
+На Debian пока не разобрался
+
+
+
+файлы и папки, которые не синхронизируются
+* /public
+* /node_modules
+* /vendor
+* Homestead.yaml
+* Homestead.json
+* .env
+
+поэтому после копировать репозиторий надо так
+```
+cd /var/www
+laravel new lara
+git clone https://github.com/schel4ok/steklo
+mv /var/www/lara/public/ /var/www/steklo/public/
+mv /var/www/lara/vendor/ /var/www/steklo/vendor/
+rm -r /var/www/lara
+cd /var/www/steklo
+composer update
+bower update
+gulp
+```
+
 ## Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
