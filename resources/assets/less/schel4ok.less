@@ -1,0 +1,210 @@
+body {background-color: @body-background}
+
+// margins and paddings
+.margin-bottom-5  { margin-bottom:5px;}
+.margin-bottom-10 { margin-bottom:10px;} 
+.margin-bottom-15 { margin-bottom:15px;}
+.margin-bottom-20 { margin-bottom:20px;}
+.margin-bottom-25 { margin-bottom:25px;}
+.margin-bottom-30 { margin-bottom:30px;}
+.margin-top-20    { margin-top:20px;}
+.padding-0        {padding: 0;}
+.padding-5        {padding: 5px;}
+.border-0         {border: 0;}
+.margin-0         {margin: 0;}
+.margin-5         {margin: 5px;}
+
+
+
+#main {  
+  background:url("/img/header.jpg") no-repeat @white;
+  max-width:1050px;
+  border:1px solid darken(@body-background, 10%);
+  padding: 0 20px 20px 20px;
+  border-radius:4px;
+  -moz-border-radius:4px;
+  -webkit-border-radius:4px;
+  box-shadow:0 0 6px rgba(0,0,0,0.05);
+  -moz-box-shadow:0 0 6px rgba(0,0,0,0.05);
+  -webkit-box-shadow:0 0 6px rgba(0,0,0,0.05)
+  }
+
+//header { height: 350px; }
+
+.search {
+  background-color: #ffffff;
+  border: 1px solid @white;
+  margin: 6px 0 0 100px;
+  width: 117px;
+}
+.search input {height: 25px;}
+.search i {margin: 6px 0 0 -15px; color: @link-color;}
+
+
+.callback {
+  clear: both;
+  position:relative;
+  font-style: italic;
+  font-size: 2em;
+  color: @link-color;
+  line-height: 1.5em;
+  top: 30px;
+}
+
+.navbar-toggle {
+  margin-top: 0; 
+  margin-bottom: 0;
+}
+
+
+
+// carousel on homepage
+#mainCarousel > .carousel-inner  {
+  max-width: 912px; 
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.carousel .carousel-arrow a.left i  {left: 14px;}
+.carousel .carousel-arrow a.right i {right: 13px;}
+
+.carousel .carousel-arrow a.left-2 i  {left: 0;}
+.carousel .carousel-arrow a.right-2 i {right: 0;}
+
+.carousel .carousel-arrow a.carousel-control {
+opacity: 0.3;
+font-size: 30px;
+height: inherit;
+width: inherit;
+background: none;
+text-shadow: none;
+position: inherit;
+}
+
+.carousel .carousel-arrow a.carousel-control:hover {opacity: 1;}
+
+.carousel .carousel-arrow a i {
+top: 50%;
+background: #000;
+margin-top: -18px;
+padding: 2px 12px;
+position: absolute;
+}
+
+.carousel .carousel-caption {
+left: 0;
+right: 0;
+bottom: 0;
+text-align: left;
+padding: 5px 15px;
+background: rgba(0, 0, 0, 0.7);
+}
+
+.btn-outline-white {
+    color: @white;
+    background-color: transparent;
+    border: 2px solid @white;
+    margin-right: 15px;
+    &:hover {
+    color: @black;
+    background-color: @white;
+    border-color: @white;
+    }
+}
+
+.btn-outline-black {.btn-outline-white; color:@black;}
+
+
+.carousel-inner .active.left { left: -33%; }
+.carousel-inner .next        { left:  33%; }
+.carousel-inner .prev        { left: -33%; }
+.carousel-control.left,.carousel-control.right {background-image:none;}
+.item:not(.prev) {visibility: visible;}
+.item.right:not(.prev) {visibility: hidden;}
+.rightest {visibility: visible;}
+
+
+
+
+
+// panels
+.panel-default > div {border-width: 1px;}
+.panel-heading {
+  border-bottom: 2px solid; 
+  background-color: inherit!important;
+}
+.panel-title   {color: @text-color;}
+h3.panel-title   {font-size: @font-size-h4;}
+
+// icon list-style-type: square;
+.icon-list {list-style: none; display: table-row-group;}
+blockquote.homepage {border-left: 2px solid #eee; font-size: @font-size-base; line-height: @line-height-base;}
+blockquote:hover {border-color:  @brand-primary;}
+
+
+
+
+// button file input
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+}
+input[readonly] {
+  margin-left: 20px;
+  background-color: white !important;
+  cursor: text !important;
+}
+
+
+// to top link
+
+.scroll-top-wrapper {
+  position: fixed;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  text-align: center;
+  z-index: 99999999;
+  background-color: @brand-primary;
+  color: @white;
+  right: 30px;
+  bottom: 30px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+.scroll-top-wrapper:hover {
+  background-color: darken(@brand-primary, 20%);
+}
+.scroll-top-wrapper.show {
+  visibility:visible;
+  cursor:pointer;
+  opacity: 1.0;
+}
+.scroll-top-wrapper i.fa {
+  line-height: inherit;
+}
+
+
+
+@import "includes/menu.less";
+@import "includes/links.less"; // стили раздела Ссылки
+@import "includes/pesok.less"; // стили галереи пескоструйных рисунков

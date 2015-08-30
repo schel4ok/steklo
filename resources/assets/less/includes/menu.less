@@ -1,0 +1,74 @@
+
+.topmenu {
+  margin-right: -35px;
+	border: 0;
+	background: transparent;
+	box-shadow: none;
+	min-height: initial;
+  float: right;
+
+  div > ul > li > a 
+  {
+      &:hover {border-radius: 0px 0px 3px 3px;}
+      &.active {background-color: @brand-primary; color: @white;         
+                 &:hover {text-decoration: underline; }
+               }
+  }
+
+}
+
+
+
+
+.mainmenu {
+  display: flex;  // эта строчка и строчка ниже для выравнивания контента блока по центру
+  justify-content: space-around; 
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  min-height: initial;
+  margin-top: 165px;
+  div > ul {
+    margin-left: auto;
+    margin-right: auto;
+    > li {
+      
+      > a {
+        height:50px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        align-content: center; 
+    	  background-color: transparent;
+	   	  box-shadow: inset 0 -1px 0 @mytabs-border-bottom-color;
+
+        &:hover {
+      	box-shadow: inset 0 -2px 0 @brand-primary;
+        }
+    }
+
+    // Active state, and its :hover to override normal :hover
+    &.active > a {       	
+    	box-shadow: inset 0 -2px 0 @brand-primary;
+    	background-color: transparent!important;
+
+      &,
+      &:hover,
+      &:focus {
+
+      }
+    }
+  }
+  }
+}
+
+
+
+//#mainmenu .icon-glass > span, #mainmenu .icon-furnitura > span   { line-height: 1.4em; margin-left: 5px;}
+.icon-company > a { &:before { content: url('/img/menu/icon-company.png'); } }
+.icon-glass > a { &:before { content: url('/img/menu/icon-glass.png'); } }
+.icon-furnitura > a { &:before { content: url('/img/menu/icon-furnitura.png'); } }
+.icon-uslugi > a { &:before { content: url('/img/menu/icon-uslugi.png'); } }
+.icon-gallery > a { &:before { content: url('/img/menu/icon-obyekty.png'); } }
+.icon-otzyvy > a { &:before { content: url('/img/menu/icon-otzyvy.png'); } }
+.icon-contacts > a { &:before { content: url('/img/menu/icon-map-5.png'); } }
