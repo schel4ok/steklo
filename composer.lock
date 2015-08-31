@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "163321c6e529497df2e7fdd37d50498e",
+    "hash": "12470af60a8f3ab189d73ff7cda3ce14",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -466,16 +466,16 @@
         },
         {
             "name": "kalnoy/nestedset",
-            "version": "v2.4.4",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lazychaser/laravel-nestedset.git",
-                "reference": "93981749a1b3e483aee39d01bbd00b2be27145bb"
+                "reference": "a4cbbe7469c188a8d9376ff0519b8cbd129622a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lazychaser/laravel-nestedset/zipball/93981749a1b3e483aee39d01bbd00b2be27145bb",
-                "reference": "93981749a1b3e483aee39d01bbd00b2be27145bb",
+                "url": "https://api.github.com/repos/lazychaser/laravel-nestedset/zipball/a4cbbe7469c188a8d9376ff0519b8cbd129622a4",
+                "reference": "a4cbbe7469c188a8d9376ff0519b8cbd129622a4",
                 "shasum": ""
             },
             "require": {
@@ -508,7 +508,7 @@
                 "nested sets",
                 "nsm"
             ],
-            "time": "2015-06-23 11:04:15"
+            "time": "2015-08-05 14:00:48"
         },
         {
             "name": "laravel/framework",

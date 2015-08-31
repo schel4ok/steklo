@@ -21,7 +21,7 @@
 * Homestead.json
 * .env
 
-поэтому после копировать репозиторий надо так
+поэтому после копировать репозиторий на новую машину надо так
 ```
 cd /var/www
 laravel new lara
@@ -34,6 +34,13 @@ composer update
 bower update
 gulp
 ```
+
+
+## изменения
+* временно удалил @include('modules.informers') из файла resources\views\layout\main.blade.php чтобы не было ошибок на локалке
+* тоже самое тут <script src="https://www.google.com/recaptcha/api.js"></script>
+* это пока удалил, т.к. непомню почему не получилось настроить стандартный лайтбокс	из бутсрапа <script src="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.js"></script>
+
 
 ## Laravel PHP Framework
 

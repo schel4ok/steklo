@@ -13,7 +13,8 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG'),
+ //   'debug' => env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +40,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Europe/Moscow',
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +53,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ru',
 
     /*
     |--------------------------------------------------------------------------
@@ -143,7 +144,9 @@ return [
         App\Providers\AppServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
+        'Orchestra\Imagine\ImagineServiceProvider',
+        'Maatwebsite\Excel\ExcelServiceProvider',
+        'Illuminate\Html\HtmlServiceProvider',
     ],
 
     /*
@@ -191,7 +194,10 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
-
+        'Imagine'   => 'Orchestra\Imagine\Facade',
+        'Excel'     => 'Maatwebsite\Excel\Facades\Excel',
+        'HTML'      => 'Illuminate\Html\HtmlFacade',
+        'Form'      => 'Illuminate\Html\Facades\FormFacade',
     ],
 
 ];

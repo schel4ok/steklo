@@ -25,7 +25,7 @@ elixir(function(mix) {
 
   // Copy lightbox
   .copy('vendor/bower_components/lightbox/src/css/lightbox.css', 'resources/assets/less/lightbox.less')  
-  .copy('vendor/bower_components/lightbox/src/images', 'public/images')  
+  .copy('vendor/bower_components/lightbox/src/images', 'public/build/images')  
 
   // Copy fonts
   .copy('vendor/bower_components/bootstrap/fonts', 'public/fonts')

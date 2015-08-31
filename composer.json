@@ -8,7 +8,7 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
         "maatwebsite/excel": "~2.0.0",
-        "kalnoy/nestedset": "~2.4",
+        "kalnoy/nestedset": "3.*",
         "orchestra/imagine": "3.1.*",
         "illuminate/html": "5.*"
     },
