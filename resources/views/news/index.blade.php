@@ -1,33 +1,38 @@
 @extends('layout.main')
 
+
+@section('title')
+Новости компании Стекло Групп о стекле, фурнитуре и изделиях из стекла 
+@stop
+
+@section('keywords')
+Новости, Стекло Групп, стекло, фурнитура для стекла, изделия из стекла 
+@stop
+
+@section('description')
+Новости компании Стекло Групп о стекле, фурнитуре и изделиях из стекла 
+@stop
+
 @section('content')
 
+<h1>{{ $category->title }}</h1>
 
-		<div class="panel-primary">
-		  <div class="panel-heading">
-		      <h3 class="panel-title">Новости</h3>
-		  </div>
-		  <div class="panel-body">
+	@foreach ($news as $item)
+        <article class="row">
 
-		  			@foreach ($news as $item)
-        				<article class="row">
-        				<h5><i class="fa fa-calendar text-primary"> {{ date('d M Y', strtotime($item->created_at)) }} </i> | 
-                {!! HTML::link('news/'. $item->sef, $item->title, array('class' => 'link', 'title' => $item->title)) !!}
-                </h5>
+        	<h3><i class="fa fa-calendar text-primary"> {{ date('d M Y', strtotime($item->created_at)) }} </i> | 
+            {!! HTML::link('/news/'. $item->sef, $item->title, array('class' => 'link', 'title' => $item->title)) !!}
+            </h3>
 
-        				{!! HTML::image($item->image, $alt = $item->title, array('class' => 'thumbnail img-responsive col-md-3')) !!}
+        	{!! HTML::image('/img/news/'.$item->image, $alt = $item->title, array('class' => 'thumbnail img-responsive col-md-3')) !!}
 
-       					<div class="col-md-9 introtext">	{!!  $item->introtext !!}                   
-       					{!! HTML::link('news/'. $item->sef, 'Подробнее', array('class' => 'btn btn-default pull-right', 'title' => $item->title)) !!}
-       					</div>
+       		<div class="col-md-9 introtext">	
+       			{!!  $item->introtext !!}                   
+       			{!! HTML::link('/news/'. $item->sef, 'Подробнее', array('class' => 'btn btn-default pull-right', 'title' => $item->title)) !!}
+       		</div>
 
-
-        				</article>
-        			@endforeach
-
-
-  		  </div>
-  		</div>
+        </article>
+    @endforeach
 
 {!! $news->render() !!}
 

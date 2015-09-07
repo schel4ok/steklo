@@ -13,8 +13,13 @@ body {background-color: @body-background}
 .border-0         {border: 0;}
 .margin-0         {margin: 0;}
 .margin-5         {margin: 5px;}
+.margin-right-10  {margin-right:10px;} 
+.margin-right-20  {margin-right:20px;} 
+.margin-left-15  {margin-left:15px;} 
+.margin-right-15  {margin-right:15px;} 
 
-
+.row {.margin-0}
+.black {color: @black;}
 
 #main {  
   background:url("/img/header.jpg") no-repeat @white;
@@ -48,8 +53,11 @@ body {background-color: @body-background}
   font-size: 2em;
   color: @link-color;
   line-height: 1.5em;
-  top: 30px;
+  top: -20px;
+  padding-left: 15px;
 }
+
+.root {display:inherit; width: 330px; height: 50px;}
 
 .navbar-toggle {
   margin-top: 0; 
@@ -171,7 +179,6 @@ input[readonly] {
 
 
 // to top link
-
 .scroll-top-wrapper {
   position: fixed;
   opacity: 0;
@@ -185,12 +192,9 @@ input[readonly] {
   bottom: 30px;
   padding: 5px 10px;
   border-radius: 5px;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
+  .transition(all 0.5s ease-in-out);
 }
+
 .scroll-top-wrapper:hover {
   background-color: darken(@brand-primary, 20%);
 }
@@ -204,9 +208,36 @@ input[readonly] {
 }
 
 
-#content {  text-align: justify; padding: 0px 10px }
+#content       { text-align: justify; padding: 0px 15px; }
+#bottommodules { padding: 0px; }
+
+.flex {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  justify-content: space-between; 
+  // выравнивание вдоль главной оси, чтобы крайние элементы были по краям
+}
 
 
-@import "includes/menu.less";
+.flexitem {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column; // теперь главная ось направлена сверху вниз
+  flex-wrap: wrap; // перенос осуществляется по направлению кросс оси, сверху вниз
+  justify-content: flex-start; // выравнивание элементов вдоль главной оси
+  align-items: center; // выравнивание элементов вдоль кросс оси
+  // align-content: center; // выравнивание целых строк относительно гибкого контейнера. 
+                         // Оно не будет давать эффекта если гибкие элементы занимают одну строку.
+}
+
+
+@import "includes/css3.less"; // стили css3
+@import "includes/menu.less"; // стили меню
 @import "includes/links.less"; // стили раздела Ссылки
 @import "includes/pesok.less"; // стили галереи пескоструйных рисунков
+@import "includes/headers.less"; // стили заголовков h1...h6
+@import "includes/text.less"; // стили основного текста
+@import "includes/images.less"; // стили основного текста
+@import "includes/alerts.less"; // стили цветных блоков
+@import "includes/category.less"; // стили страниц листинга категории

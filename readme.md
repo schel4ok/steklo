@@ -37,9 +37,24 @@ gulp
 
 
 ## изменения
-* временно удалил @include('modules.informers') из файла resources\views\layout\main.blade.php чтобы не было ошибок на локалке
-* тоже самое тут <script src="https://www.google.com/recaptcha/api.js"></script>
-* это пока удалил, т.к. непомню почему не получилось настроить стандартный лайтбокс	из бутсрапа <script src="//rawgithub.com/ashleydw/lightbox/master/dist/ekko-lightbox.js"></script>
+* временно удалил из файла resources\views\layout\main.blade.php чтобы не было ошибок на локалке  
+@include('modules.counters') - это сразу после открывающего тега <body>
+@include('modules.informers') - это где-то внизу страницы перед закрывающим тегом </body>
+<script src="https://www.google.com/recaptcha/api.js"></script> - это где-то внизу страницы  
+
+В бутстрапе bootstrap/mixins/grid.less значения отступов справа и слева почему-то заданы отрицательными. На странице получается что элемент страницы со свойством row выступает за пределы контейнера. Нахрена они так сделали?  
+```
+.row {
+  .make-row();
+}
+  
+.make-row(@gutter: @grid-gutter-width) {
+  margin-left:  ceil((@gutter / -2));
+  margin-right: floor((@gutter / -2));
+  &:extend(.clearfix all);
+}
+```
+
 
 
 ## Laravel PHP Framework

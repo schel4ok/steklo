@@ -84,14 +84,16 @@
   		</div>
   	</div>
 
+
+<div class="col-md-4">
+@include('modules.lastworks')
+</div>
+
 @endsection
 
 
 @section('bottommodules')
 
-<div class="col-md-4">
-@include('modules.lastworks')
-</div>
 
 <div class="clearfix"></div>
 
@@ -101,6 +103,10 @@
 
 <div class="col-md-4">
 @include('modules.lastnews')
+</div>
+
+<div class="col-md-4">
+@include('modules.test')
 </div>
 
 @endsection

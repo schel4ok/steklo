@@ -1,19 +1,29 @@
 @extends('layout.main')
 
+@section('title')
+{{ $item->metatitle }}
+@stop
+
+@section('keywords')
+{{ $item->metakey }}
+@stop
+
+@section('description')
+{{ $item->metadesc }}
+@stop
+
 @section('content')
 
 	<article>
 
-        <i class="fa fa-calendar text-primary"> {{ date('d M Y', strtotime($item->created_at)) }} </i>
-        <h1 class="page-header margin-0">{{ $item->title }}</h1>
+    <h1>{{ $item->title }}</h1>
 
-       	<div class="page-content">
-       	{!! HTML::image($item->image, $alt = $item->title, array('class' => 'thumbnail img-responsive pull-left')) !!}
+        {!! HTML::image($item->image, $alt = $item->title, array('class' => 'thumbnail img-responsive pull-left')) !!}
         <div class="introtext">{!! $item->introtext !!}</div>
         <div class="fulltext">{!! $item->fulltext !!}</div>
        	<div class="clearfix"></div>
-       	</div>
 
-    </article>
+
+  </article>
 
 @stop

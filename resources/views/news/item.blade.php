@@ -1,7 +1,5 @@
 @extends('layout.main')
 
-@foreach ($news as $item)
-
 
 @section('title')
 {{ $item->metatitle }}
@@ -19,25 +17,19 @@
 
 @section('content')
 
-
-
 	<article>
 
         <i class="fa fa-calendar text-primary"> {{ date('d M Y', strtotime($item->created_at)) }} </i>
-        <h1 class="page-header margin-0">{{ $item->title }}</h1>
+        <h1>{{ $item->title }}</h1>
 
+       		<a href="/img/news/big/{!! $item->image !!}"data-lightbox="news" data-title="{!! $item->title !!}"> 
+       			{!! HTML::image('/img/news/'.$item->image, $alt = $item->title, array('class' => 'thumbnail img-responsive pull-left margin-right-20' )) !!}
+       		</a>
 
-       	<div class="page-content">
-       	{!! HTML::image($item->image, $alt = $item->title, array('class' => 'thumbnail img-responsive pull-left')) !!}
-       	<div class="fulltext">{!! $item->fulltext !!}
-         </div>
+       	<div class="fulltext">{!! $item->fulltext !!}</div>
        	<div class="clearfix"></div>
-       	</div>
 
     </article>
-
-@endforeach
-
 
 
 <ul class="pager">
@@ -45,7 +37,7 @@
 <li class="previous"><a href="{{ $previous->sef }}">← Пред новость</a></li>
 @endif
 
-<li><a href="/news">&uarr; Наверх</a></li>
+<li><a href="/news">&uarr; в раздел</a></li>
 
 @if (!empty($next) and $next->category_id === $item->category_id )
 <li class="next"><a href="{{ $next->sef }}">След новость →</a></li>

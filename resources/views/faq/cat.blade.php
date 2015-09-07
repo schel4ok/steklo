@@ -1,26 +1,29 @@
 @extends('layout.main')
 
+@section('title')
+{{ $category->metatitle }}
+@stop
+
+@section('keywords')
+{{ $category->metakey }}
+@stop
+
+@section('description')
+{{ $category->metadesc }}
+@stop
+
+
 @section('content')
 
-		<div class="panel-primary">
-		  <div class="panel-heading">
-          <h1 class="panel-title">{{ $category->title }}</h1>
-		  </div>
+  <h1>{{ $category->title }}</h1>
 
-		  <div class="panel-body">
+  @foreach ($items as $item)
+      <article class="row">
+        <a href="{{ $category->sef.'/'.$item->sef }}" title="{{ $item->title }}">{{ $item->title }}</a>
+      </article>
+  @endforeach
 
-            @foreach ($links as $item)
-        				<article class="row">
-        				<i class="fa info-circle text-primary"> </i>
-                    <a href="{{ $category->sef.'/'.$item->sef }}" title="{{ $item->title }}">{{ $item->title }}</a>
-        				</article>
-        		@endforeach
-
-
-  		  </div>
-  		</div>
-
-
-{!! $links->render() !!}
+{!! $items->render() !!}
+<ul class="pager"><li><a href="/faq">&uarr; в раздел</a></li></ul>
 
 @endsection

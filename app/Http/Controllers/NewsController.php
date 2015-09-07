@@ -16,19 +16,25 @@ class NewsController extends Controller {
 
 	public function getItem($title)
 	{
-		$news = News::where('sef', '=', $title)->get();
+		$item = News::where('sef', '=', $title)->first();
 		
+/*
+->get(); возвращает коллекцию и для доступа к индивидуальным полям объекта надо сделать foreach
+@foreach ($news as $item)
+{{ $item->id }}
+@endforeach
 
-			foreach ($news as $item) // access user properties here
-			{	
-        		$previous = News::where('id', '<', $item->id)->orderBy('id', 'desc')->first();
-				$next = News::where('id', '>', $item->id)->orderBy('id', 'asc')->first();
-				$category = Category::where('id', $item->category_id)->first();
-			}
+->first(); а вот это возвращает один объект и можно сразу писать так   $item->category_id
+*/
+
+
+        $previous = News::where('id', '<', $item->id)->orderBy('id', 'desc')->first();
+		$next = News::where('id', '>', $item->id)->orderBy('id', 'asc')->first();
+		$category = Category::where('id', $item->category_id)->first();
 
 		return view('news.item')
 					->withCategory($category)
-					->withNews($news)
+					->withItem($item)
 					->withPrevious($previous)
 					->withNext($next);
 	}

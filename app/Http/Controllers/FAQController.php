@@ -13,7 +13,7 @@ class FAQController extends Controller {
 
 	public function getIndex()
 	{
-		$category = Category::where('type', '=', 'faq')->first();
+		$category = Category::where('sef', '=', 'faq')->first();
 		$categories = $category->descendants()->orderBy('title', 'asc')->paginate(9);
 
 		return view('faq.index')->withCategory($category)
@@ -23,10 +23,10 @@ class FAQController extends Controller {
 	public function getCategory($cat)
 	{
 		$category = Category::where('sef', '=', $cat)->first();
-		$links = FAQ::where('category_id', $category->id)->paginate(20);
+		$items = FAQ::where('category_id', $category->id)->paginate(20);
 
 		return view('faq.cat')->withCategory($category)
-								->withLinks($links);
+								->withItems($items);
 	}
 
 	public function getItem($cat, $item)

@@ -1,0 +1,26 @@
+.cat {  
+  .flex;
+  @media (max-width: 500px) {justify-content: center;}
+}
+
+.cat a.thumbnail {
+  padding: 5px;
+  border: 1px solid @lightgrey; 
+  .border-radius(0);
+  .box-shadow(2px 4px 18px @lightgrey);
+  #gradient > .vertical(@start-color: @white; @end-color: #e8e8e8);
+    &:hover, &:focus {border-color: @brand-primary;.box-shadow(0 1px 4px rgba(0,105,214,.25));}
+   // img {.transition(all ease-out 300ms); }
+}
+
+
+.cat span {
+  margin-bottom: 20px; 
+  text-align: center;    
+  font-style: italic;
+  font-size: 18px;
+  font-family: @font-family-open-sans;
+  line-height: 20px;
+  font-weight: bold;
+  max-width: 212px; 
+}

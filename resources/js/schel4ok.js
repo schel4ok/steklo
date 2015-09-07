@@ -2,7 +2,6 @@
  * Created by Администратор on 24.01.2015.
  */
 
-
 // carousel image slider
  $('#clientsCarousel').carousel({
   interval: 40000
@@ -75,14 +74,20 @@ function scrollToTop() {
 }
 
 
-//  Modal lightbox with like/dislike   http://bootsnipp.com/snippets/featured/modal-lightbox-with-likedislike
-//  like/dislike я удалил
-/*
-$(document).ready(function() { 
-    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
-        event.preventDefault();
-        $(this).ekkoLightbox();
-    });                                        
-}); 
+// tooltip
+$('[data-toggle="tooltip"]').tooltip();
 
-*/
+  $('').hover(function(){
+    $(this).append($button);
+    $button.show();
+  }, function(){
+    $button.hide();
+  });
+
+
+  // пр загрузке страницы окно смещается вниз к элементу id=content
+
+  $(document).ready(function(){$('html, body').animate({
+        scrollTop: $("#content").offset().top
+    }, 2000);
+})

@@ -25,7 +25,6 @@
 	
 </head>
 <body>
-	@include('modules.counters')
 
 <div id="main" class="container-fluid">
 
@@ -36,11 +35,11 @@
 			@include('modules.topmenu')
 
 			<div class="callback">
+                    <a href="/" class="root"> </a>
                     <p>8 (495) 790 84 15<br>
                     <a href="mailto:sales@steklo-group.ru">sales@steklo-group.ru</a><br>
                     <a class="btn btn-primary btn-large" href="#callback" title="Обратный звонок" data-toggle="modal" data-target="#callback">
                     <i class="fa fa-phone"> </i> Обратный звонок</a></p>
-                    {{ $_SERVER['REQUEST_URI'] }}
             </div>
 			@include('modules.mainmenu')
 		</header>
@@ -49,7 +48,7 @@
 
 		<section id="content" class="content col-md-12" style="clear:both;">@yield('content')</section>
 		<div class="clearfix"></div>
-		<section id="bottommodules" class="content col-md-12" style="clear:both;">@yield('bottommodules')</section>
+		<section id="bottommodules" style="clear:both;">@yield('bottommodules')</section>
 
 </div><!-- ./ #main -->
 
@@ -61,3 +60,5 @@
 
 </body>
 </html>
+
+{{ $_SERVER['REQUEST_URI'] }}

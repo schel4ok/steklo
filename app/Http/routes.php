@@ -10,7 +10,11 @@ Route::get('/news/{title}', 'NewsController@getItem');
 // Links
 Route::get('links', 'FileController@getIndex');
 Route::get('links/{cat}', 'FileController@getCategory');
-Route::get('links/risunki/katalog-peskostrujnykh-risunkov', 'FileController@pesok');
+Route::get('links/{cat}/peskostrujnie-risunki', 'FileController@pesok');
+
+Route::get('links/{cat}/{item}', 'FileController@getItem');
+// special Links
+Route::get('links/{cat}/vitrajnie-risunki', 'FileController@vitraj');
 
 // FAQ
 Route::get('/faq', 'FAQController@getIndex');
