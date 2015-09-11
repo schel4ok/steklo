@@ -23,7 +23,7 @@
         <h1>{{ $item->title }}</h1>
 
        		<a href="/img/news/big/{!! $item->image !!}"data-lightbox="news" data-title="{!! $item->title !!}"> 
-       			{!! HTML::image('/img/news/'.$item->image, $alt = $item->title, array('class' => 'thumbnail img-responsive pull-left margin-right-20' )) !!}
+    		<img src="/img/news/{!! $item->image !!}" alt="{!! $item->title !!}" class="thumbnail img-responsive pull-left margin-right-20">
        		</a>
 
        	<div class="fulltext">{!! $item->fulltext !!}</div>

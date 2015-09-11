@@ -55,7 +55,9 @@ gulp
 }
 ```
 
-
+доделать валидацию полей формы  
+* валидацию файла (максимальный размер 10мб, допустимые расширения doc docx xls xlsx ppt pptx pdf dwg dxf ai psd cdr jpg png gif tiff zip rar txt ...)
+* валидацию телефона
 
 ## Laravel PHP Framework
 

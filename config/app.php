@@ -146,7 +146,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         'Orchestra\Imagine\ImagineServiceProvider',
         'Maatwebsite\Excel\ExcelServiceProvider',
-        'Illuminate\Html\HtmlServiceProvider',
+        Collective\Html\HtmlServiceProvider::class,
     ],
 
     /*
@@ -196,8 +196,8 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Imagine'   => 'Orchestra\Imagine\Facade',
         'Excel'     => 'Maatwebsite\Excel\Facades\Excel',
-        'HTML'      => 'Illuminate\Html\HtmlFacade',
-        'Form'      => 'Illuminate\Html\Facades\FormFacade',
+      	'Form' 		=> Collective\Html\FormFacade::class,
+      	'Html' 		=> Collective\Html\HtmlFacade::class,
     ],
 
 ];

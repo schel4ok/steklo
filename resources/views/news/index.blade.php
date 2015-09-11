@@ -21,14 +21,14 @@
         <article class="row">
 
         	<h3><i class="fa fa-calendar text-primary"> {{ date('d M Y', strtotime($item->created_at)) }} </i> | 
-            {!! HTML::link('/news/'. $item->sef, $item->title, array('class' => 'link', 'title' => $item->title)) !!}
+        	<a href="/news/{!! $item->sef !!}" class="link" title="{!! $item->title !!}">{!! $item->title !!}</a>
             </h3>
 
-        	{!! HTML::image('/img/news/'.$item->image, $alt = $item->title, array('class' => 'thumbnail img-responsive col-md-3')) !!}
+    		<img src="/img/news/{!! $item->image !!}" alt="{!! $item->title !!}" class="thumbnail img-responsive col-md-3">
 
        		<div class="col-md-9 introtext">	
        			{!!  $item->introtext !!}                   
-       			{!! HTML::link('/news/'. $item->sef, 'Подробнее', array('class' => 'btn btn-default pull-right', 'title' => $item->title)) !!}
+	        	<a href="/news/{!! $item->sef !!}" class="btn btn-default pull-right" title="{!! $item->title !!}">Подробнее</a>
        		</div>
 
         </article>

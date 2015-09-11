@@ -30,7 +30,8 @@
 					<i class="fa fa-file-o text-primary"></i>
         		@endif
 
-                {!! HTML::link($item->url, $item->title, array('class' => 'link', 'title' => $item->title)) !!}
+        		<a href="/{!! $item->url !!}" class="link" title="{!! $item->title !!}">{!! $item->title !!}</a>
+
         	</article>
         @endforeach
 

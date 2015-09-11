@@ -17,8 +17,7 @@
 	<article>
 
     <h1>{{ $item->title }}</h1>
-
-        {!! HTML::image($item->image, $alt = $item->title, array('class' => 'thumbnail img-responsive pull-left')) !!}
+    	<img src="{!! $item->image !!}" alt="{!! $item->title !!}" class="thumbnail img-responsive pull-left">
         <div class="introtext">{!! $item->introtext !!}</div>
         <div class="fulltext">{!! $item->fulltext !!}</div>
        	<div class="clearfix"></div>

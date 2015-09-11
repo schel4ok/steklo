@@ -1,11 +1,13 @@
 {{-- вывод breadcrumb только если родитель не ROOT, то есть не выводить breadcrumb для страниц первого уровня, потому что у нас и так есть заголовок этой страницы--}}
 @if (!$bread->parent->isRoot())
-
+  
   <ul class="breadcrumb margin-left-15 margin-right-15">
+    <span class="active fa fa-map-marker" title="Вы здесь: " data-toggle="tooltip" data-placement="top">
+    &nbsp;</span>
 
     {{-- вывод всех родителей со ссылками --}}
     @foreach ($bread->getAncestors() as $ancestor)
-       <li><a href="/{{ $ancestor->sef }}">{{ $ancestor->title }}</a></li>
+      <li><a href="/{{ $ancestor->sef }}">{{ $ancestor->title }}</a></li>
     @endforeach
 
     {{-- если REQUEST_URI текущей страницы не равен /sef то есть страница не первого уровня, то вывести название этой страницы без ссылки на неё --}}

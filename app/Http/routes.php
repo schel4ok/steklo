@@ -2,10 +2,17 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('o-kompanii', 'PageController@o_kompanii');
+Route::get('sitemap', 'CategoryController@sitemap');
+            // uri      // route name       // controller action
+Route::get('contacts',  ['as' => 'contacts', 'uses' => 'PageController@contacts']);
+Route::post('contacts', ['as' => 'sendmail', 'uses' => 'PageController@sendmail']);
+
+//Route::get('contacts', 'PageController@testmail');
+//Route::post('contacts', 'PageController@sendmail');
 
 // News
-Route::get('/news', 'NewsController@getIndex');
-Route::get('/news/{title}', 'NewsController@getItem');
+Route::get('news', 'NewsController@getIndex');
+Route::get('news/{title}', 'NewsController@getItem');
 
 // Links
 Route::get('links', 'FileController@getIndex');
@@ -17,9 +24,9 @@ Route::get('links/{cat}/{item}', 'FileController@getItem');
 Route::get('links/{cat}/vitrajnie-risunki', 'FileController@vitraj');
 
 // FAQ
-Route::get('/faq', 'FAQController@getIndex');
-Route::get('/faq/{cat}', 'FAQController@getCategory');
-Route::get('/faq/{cat}/{item}', 'FAQController@getItem');
+Route::get('faq', 'FAQController@getIndex');
+Route::get('faq/{cat}', 'FAQController@getCategory');
+Route::get('faq/{cat}/{item}', 'FAQController@getItem');
 
 
 

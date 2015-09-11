@@ -10,7 +10,7 @@
         "maatwebsite/excel": "~2.0.0",
         "kalnoy/nestedset": "3.*",
         "orchestra/imagine": "3.1.*",
-        "illuminate/html": "5.*"
+        "laravelcollective/html": "5.1.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

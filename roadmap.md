@@ -37,3 +37,10 @@ rename 'unless (/0+[0-9]{4}.gif/) {s/^([0-9]{1,3}\.gif)$/000$1/g;s/0*([0-9]{4}\.
 
 вот статья об установке ларавел на vps
 https://www.rosehosting.com/blog/install-laravel-on-linux-vps/
+
+
+Learn to send emails using Gmail and Sendgrid in Laravel 5
+http://learninglaravel.net/learn-to-send-emails-using-gmail-and-sendgrid-in-laravel-5
+
+Forms & HTML
+http://laravelcollective.com/docs/5.1/html

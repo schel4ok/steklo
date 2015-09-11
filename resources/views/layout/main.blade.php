@@ -47,6 +47,7 @@
 		@include('modules.breadcrumbs', [ 'bread' => $category ])
 
 		<section id="content" class="content col-md-12" style="clear:both;">@yield('content')</section>
+		
 		<div class="clearfix"></div>
 		<section id="bottommodules" style="clear:both;">@yield('bottommodules')</section>
 
