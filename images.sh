@@ -16,7 +16,8 @@ smartresize() {
    -unsharp 0.25x0.08+8.3+0.045 -dither None -posterize 136 -quality 82 \
    -define jpeg:fancy-upsampling=off -define png:compression-filter=5 \
    -define png:compression-level=9 -define png:compression-strategy=1 \
-   -strip -define png:exclude-chunk=all -interlace none -colorspace sRGB $3
+   -strip -define png:exclude-chunk=all -interlace none -gravity center \
+   -extent $3 -colorspace sRGB $4
 }
 
 smartoptimize() {
@@ -27,57 +28,129 @@ smartoptimize() {
    -strip -define png:exclude-chunk=all -interlace none -colorspace sRGB $2
 }
 
+# хелп тута http://pingvinus.ru/note/command-find
+find resources/img -exec rename -vf 'y/A-Z/a-z/' '{}' \; # заменяет UPPERCASE -> lowercase
+find resources/img -exec rename -vf 'y/ /-/' '{}' \;     # заменяет пробел на дефис
+
+# вот это не работает для файлов внутри папок, укоторых название с пробелом
+# find resources/img -type f -exec rename -vf 'y/ /-/' '{}' \;     # заменяет пробел на дефис
+# например Can't rename resources/img/_men-at-work/PrimeFitness Липецк/2013-02-17 23.55.41.jpg 
+# resources/img/_men-at-work/PrimeFitness-Липецк/2013-02-17-23.55.41.jpg: No such file or directory
+
 cd public/img
-if [ ! -e "carousel" ]; 		then mkdir carousel; fi
-if [ ! -e "categories" ]; 		then mkdir categories; fi
-if [ ! -e "clients" ]; 			then mkdir clients; fi
-if [ ! -e "file-icons" ]; 		then mkdir file-icons; fi
-if [ ! -e "furnitura" ]; 		then mkdir furnitura; fi
-if [ ! -e "homepage" ]; 		then mkdir homepage; fi
-if [ ! -e "links" ]; 			then mkdir links; fi
-if [ ! -e "menu" ]; 			then mkdir menu; fi
-if [ ! -e "news" ]; 			then mkdir news; fi
-if [ ! -e "news/big" ]; 		then mkdir -p news/big; fi
-if [ ! -e "pages" ]; 			then mkdir pages; fi
-if [ ! -e "products" ]; 		then mkdir products; fi
-
-if [ ! -e "risunki" ]; 			then mkdir risunki; fi
-if [ ! -e "risunki/pesok" ]; 	then mkdir risunki/pesok; fi
-if [ ! -e "risunki/vitraj" ]; 	then mkdir risunki/vitraj; fi
-
+# создание папок
+if [ ! -e "carousel" ];                then mkdir carousel; fi
+if [ ! -e "categories" ];              then mkdir categories; fi
+if [ ! -e "clients" ];                 then mkdir clients; fi
+if [ ! -e "file-icons" ];              then mkdir file-icons; fi
+if [ ! -e "foto" ];                    then mkdir -p foto/thumbs; fi
+if [ ! -e "foto/bar" ];                then mkdir foto/bar; fi
+if [ ! -e "foto/dush" ];               then mkdir foto/dush; fi
+if [ ! -e "foto/dveri" ];              then mkdir foto/dveri; fi
+if [ ! -e "foto/facades" ];            then mkdir foto/facades; fi
+if [ ! -e "foto/fartuki" ];            then mkdir foto/fartuki; fi
+if [ ! -e "foto/kozyrki" ];            then mkdir foto/kozyrki; fi
+if [ ! -e "foto/lestnica" ];           then mkdir foto/lestnica; fi
+if [ ! -e "foto/oblicovka-sten" ];     then mkdir foto/oblicovka-sten; fi
+if [ ! -e "foto/okna" ];               then mkdir foto/okna; fi
+if [ ! -e "foto/peregorodki" ];        then mkdir foto/peregorodki; fi
+if [ ! -e "foto/polki" ];              then mkdir foto/polki; fi
+if [ ! -e "foto/potolok" ];            then mkdir foto/potolok; fi
+if [ ! -e "foto/reception" ];          then mkdir foto/reception; fi
+if [ ! -e "foto/risunki" ];            then mkdir foto/risunki; fi
+if [ ! -e "foto/shkafy" ];             then mkdir foto/shkafy; fi
+if [ ! -e "foto/stoly" ];              then mkdir foto/stoly; fi
+if [ ! -e "foto/vitriny" ];            then mkdir foto/vitriny; fi
+if [ ! -e "foto/zabor" ];              then mkdir foto/zabor; fi
+if [ ! -e "foto/zerkala" ];            then mkdir foto/zerkala; fi
+if [ ! -e "furnitura" ]; 		         then mkdir furnitura; fi
+if [ ! -e "homepage" ]; 		         then mkdir homepage; fi
+if [ ! -e "menu" ];                    then mkdir menu; fi
+if [ ! -e "news" ];                    then mkdir news; fi
+if [ ! -e "news/big" ]; 		         then mkdir -p news/big; fi
+if [ ! -e "pages" ]; 			         then mkdir pages; fi
+if [ ! -e "risunki" ]; 			         then mkdir risunki; fi
+if [ ! -e "risunki/pesok" ]; 	         then mkdir risunki/pesok; fi
+if [ ! -e "risunki/vitraj" ];          then mkdir risunki/vitraj; fi
 
 cd ../../
-smartoptimize 	public/img/ 						'resources/img/*.{jpg,png,gif}'
-smartresize 	public/img/carousel/ 	640		 	'resources/img/carousel/furnitura/*'
-smartresize 	public/img/carousel/ 	912x294 	'resources/img/carousel/main/*'
-smartresize 	public/img/carousel/ 	640		 	'resources/img/carousel/works/*'
-smartoptimize 	public/img/categories/				'resources/img/categories/*'
-smartresize 	public/img/clients/ 	"x190>" 	'resources/img/clients/*'
-smartoptimize 	public/img/file-icons/				'resources/img/file-icons/*'
+# ресайз картинок
+smartoptimize 	public/img/ 						                       'resources/img/*.{jpg,png,gif}'
+smartresize 	public/img/carousel/            640       ${w}x${h}  'resources/img/carousel/furnitura/*'
+smartresize 	public/img/carousel/            912x294   ${w}x${h}  'resources/img/carousel/main/*'
+smartresize 	public/img/carousel/            640x480   ${w}x${h}  'resources/img/carousel/works/*'
+smartoptimize 	public/img/categories/				                    'resources/img/categories/*'
+smartresize 	public/img/clients/ 	           'x190>'   ${w}x190   'resources/img/clients/*'
+smartoptimize  public/img/file-icons/                               'resources/img/file-icons/*'
+smartresize    public/img/foto/                 234x180^ 234x180    'resources/img/foto/*.jpg'
+smartresize    public/img/foto/bar              640      ${w}x${h}  'resources/img/foto/bar/*'
+smartresize    public/img/foto/dush             640      ${w}x${h}  'resources/img/foto/dush/*'
+smartresize    public/img/foto/dveri            640      ${w}x${h}  'resources/img/foto/dveri/*'
+smartresize    public/img/foto/facades          640      ${w}x${h}  'resources/img/foto/facades/*'
+smartresize    public/img/foto/fartuki          640      ${w}x${h}  'resources/img/foto/fartuki/*'
+smartresize    public/img/foto/kozyrki          640      ${w}x${h}  'resources/img/foto/kozyrki/*'
+smartresize    public/img/foto/lestnica         640      ${w}x${h}  'resources/img/foto/lestnica/*'
+smartresize    public/img/foto/oblicovka-sten   640      ${w}x${h}  'resources/img/foto/oblicovka-sten/*'
+smartresize    public/img/foto/okna             640      ${w}x${h}  'resources/img/foto/okna/*'
+smartresize    public/img/foto/peregorodki      640      ${w}x${h}  'resources/img/foto/dveri/*'
+smartresize    public/img/foto/polki            640      ${w}x${h}  'resources/img/foto/polki/*'
+smartresize    public/img/foto/potolok          640      ${w}x${h}  'resources/img/foto/potolok/*'
+smartresize    public/img/foto/reception        640      ${w}x${h}  'resources/img/foto/reception/*'
+smartresize    public/img/foto/risunki          640      ${w}x${h}  'resources/img/foto/risunki/*'
+smartresize    public/img/foto/shkafy           640      ${w}x${h}  'resources/img/foto/shkafy/*'
+smartresize    public/img/foto/stoly            640      ${w}x${h}  'resources/img/foto/stoly/*'
+smartresize    public/img/foto/vitriny          640      ${w}x${h}  'resources/img/foto/vitriny/*'
+smartresize    public/img/foto/zabor            640      ${w}x${h}  'resources/img/foto/zabor/*'
+smartresize    public/img/foto/zerkala          640      ${w}x${h}  'resources/img/foto/zerkala/*'
 # furnitura
-smartresize 	public/img/homepage/ 	588		 	'resources/img/homepage/*'
-smartoptimize 	public/img/links/					'resources/img/links/*'
-smartoptimize 	public/img/menu/					'resources/img/menu/*'
-smartresize    	public/img/news/ 		234		 	'resources/img/news/*'
-smartresize    	public/img/news/big/ 	640		 	'resources/img/news/*'
-smartoptimize  	public/img/pages/        			'resources/img/pages/*'
-# products
-
-gifresize	  	public/img/risunki/pesok/     "480>"   	'resources/img/risunki/pesok/*'
-smartoptimize  	public/img/risunki/vitraj/        		'resources/img/risunki/vitraj/*'
+smartresize 	public/img/homepage/             588       ${w}x${h} 'resources/img/homepage/*'
+smartoptimize 	public/img/menu/					                       'resources/img/menu/*'
+smartresize    public/img/news/                 234x180^   234x180  'resources/img/news/*'
+smartresize    public/img/news/big/             640x480^  ${w}x${h} 'resources/img/news/*'
+smartoptimize  public/img/pages/        			                    'resources/img/pages/*'
+gifresize	  	public/img/risunki/pesok/        "480>"              'resources/img/risunki/pesok/*'
+smartoptimize  public/img/risunki/vitraj/                           'resources/img/risunki/vitraj/*'
 
 
-cd public/img/clients
-for f in *.*
-do convert -verbose $f -gravity center -extent ${w}x190 $f;
-done
+cd public/img/foto
+# переименование картинок для фотогалереи по шаблону bar/bar-0001.jpg
+find bar/.   -name '*.jpg'          | gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" bar/bar-%04d.jpg\n", $0, a++ }' | bash
+find dveri/. -name '*.jpg'          | gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" dveri/dveri-%04d.jpg\n", $0, a++ }' | bash
+find dush/.  -name '*.jpg'          | gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" dush/dush-%04d.jpg\n", $0, a++ }' | bash
+find facades/.  -name '*.jpg'       | gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" facades/facades-%04d.jpg\n", $0, a++ }' | bash
+find fartuki/.  -name '*.jpg'       | gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" fartuki/fartuki-%04d.jpg\n", $0, a++ }' | bash
+find kozyrki/.  -name '*.jpg'       | gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" kozyrki/kozyrki-%04d.jpg\n", $0, a++ }' | bash
+find lestnica/.  -name '*.jpg'      | gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" lestnica/lestnica-%04d.jpg\n", $0, a++ }' | bash
+find oblicovka-sten/.  -name '*.jpg'| gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" oblicovka-sten/oblicovka-sten-%04d.jpg\n", $0, a++ }' | bash
+find okna/.  -name '*.jpg'          | gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" okna/okna-%04d.jpg\n", $0, a++ }' | bash
+find peregorodki/.  -name '*.jpg'   | gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" peregorodki/peregorodki-%04d.jpg\n", $0, a++ }' | bash
+find polki/.  -name '*.jpg'         | gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" polki/polki-%04d.jpg\n", $0, a++ }' | bash
+find potolok/.  -name '*.jpg'       | gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" potolok/potolok-%04d.jpg\n", $0, a++ }' | bash
+find reception/.  -name '*.jpg'     | gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" reception/reception-%04d.jpg\n", $0, a++ }' | bash
+find risunki/.  -name '*.jpg'       | gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" risunki/risunki-%04d.jpg\n", $0, a++ }' | bash
+find shkafy/.  -name '*.jpg'        | gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" shkafy/shkafy-%04d.jpg\n", $0, a++ }' | bash
+find stoly/.  -name '*.jpg'         | gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" stoly/stoly-%04d.jpg\n", $0, a++ }' | bash
+find vitriny/.  -name '*.jpg'       | gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" vitriny/vitriny-%04d.jpg\n", $0, a++ }' | bash
+find zabor/.  -name '*.jpg'         | gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" zabor/zabor-%04d.jpg\n", $0, a++ }' | bash
+find zerkala/.  -name '*.jpg'       | gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" zerkala/zerkala-%04d.jpg\n", $0, a++ }' | bash
 
-cd ../news
-for f in *.*
-do convert -verbose $f -gravity center -extent ${w}x180 $f;
-done
-
-cd big
-for f in *.*
-do convert -verbose $f -gravity center -extent ${w}x480 $f;
-done
+# создание миниатюр для фотогалереи
+smartresize   thumbs/   234x180^   234x180   'bar/*.jpg'
+smartresize   thumbs/   234x180^   234x180   'dveri/*.jpg'
+smartresize   thumbs/   234x180^   234x180   'dush/*.jpg'
+smartresize   thumbs/   234x180^   234x180   'facades/*.jpg'
+smartresize   thumbs/   234x180^   234x180   'fartuki/*.jpg'
+smartresize   thumbs/   234x180^   234x180   'kozyrki/*.jpg'
+smartresize   thumbs/   234x180^   234x180   'lestnica/*.jpg'
+smartresize   thumbs/   234x180^   234x180   'oblicovka-sten/*.jpg'
+smartresize   thumbs/   234x180^   234x180   'okna/*.jpg'
+smartresize   thumbs/   234x180^   234x180   'peregorodki/*.jpg'
+smartresize   thumbs/   234x180^   234x180   'polki/*.jpg'
+smartresize   thumbs/   234x180^   234x180   'potolok/*.jpg'
+smartresize   thumbs/   234x180^   234x180   'reception/*.jpg'
+smartresize   thumbs/   234x180^   234x180   'risunki/*.jpg'
+smartresize   thumbs/   234x180^   234x180   'shkafy/*.jpg'
+smartresize   thumbs/   234x180^   234x180   'stoly/*.jpg'
+smartresize   thumbs/   234x180^   234x180   'vitriny/*.jpg'
+smartresize   thumbs/   234x180^   234x180   'zabor/*.jpg'
+smartresize   thumbs/   234x180^   234x180   'zerkala/*.jpg'

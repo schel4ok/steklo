@@ -42,7 +42,7 @@
                     </span>
                 </span>
                 <input type="text" class="form-control" readonly="">
-        </div>
+    </div>
 
         <div class="g-recaptcha row" data-sitekey="6LdbUP4SAAAAAE3uvOFX2CP0msaL3ez4PzaAoE0u"></div>
 		</form>

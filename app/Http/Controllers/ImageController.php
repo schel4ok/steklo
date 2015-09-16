@@ -1,61 +1,48 @@
-<?php 
-namespace App\Http\Controllers;
-
+<?php namespace App\Http\Controllers;
 use Storage;
-use Imagine\Image\Box;
-use Imagine\Image\ImageInterface;
-use Imagine\Image\Point;
-use Imagine\Image\PointInterface;
-use Orchestra\Imagine\ImagineManager;
-use Orchestra\Imagine\Facade as Imagine;
+use File;
+use App\Category;
+use App\Page;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 class ImageController extends Controller {
 
-	public function __construct()
-	{	
+    public function __construct()
+    {   
 
-	}
+    }
 
-
-function create_thumbnails()
-{
-    $width  = 640;
-    $height = 480;
-    $size   = new Box($width, $height);
-    $mode   = ImageInterface::THUMBNAIL_INSET;   
-    // THUMBNAIL_INSET - это пропорциональное уменьшение фотки по одной из сторон (максимальной)
-    // THUMBNAIL_OUTBOUND - это тупо обрезка в заданный размер, не сохраняя пропорций
-
-    $img_path = 'img/risunki/sand';
-    $thumb_path = 'img/risunki/sand/thumbs';
-    // если не заменить последний backslash на локалке, то не находит путь thumb_path 
-    // и сохраняет уменьшенную картинку в оригинальный файл
-    $files = str_replace('\\', '/', Storage::files($img_path));
-	//dd($files);
-	$watermark = Imagine::open(base_path().'/resources/assets/watermark/watermark-2.png');
-	$wSize     = $watermark->getSize();  // 350x250
-	$bottomRight = new Point($size->getWidth() - $wSize->getWidth(), $size->getHeight() - $wSize->getHeight());
-
-	//dd($bottomRight);
-
-    foreach ($files as $file) 
+    public function getIndex()
     {
-    	// imagine не знает где у меня root, поэтому ему надо задавать полный путь включая base_path()
-	    $thumbnail   = Imagine::open(public_path().'/'.$file)
-    		    		//->rotate(45)   // поворачивает фотку
-    					//->resize(new Box(320, 240), ImageInterface::FILTER_LANCZOS)  // ресайз фотки - тупо сжимает в новые размеры, не сохраняя пропорции
-    					->thumbnail($size, $mode)  // THUMBNAIL_INSET более умный ресайз
-    					//->paste($watermark, $bottomRight)
-    					->save(public_path().'/'.str_replace($img_path, $thumb_path, $file), array('jpeg_quality' => 75));
-    					//->show('jpg'); // выводит фотку в браузер
-     }
+        $category = Category::where('type', '=', 'foto')->first();
+        $categories = Page::where('category_id', '=', $category->id)->orderBy('title', 'asc')->get();
 
-    $thumbnails = str_replace('\\', '/', Storage::files($thumb_path));
+        return view('foto.index')->withCategory($category)
+                                 ->withCategories($categories);
+    }
 
-    return view('thumbs')->withFiles($files)->withThumbnails($thumbnails);  
+    public function getItem($item)
+    {
+        $category = Category::where('type', '=', 'foto')->first();
+        $item = Page::where('sef', '=', $item)->first();
 
-}
+        $path = explode("?", substr($_SERVER['REQUEST_URI'], 1));
+        $link = Page::where('sef', $path[0] )->first();  
+        $img = File::allFiles(public_path(). '/img/foto/'.$item->sef);
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        if (is_null($currentPage)) {$currentPage = 1;}
+        $collection = new Collection($img);
+        $perPage = 40;
+        $currentPageImgResults = $collection->slice( ($currentPage - 1) * $perPage, $perPage)->all();
+        $paginatedImgResults = new LengthAwarePaginator($currentPageImgResults, count($collection), $perPage);
+        $paginatedImgResults->setPath($item->sef);
 
+        return view('foto.item')->withCategory($category)
+                                ->withItem($item)
+                                ->withImg($paginatedImgResults)
+                                ->withPath($path);
 
+    }
 
 }

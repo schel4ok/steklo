@@ -31,8 +31,7 @@ class PageController extends Controller {
 	public function contacts()
 	{
 		$category = Category::where('sef', '=', 'contacts')->first();
-		$filename = null;
-		return view('pages.contacts')->withCategory($category)->withFilename($filename);
+		return view('pages.contacts')->withCategory($category);
 
 	}
 
@@ -40,6 +39,7 @@ class PageController extends Controller {
 	{
 		$category = Category::where('sef', '=', 'contacts')->first();
 		$input = Input::all();
+	//	return var_dump($input['attachment']->getRealPath());
 
 		Mail::send('emails.contacts',
         	array(
@@ -53,53 +53,32 @@ class PageController extends Controller {
     			{
         			$message->from('admin@steklo-group.ru', $request->input('name') );
         			$message->to('ipopov@steklo-group.ru', 'Илья Попов');
-        			$message->сс('sales@steklo-group.ru', 'Настя');
+        		//	$message->сс('sales@steklo-group.ru', 'Настя');
         			$message->replyTo($request->input('email'), $request->input('name') );
         			$message->subject('Письмо со страницы контактов www.steklo-group.ru.');
-					$message->attach($input['attachment']->getRealPath(), array(
-						'as' 	=> $input['attachment']->getClientOriginalName(), 
-        				'mime' 	=> $input['attachment']->getMimeType()));
-				});
+        			if ( $input['attachment']->getRealPath() ) 
+        			{
+						$message->attach($input['attachment']->getRealPath(), array(
+							'as' 	=> $input['attachment']->getClientOriginalName(), 
+        					'mime' 	=> $input['attachment']->getMimeType()));
+					}
 
+				});
     	return Redirect::route('contacts')->withCategory($category)
     									  ->with('message', 'Ваше сообщение успешно отправлено!');
 	}
 
 
-
-	public function test()
+	public function uslugi_index()
 	{
-		Mail::queue('emails.contacts', array('name' => 'schel4ok'), function($message)
-			{
-				$message->subject('Письмо с сайта www.steklo-group.ru - страница контактов.');
-    			$message->from('admin@steklo-group.ru', $request->input('name') );
-    			$message->to('ipopov@steklo-group.ru', 'Илья Попов');
-    			//$message->cc('sales@steklo-group.ru', 'Настя'); 
-
-    			$message->replyTo($request->input('email'), $request->input('name') ); 
-    		//	$message->attach($pathToFile, array $options = []);
-    		//  $message->attach($pathToFile, ['as' => $display, 'mime' => $mime]);
-    			// Attach a file from a raw $data string...
-    		//	$message->attachData($data, $name, array $options = []);
-
-    			// Get the underlying SwiftMailer message instance...
-    			$message->getSwiftMessage();
-			});
+		$category = Category::where('sef', '=', 'o-kompanii')->first();
+		return view('pages.o-kompanii')->withCategory($category);
 	}
 
-	public function testmail()
+	public function uslugi_item()
 	{
-		$category = Category::where('sef', '=', 'contacts')->first();
-		Mail::queue('emails.test', array('name' => 'schel4ok'), function($message)
-			{
-				$message->subject('Feedback from site');
-    			$message->from('admin@steklo-group.ru', 'admin' );
-    			$message->to('ipopov@steklo-group.ru', 'Илья Попов');
-    			$message->getSwiftMessage();
-			});
-
-		return view('pages.contacts')->withCategory($category);
-
+		$category = Category::where('sef', '=', 'o-kompanii')->first();
+		return view('pages.o-kompanii')->withCategory($category);
 	}
 
 }

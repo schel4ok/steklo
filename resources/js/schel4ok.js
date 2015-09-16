@@ -85,9 +85,10 @@ $('[data-toggle="tooltip"]').tooltip();
   });
 
 
-  // пр загрузке страницы окно смещается вниз к элементу id=content
-
+// пр загрузке страницы окно смещается вниз к элементу id=content
+/*
   $(document).ready(function(){$('html, body').animate({
         scrollTop: $("#content").offset().top
     }, 2000);
 })
+*/

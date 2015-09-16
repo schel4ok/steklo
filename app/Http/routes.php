@@ -28,6 +28,24 @@ Route::get('faq', 'FAQController@getIndex');
 Route::get('faq/{cat}', 'FAQController@getCategory');
 Route::get('faq/{cat}/{item}', 'FAQController@getItem');
 
+// Foto
+Route::get('foto', 'ImageController@getIndex');
+Route::get('foto/{item}', 'ImageController@getItem');
+
+// Uslugi
+Route::get('uslugi', 'PageController@uslugi_index');
+Route::get('uslugi/{item}', 'PageController@uslugi_item');
+
+// Furnitura
+Route::get('furnitura-dlya-stekla', 'FurnituraController@getIndex');
+Route::get('furnitura-dlya-stekla/{cat}', 'FurnituraController@getCategory');
+Route::get('furnitura-dlya-stekla/{cat}/{item}', 'FurnituraController@getItem');
+
+// Steklo
+Route::get('izdeliya-iz-stekla', 'PageController@steklo_index');
+Route::get('izdeliya-iz-stekla/{cat}', 'PageController@steklo_cat');
+Route::get('izdeliya-iz-stekla/{cat}/{item}', 'PageController@steklo_item');
+
 
 
 

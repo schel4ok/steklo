@@ -28,57 +28,47 @@
 
 <div class="col-md-8 pull-right">
 <h2>Форма обратной связи</h2>
+<p>Все поля формы обязательны (кроме файла).<br>
+Разрешено прикреплять файлы размером не более 10 мегабайт.<br>
+Разрешенные типы файлов jpeg, bmp, png, gif, zip, rar, pdf, psd, ai, cdr, rtf, doc, docx, xls, xlsx, ppt.
+</p>
 
+
+
+
+
+
+{!! Form::open(array('route' => 'sendmail', 'class' => 'form', 'files' => true)) !!}
+@if(Session::has('message'))
+    <div class="alert alert-info">{{Session::get('message')}}</div>
+@endif
 @if(Session::has('errors'))
-<div class="alert alert-info">
-    @foreach($errors->all() as $error)
-        {{ $error }}<br>
-    @endforeach
+	<div class="alert alert-info">@foreach($errors->all() as $error){{ $error }}<br>@endforeach
 </div>
 @endif
 
 
-{!! Form::open(array('route' => 'sendmail', 'class' => 'form', 'files' => true)) !!}
-			
-			@if(Session::has('message'))
-    			<div class="alert alert-info">
-      			{{Session::get('message')}}
-    			</div>
-			@endif
+<input class="form-control" placeholder="введите имя" name="name" type="text" required maxlength="30" minlength="2">
+<input class="form-control" placeholder="введите телефон в любом формате" name="tel" type="tel" required>
+<input class="form-control" placeholder="введите адрес электронной почты" name="email" type="email" required>
+<textarea class="form-control" placeholder="введите сообщение" name="message" rows="4" required></textarea>
 
-	<div class="form-group">
-    	<label for="Ваше имя *">Ваше имя *</label>
-    	<input class="form-control" placeholder="введите имя" name="name" type="text" required maxlength="30" minlength="2">
-	</div>
+	<div class="input-group margin-bottom-20">
+        <span class="input-group-btn">
+            <span class="btn btn-primary btn-file">
+            <i class="fa fa-paperclip"> </i> Прикрепить файл 
+            <input type="file" name="attachment" id='file'>
+            </span>
+        </span>
+        <input type="text" class="form-control" readonly="">
+    </div>
 
-
-	<div class="form-group">
-    	<label for="Ваш телефон *">Ваше телефон *</label>
-    	<input class="form-control" placeholder="введите телефон" name="tel" type="tel" required>
-	</div>
-
-	<div class="form-group">
-    	<label for="Адрес электронной почты *">Адрес электронной почты *</label>
-    	<input class="form-control" placeholder="введите адрес электронной почты" name="email" type="email" required>
-	</div>
-
-	<div class="form-group">
-    	<label for="Сообщение *">Сообщение *</label>
-    	<textarea class="form-control" placeholder="введите сообщение" name="message" rows="4" required></textarea>
-	</div>
-
-	<div class="form-group">
-    <label for="Прикрепить файл">Прикрепить файл</label>
-    <input name="attachment" type="file">
-	</div>
-
-	<div class="form-group">
-    	<input class="btn btn-primary" type="submit" value="Отправить">
-	</div>
+<input class="btn btn-primary" type="submit" value="Отправить">
 
 {!! Form::close() !!}
 
 </div>
+
 
 <div class="col-md-4 pull-left alert-message alert-message-info">
     <h4>Дополнительная информация</h4>
