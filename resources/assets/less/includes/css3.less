@@ -108,3 +108,9 @@
   resize: @direction; // Options: horizontal, vertical, both
   overflow: auto; // Safari fix
 }
+
+.grayscale(@scale) {
+-webkit-filter: grayscale(@scale);
+        filter: grayscale(@scale);
+}
+

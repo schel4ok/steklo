@@ -1,5 +1,6 @@
 @extends('layout.main')
 
+
 @section('title')
 {{ $item->metatitle }}
 @stop
@@ -12,23 +13,18 @@
 {{ $item->metadesc }}
 @stop
 
+
+
 @section('content')
-<h1>{{ $item->title }}   </h1>
 
-<a class="btn btn-xs btn-outline-blue categorymenu" data-spy="affix" data-offset-top="300" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lg fa-bars"> </i> Фотогалерея</a>
+	<article>
 
+        <h1>{{ $item->title }}</h1>
 
-	<article class="gallery" id="fotogallery">
-		@foreach ($img as $node)
-        <a href="/img/foto/{{$item->sef}}/{{$node->getRelativePathName()}}" class="col-xs-6 col-sm-4 col-md-3 padding-5" title="{{$item->title}}">
-          <img src="/img/foto/thumbs/{{$node->getRelativePathName()}}" class="thumbnail" alt="{{ $item->title }}">
-        </a>
-    @endforeach
-	</article>
+       	<div class="fulltext">{!! $item->fulltext !!}</div>
+       	<div class="clearfix"></div>
 
-
-  <div class="clearfix"></div>
-  {!! $img->render() !!}
+    </article>
 
 
 <ul class="pager">

@@ -78,7 +78,7 @@ cd ../../
 smartoptimize 	public/img/ 						                       'resources/img/*.{jpg,png,gif}'
 smartresize 	public/img/carousel/            640       ${w}x${h}  'resources/img/carousel/furnitura/*'
 smartresize 	public/img/carousel/            912x294   ${w}x${h}  'resources/img/carousel/main/*'
-smartresize 	public/img/carousel/            640x480   ${w}x${h}  'resources/img/carousel/works/*'
+smartresize 	public/img/carousel/            870       ${w}x${h}  'resources/img/carousel/works/*'
 smartoptimize 	public/img/categories/				                    'resources/img/categories/*'
 smartresize 	public/img/clients/ 	           'x190>'   ${w}x190   'resources/img/clients/*'
 smartoptimize  public/img/file-icons/                               'resources/img/file-icons/*'

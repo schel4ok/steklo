@@ -17,9 +17,16 @@
 	<article>
 
     <h1>{{ $item->title }}</h1>
-    	<img src="{!! $item->image !!}" alt="{!! $item->title !!}" class="thumbnail img-responsive pull-left">
+		
+		
+       	<a href="/img/furnitura/{{ $item->id }}-big-{{ $i }}.jpg" data-lightbox="{!! $item->id !!}" data-title="{!! $item->title !!}"> 
+    	<img src="/img/furnitura/{{ $item->id }}-medium.jpg" alt="{!! $item->title !!}" class="img-thumbnail img-responsive pull-left margin-right-20">
+       	</a>
+
+
+
         <div class="introtext">{!! $item->introtext !!}</div>
-        <div class="fulltext">{!! $item->fulltext !!}</div>
+        <div class="fulltext">{!! $item->description !!}</div>
        	<div class="clearfix"></div>
 
   	</article>

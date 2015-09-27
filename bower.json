@@ -8,6 +8,9 @@
     "jquery-bootswatch": "*",
     "paper-less": "*",
 	  "bootstrap-social": "*",
-  	"lightbox": "*"
+    "lightbox": "*",
+    "lightslider": "*",
+    "lightgallery": "*",
+    "photoswipe": "*"
   }
 }

@@ -1,5 +1,40 @@
 .alert-primary {background-color: @brand-primary;}
 
+// иконки из fontawesome
+.icon-fa {
+    color: @brand-primary; 
+    font-size: x-large;
+    vertical-align: middle;
+    width: 68px;
+    text-align: center; text-align: -webkit-center;
+}
+
+// мои иконки из спрайта icons.png
+.icon {padding-left: 72px;}
+
+.icon:before {
+    content: '';
+    background-image: url("/img/icons.png");
+    background-repeat: no-repeat;
+    background-position: 0px 0px; /* здесь нужно указать координаты иконки по умолчанию */
+    left: 15px;
+    position: absolute;
+    width:  72px;
+    height: 64px;
+    display: inline-block;
+}
+
+.ruletka:before     {background-position: 0px 0px;}
+.zamerschik:before  {background-position: 0px -64px;}
+.phone:before       {background-position: 0px -192px;}
+.dollar:before      {background-position: 0px -192px;}
+.schet:before       {background-position: 0px -256px;}
+.calculator:before  {background-position: 0px -320px;}
+.faq:before         {background-position: 0px -384px;}
+
+
+
+// Alert Messages like the docs   http://bootsnipp.com/snippets/4KxK
 .alert-message
 {
     margin: 20px 0;
@@ -75,7 +110,76 @@
     color: #444;
 }
 
+// Simple card alerts   http://bootsnipp.com/snippets/qAdNQ
+.notice {
+    padding: 15px;
+    background-color: #fafafa;
+    border-left: 6px solid #7f7f84;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+       -moz-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+            box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+}
+.notice-sm {
+    padding: 10px;
+    font-size: 80%;
+}
+.notice-lg {
+    padding: 35px;
+    font-size: large;
+}
+.notice-success {
+    border-color: #80D651;
+}
+.notice-success>strong {
+    color: #80D651;
+}
+.notice-info {
+    border-color: #45ABCD;
+}
+.notice-info>strong {
+    color: #45ABCD;
+}
+.notice-warning {
+    border-color: #FEAF20;
+}
+.notice-warning>strong {
+    color: #FEAF20;
+}
+.notice-danger {
+    border-color: #d73814;
+}
+.notice-danger>strong {
+    color: #d73814;
+}
 
+
+// Google style alerts   http://bootsnipp.com/snippets/3xgz
+.google-alert {
+background-color: rgba(0, 0, 0, 0);
+border: 0;
+color: @text-color;
+}
+
+.google-alert.alert-danger {
+border-top: 1px solid rgba(140, 0, 0, 0.4);
+border-bottom: 1px solid rgba(140, 0, 0, 0.4);
+}
+.google-alert.alert-info {
+border-top:1px solid rgba(255, 165, 0,0.4);
+border-bottom:1px solid rgba(255, 165, 0,0.4);
+ > i.icon-fa {color: #ffad33;}
+}
+.google-alert.alert-success {
+border-top:1px solid limegreen;
+border-bottom:1px solid limegreen;
+ > i.icon-fa {color: limegreen;}
+
+}
+.google-alert.alert-notice {
+border-top:1px solid @lightblue;
+border-bottom:1px solid @lightblue;
+}
 
 // RAL
 .ral-1000 {background-color: #ccc58f;}

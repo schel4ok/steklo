@@ -18,13 +18,13 @@
 
 <h1>{{ $category->title }}</h1>
 
-<div class="category">
+<div class="category furnitura">
  @foreach ($categories as $item)
 	<div class="col-xs-6 col-sm-4 col-md-3 padding-5">
-		<a href="{{ $category->sef }}/{{ $item->sef }}" class="thumbnail">
-		<img src="{{ $item->image }}" alt="{{ $item->title }}">
+		<a href="{{ $category->sef }}/{{ $item->sef }}" class="thumbnail" title="{{ $item->title }}">
+			<img src="/{{ $item->image }}" alt="{{ $item->title }}">
+			<span class="caption">{{ $item->title }}</span>
 		</a>
-		<span class="caption">{{ $item->title }}</span>
 	</div>
  @endforeach
 </div>

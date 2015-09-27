@@ -17,6 +17,8 @@ class CreateFurnituraTable extends Migration {
 			$table->string('id')->unique();
 			$table->integer('category_id')->unsigned();
 			$table->foreign('category_id')->references('id')->on('categories');
+			$table->integer('cat2_id')->unsigned()->nullable();
+			$table->foreign('cat2_id')->references('id')->on('categories');
 			$table->string('title', 255);
 			$table->string('sef', 255);
 			$table->text('introtext')->nullable();

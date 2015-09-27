@@ -1,0 +1,53 @@
+.dostavka {
+    background-image: url("/img/icons.png");
+    background-repeat: no-repeat;
+    background-position: -250px 0px; /* здесь нужно указать координаты иконки по умолчанию */
+    width:  64px;
+    height: 68px;
+}
+
+.carrier	{background-position: -250px 0px;}
+.car 		{background-position: -250px -64px;}
+.gazel 		{background-position: -250px -128px;}
+.piramida 	{background-position: -250px -192px;}
+
+
+.img-thumbnail {
+ // .box-shadow(2px 4px 18px @lightgrey);
+ // #gradient > .vertical(@start-color: @white; @end-color: #e8e8e8);
+ //   &:hover, &:focus {border-color: @brand-primary;.box-shadow(0 1px 4px rgba(0,105,214,.25));}
+    &:hover, &:focus {border-color: @brand-primary;.opacity(0.8);}
+}
+
+.introimage {
+  .img-thumbnail;
+  .img-responsive;
+  @media (max-width: @screen-sm) {margin: auto 0 auto 0;}
+}
+
+.thumbnail {
+  padding: 5px;
+  border: 1px solid @lightgrey; 
+//  #gradient > .vertical(@start-color: @white; @end-color: #e8e8e8);
+  .img-thumbnail;
+}
+
+.gallery a img {width: 100%; .img-thumbnail; }
+
+
+@media (min-width: @screen-md) {
+  .gallery a:nth-child(4n+4) {padding-right: 0;} // каждый 4 элемент
+  .gallery a:nth-child(4n+2), .gallery a:nth-child(4n+3) {padding-right: 2.5px; padding-left: 2.5px;}
+  .gallery a:nth-child(4n+1) {padding-left: 0;} // каждый 1 элемент в ряду
+  }
+
+@media (min-width: @screen-sm) and (max-width: @screen-md) {
+  .gallery a:nth-child(3n+3) {padding-right: 0;}
+  .gallery a:nth-child(3n+2) {padding-right: 2.5px; padding-left: 2.5px;}
+  .gallery a:nth-child(3n+1) {padding-left: 0;}
+  }
+
+@media (max-width: @screen-sm) {
+  .gallery a:nth-child(even){padding-right: 0;} // Каждый четный : nth-child(even)
+  .gallery a:nth-child(odd) {padding-left: 0;}  // Каждый нечетный : nth-child(odd)
+  }

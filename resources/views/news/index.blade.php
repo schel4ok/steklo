@@ -21,14 +21,16 @@
         <article class="row">
 
         	<h3><i class="fa fa-calendar text-primary"> {{ date('d M Y', strtotime($item->created_at)) }} </i> | 
-        	<a href="/news/{!! $item->sef !!}" class="link" title="{!! $item->title !!}">{!! $item->title !!}</a>
+        	<a href="/{{ $category->sef }}/{!! $item->sef !!}" class="link" title="{!! $item->title !!}">{!! $item->title !!}</a>
             </h3>
 
-    		<img src="/img/news/{!! $item->image !!}" alt="{!! $item->title !!}" class="thumbnail img-responsive col-md-3">
+          <div class="col-xs-12 col-sm-3 padding-0 center">
+    		  <img src="/img/{{ $category->sef }}/{!! $item->image !!}" alt="{!! $item->title !!}" class="introimage">
+          </div>
 
-       		<div class="col-md-9 introtext">	
+       		<div class="col-xs-12 col-sm-9 introtext">	
        			{!!  $item->introtext !!}                   
-	        	<a href="/news/{!! $item->sef !!}" class="btn btn-default pull-right" title="{!! $item->title !!}">Подробнее</a>
+	        	<a href="/{{ $category->sef }}/{!! $item->sef !!}" class="btn btn-default pull-right" title="{!! $item->title !!}">Подробнее</a>
        		</div>
 
         </article>

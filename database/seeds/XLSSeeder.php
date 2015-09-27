@@ -50,6 +50,7 @@ class XLSSeeder extends Seeder {
 					$menu = Furnitura::create([
 						'id' => $row->id,
 						'category_id' => $row->category_id,
+						'cat2_id' => $row->cat2_id,
 						'title' => $row->title,
 						'sef' => $row->sef,
 						'introtext' => $row->introtext,
@@ -103,6 +104,7 @@ class XLSSeeder extends Seeder {
 						'metakey' => $row->metakey,
 						'metadesc' => $row->metadesc,
 						'hits' => $row->hits,
+						'created_at' => $row->created_at,
 						]);
     			}
     		}

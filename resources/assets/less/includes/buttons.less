@@ -1,0 +1,61 @@
+// category menu button
+.categorymenu {
+  position: fixed;
+  z-index: 999;
+  right: -108px;
+  top: 30px;
+  opacity: 0;
+  .transition(all 0.5s ease-in-out);
+  &:hover {right: -14px;}
+}
+.categorymenu.show {opacity: 1.0;}
+
+.categorymenu i {  font-size: 2em;
+  line-height: 1.5em;
+  width: 1.5em;}
+
+// outline styled buttons
+.btn-outline (@color; @bg-color; @border; @color-hover; @bg-color-hover; @border-hover) {
+    color: @color;
+    background-color: @bg-color;
+    border: 2px solid @border;
+    margin-right: 15px;
+    &:hover {
+    color: @color-hover;
+    background-color: @bg-color-hover;
+    border-color: @border-hover;
+    }
+}
+
+.btn-outline-white 	{.btn-outline(@white;@transparent;@white;darken(@white, 90%); @white;darken(@white, 90%);)}
+.btn-outline-black 	{.btn-outline(@gray-dark;	@white; @gray-dark; @black; @white; @black);}
+.btn-outline-red 	  {.btn-outline(@red; @white; @red; @white; @red; @white);}
+.btn-outline-green 	{.btn-outline(@green; @white; @green; @white; @green; @white);}
+.btn-outline-blue 	{.btn-outline(@blue; @white; @blue; @white; @blue; @white);}
+
+
+
+// button file input
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+}
+input[readonly] {
+  margin-left: 20px;
+  background-color: white !important;
+  cursor: text !important;
+}

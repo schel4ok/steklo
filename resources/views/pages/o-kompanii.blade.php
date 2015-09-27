@@ -82,15 +82,15 @@
 
 @section('bottommodules')
 
-<div class="col-md-4">
+<div class="col-sm-6 col-md-4">
 @include('modules.popular')
 </div>
 
-<div class="col-md-4">
+<div class="col-sm-6 col-md-4">
 @include('modules.lastnews')
 </div>
 
-<div class="col-md-4">
+<div class="col-sm-6 col-md-4">
 @include('modules.lastworks')
 </div>
 

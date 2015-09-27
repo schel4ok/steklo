@@ -1,26 +1,76 @@
-.cat {  
-  .flex;
-  @media (max-width: 500px) {justify-content: center;}
-}
+div.category {.center;}
 
-.cat a.thumbnail {
+.category a.thumbnail {
   padding: 5px;
   border: 1px solid @lightgrey; 
-  .border-radius(0);
-  .box-shadow(2px 4px 18px @lightgrey);
-  #gradient > .vertical(@start-color: @white; @end-color: #e8e8e8);
-    &:hover, &:focus {border-color: @brand-primary;.box-shadow(0 1px 4px rgba(0,105,214,.25));}
-   // img {.transition(all ease-out 300ms); }
+  width: 100%;
+  .img-thumbnail;
 }
 
 
-.cat span {
+.category a img {width: 100%;
+  &:hover, &:focus {.opacity(0.7);}
+}
+
+.category span {
+  display: block;
   margin-bottom: 20px; 
-  text-align: center;    
   font-style: italic;
   font-size: 18px;
   font-family: @font-family-open-sans;
   line-height: 20px;
   font-weight: bold;
-  max-width: 212px; 
+  width: 212px;
+  height: 30px;
 }
+
+.uslugi {padding: 5px; 
+  @media (max-width: @screen-sm) {padding: 0;}
+}
+
+.furnitura a.thumbnail {
+  background: none; 
+  height: 195px; 
+  border-color: @transparent;
+  text-decoration: none;
+  @media (max-width: @screen-sm) {height: 220px;}
+  &:hover, &:focus {border-color: @lightgrey;.opacity(1);}
+}
+
+.furnitura a img {width: auto; &:hover, &:focus {.opacity(1);}}
+.furnitura a span.caption  {margin-bottom: 0; color: @blue; width: auto;}
+
+
+
+
+@media (min-width: @screen-md) {
+  .category div:nth-child(4n+4) {padding-right: 0;} // каждый 4 элемент
+  .category div:nth-child(4n+2), .category div:nth-child(4n+3) {padding-right: 2.5px; padding-left: 2.5px;}
+  .category div:nth-child(4n+1) {padding-left: 0;} // каждый 1 элемент в ряду
+  }
+
+@media (min-width: @screen-sm) and (max-width: @screen-md) {
+  .category div:nth-child(3n+3) {padding-right: 0;}
+  .category div:nth-child(3n+2) {padding-right: 2.5px; padding-left: 2.5px;}
+  .category div:nth-child(3n+1) {padding-left: 0;}
+  }
+
+@media (max-width: @screen-sm) {
+  .category div:nth-child(even){padding-right: 0;} // Каждый четный : nth-child(even)
+  .category div:nth-child(odd) {padding-left: 0;}  // Каждый нечетный : nth-child(odd)
+  }
+
+
+
+// выравнивание списка категорий относительно правого и левого края
+// категория links особая, т.к. там пока всего 3 элемента
+@media (max-width: @screen-sm) {
+  .category.links div:nth-child(even){padding-right: 0;} // Каждый четный : nth-child(even)
+  .category.links div:nth-child(odd) {padding-left: 0;}  // Каждый нечетный : nth-child(odd)
+  }
+
+@media (min-width: @screen-sm) {
+  .category.links div:nth-child(3n+3) {padding-right: 0;}
+  .category.links div:nth-child(even) {padding-right: 2.5px; padding-left: 2.5px;}
+  .category.links div:nth-child(3n+1) {padding-left: 0;}
+  }

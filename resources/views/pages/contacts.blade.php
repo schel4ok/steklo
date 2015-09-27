@@ -17,16 +17,15 @@
 
 <h1>{{ $category->title }}</h1>
 
-<div class="col-md-4 pull-left alert-message alert-message-danger margin-top-0">
+<div class="col-md-4 col-xs-12 pull-left alert-message alert-message-danger margin-top-0">
 	<h4>Адрес склада</h4>
-	<p>
-	<i class="fa fa-home fa-lg" data-toggle="tooltip" data-placement="top" title="Адрес склада" > </i> Московская область, Щелково, Соколовская промзона<br>
-	<i class="fa fa-phone fa-lg" data-toggle="tooltip" data-placement="top" title="Телефон"> </i> +7 (495) 790-84-15<br>
-	<i class="fa fa-clock-o fa-lg" data-toggle="tooltip" data-placement="top" title="Время работы"> </i> Пн - Пт: с 9:00 до 18:00</p>
+	<p><i class="icon-fa fa fa-home fa-lg" data-toggle="tooltip" data-placement="top" title="Адрес склада" > </i> Московская область, Щелково, Соколовская промзона</p>
+	<p><i class="icon-fa fa fa-phone fa-lg" data-toggle="tooltip" data-placement="top" title="Телефон"> </i> +7 (495) 790-84-15</p>
+	<p><i class="icon-fa fa fa-clock-o fa-lg" data-toggle="tooltip" data-placement="top" title="Время работы"> </i> Пн - Пт: с 9:00 до 18:00</p>
 </div>
 
 
-<div class="col-md-8 pull-right">
+<div class="col-md-8 col-xs-12 pull-right">
 <h2>Форма обратной связи</h2>
 <p>Все поля формы обязательны (кроме файла).<br>
 Разрешено прикреплять файлы размером не более 10 мегабайт.<br>
@@ -70,7 +69,7 @@
 </div>
 
 
-<div class="col-md-4 pull-left alert-message alert-message-info">
+<div class="col-md-4 col-xs-12 pull-left alert-message alert-message-info">
     <h4>Дополнительная информация</h4>
 	<p>Мы работаем по безналичному расчету. Отгрузка товара происходит после поступления оплаты на наш банковский счет. Любые другие условия отгрузки необходимо согласовывать заранее. Оставьте свой номер телефона или задайте свой вопрос при помощи формы и мы обязательно с вами свяжемся в удобное для вас время!</p>
 </div>

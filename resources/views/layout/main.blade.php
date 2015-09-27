@@ -44,7 +44,11 @@
 			@include('modules.mainmenu')
 		</header>
 
-		@include('modules.breadcrumbs', [ 'bread' => $category ])
+		{{-- вот так можно передать в файл breadcrumbs переменную $category под именем $bread
+		$category есть в каждой функции каждом роуте
+		@include('modules.breadcrumbs', [ 'bread' => $category ]) 
+		--}}
+		@include('modules.breadcrumbs')
 
 		<section id="content" class="content col-md-12" style="clear:both;">@yield('content')</section>
 		
@@ -62,4 +66,5 @@
 </body>
 </html>
 
-{{ $_SERVER['REQUEST_URI'] }}
+{{ $_SERVER['REQUEST_URI'] }}<br>
+{{ $_SERVER['REQUEST_METHOD'] }}<br>

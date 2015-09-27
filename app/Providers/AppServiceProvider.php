@@ -26,6 +26,24 @@ class AppServiceProvider extends ServiceProvider {
             $view->withTree(Category::descendantsOf(1)->toTree());
         });
 
+        view()->composer('modules.breadcrumbs', function($view)
+        {
+            $urlarr = explode('?', $_SERVER['REQUEST_URI']); // получаем массив сегментов URI без ?
+            $urlget = array_shift ($urlarr); // получаем первый элемент до ?
+            $urllist = explode('/', $urlget); // получаем массив сегментов URI без слеша
+            $lastbread = array_pop($urllist);
+            // получаем последний элемент массива (после последнего слеша)
+            // при этом массив $url_list уменьшается
+            $prevbread = array_pop($urllist); // получаем предпоследний элемент массива
+            // теперь $urllist уже не содержить sef двух последних элементов
+
+            // это полный путь до категории $prevbread
+            $catsef = implode('/', $urllist).'/'.$prevbread;
+
+            $view->withLastbread(Category::where('sef', '=', $lastbread)->first());
+            $view->withPrevbread(Category::where('sef', '=', $prevbread)->first());
+            $view->withCatsef($catsef);
+        });
 
         view()->composer('modules.popular', function($view)
         {
@@ -37,8 +55,6 @@ class AppServiceProvider extends ServiceProvider {
             $view->withLastnews(News::orderBy('created_at', 'desc')->take(5)->get());
         });
     }
-
-
 
 
     /**

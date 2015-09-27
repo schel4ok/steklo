@@ -2,27 +2,34 @@
  * Created by Администратор on 24.01.2015.
  */
 
-// carousel image slider
- $('#clientsCarousel').carousel({
-  interval: 40000
+// call lightgallery from fotogallery page
+$(document).ready(function() {
+ $("#fotogallery").lightGallery(); 
 });
 
-$('#clientsCarousel .item').each(function(){
-  var next = $(this).next();
-  if (!next.length) {
-    next = $(this).siblings(':first');
-  }
-  next.children(':first-child').clone().appendTo($(this));
+// main lightSlider
+$('#mainSlider').lightSlider({
+    item: 1, // кол-во слайдов на ширину блока
+    slideMargin: 0,  // расстояние между слайдами. Полезно для слайлера клиентов, когда несколько слайдов на странице одновременно
+    loop: true, // крутить слайды по кругу
+    speed: 2000, // скорость движения слайда при нажатии на кнопку
+    keyPress: true, // слайды можно переключать клавиатурой
+    controls: true, // показывать стрелки справа и слева
+    pager: false, // наличие шариков или миниатюр внизу для быстрой навигации по слайдам
+    gallery: false, // вместо шариков будут миниатюры для навигации
+    auto: true, // автостарт слайдшоу
+});
 
-  if (next.next().length>0) {
- 
-      next.next().children(':first-child').clone().appendTo($(this)).addClass('rightest');
-      
-  }
-  else {
-      $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
-     
-  }
+// main lightSlider
+$('#lastworksSlider').lightSlider({
+    item: 1, // кол-во слайдов на ширину блока
+    slideMargin: 0,  // расстояние между слайдами. Полезно для слайлера клиентов, когда несколько слайдов на странице одновременно
+    loop: true, // крутить слайды по кругу
+    speed: 1000, // скорость движения слайда при нажатии на кнопку
+    keyPress: true, // слайды можно переключать клавиатурой
+    controls: true, // показывать стрелки справа и слева
+    pager: false, // наличие шариков или миниатюр внизу для быстрой навигации по слайдам
+    gallery: false, // вместо шариков будут миниатюры для навигации
 });
 
 
@@ -50,7 +57,7 @@ $(document).ready( function() {
 });
 
 
-// back ot top button
+// back to top button
 $(function(){
  
   $(document).on( 'scroll', function(){
@@ -89,6 +96,28 @@ $('[data-toggle="tooltip"]').tooltip();
 /*
   $(document).ready(function(){$('html, body').animate({
         scrollTop: $("#content").offset().top
-    }, 2000);
+    }, 500);
 })
+
+$( "#content" ).scroll(function() {
+  $('.categorymenu').addClass('show');
+
+});
+
 */
+
+// category menu button
+$(function(){
+ 
+  $(document).on( 'scroll', function(){
+ 
+    if ($(window).scrollTop() > 400) {
+      $('.categorymenu').addClass('show');
+    } else {
+      $('.categorymenu').removeClass('show');
+    }
+  });
+
+});
+
+

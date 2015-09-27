@@ -16,7 +16,7 @@ class ContactFormRequest extends Request {
     'tel' => 'required',
     'email' => 'required|email',
     'message' => 'required',
-    'attachment' => 'max:10240|mimes:jpeg,bmp,png,gif,zip,rar,pdf,psd,ai,cdr,rtf,doc,docx,xls,xlsx,ppt',  
+    'attachment' => 'max:10240|mimes:jpeg,bmp,png,gif,zip,rar,pdf,psd,ai,cdr,rtf,doc,docx,xls,xlsx,ppt,pptx',  
     // max file size 10240 kb = 10 Mb
    ];
   }

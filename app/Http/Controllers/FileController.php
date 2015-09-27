@@ -29,8 +29,13 @@ class FileController extends Controller {
 		$category = Category::where('sef', '=', $cat)->first();
 		$items = Link::where('category_id', $category->id)->paginate(20);
 
+		$previous = $category->getPrevSibling();
+		$next = $category->getNextSibling();
+
 		return view('links.cat')->withCategory($category)
-								->withItems($items);
+								->withItems($items)
+								->withPrevious($previous)
+								->withNext($next);
 	}
 
 	public function getItem($cat, $item)

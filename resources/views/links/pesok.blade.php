@@ -18,16 +18,12 @@
 
 <h1>{{ $link->title }}</h1>
 	
-	<article class="pesok">
+	<article class="gallery" id="fotogallery">
 
 		@foreach ($img as $item)
-		  	<div class="col-xs-12 col-sm-4 col-md-3 padding-5">
-                <a href="/img/risunki/pesok/{{ $item->getRelativePathName() }}" class="zoom" data-lightbox="pesok" 
-                data-title="каталог пескоструйных рисунков">
-                	<img src="/img/risunki/pesok/{{ $item->getRelativePathName() }}" class="img-thumbnail img-responsive zoom" style="height:160px;"> 
-                	<span class="overlay"><i class="fa fa-expand"></i></span>
+                <a href="/img/risunki/pesok/{{ $item->getRelativePathName() }}" class="col-xs-6 col-sm-4 col-md-3 padding-5" title="каталог пескоструйных рисунков">
+                <img src="/img/risunki/pesok/{{ $item->getRelativePathName() }}" class="img-thumbnail img-responsive" style="height:160px;"> 
                 </a>
-            </div>
     	@endforeach
     </article>
 
@@ -35,6 +31,6 @@
 		{!! $img->render() !!}
 
 
-<ul class="pager"><li><a href="/links/{{ $category->sef }}">&uarr; в категорию</a></li></ul>
+<ul class="pager"><li><a href="/{{ $category->parent->sef }}/{{ $category->sef }}" data-toggle="tooltip" data-placement="top" title="{{ $category->title }}">&uarr; в раздел</a></li></ul>
 
 @stop

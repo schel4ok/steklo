@@ -21,15 +21,16 @@
       <div class="clearfix"></div>
     </article>
 
+
 <ul class="pager">
 @if (!empty($previous) and $previous->category_id === $item->category_id )
-<li class="previous"><a href="/{{ $previous->url }}">← Пред документ</a></li>
+<li class="previous"><a href="/{{ $previous->url }}" data-toggle="tooltip" data-placement="top" title="{{ $previous->title }}">← Пред документ</a></li>
 @endif
 
-<li><a href="/links/{{ $category->sef }}">&uarr; в категорию</a></li>
+<li><a href="/{{ $category->parent->sef }}/{{ $category->sef }}" data-toggle="tooltip" data-placement="top" title="{{ $category->title }}">&uarr; в раздел</a></li>
 
 @if (!empty($next) and $next->category_id === $item->category_id )
-<li class="next"><a href="/{{ $next->url }}">След документ →</a></li>
+<li class="next"><a href="/{{ $next->url }}" data-toggle="tooltip" data-placement="top" title="{{ $next->title }}">След документ →</a></li>
 @endif
 </ul>
 

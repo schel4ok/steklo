@@ -2,53 +2,10 @@
 
 @section('content')
 
+<!-- слайдер (карусель) картинок на главной -->
 
 <!-- слайдер (карусель) картинок на главной -->
-    			<div id="mainCarousel" class="carousel slide carousel-v1 margin-bottom-20 col-md-12">
-                    <div class="carousel-inner">
-                        <div class="item active">
-                            <img src="img/carousel/crystal.jpg" alt="Цельностеклянные перегородки">
-                            <div class="carousel-caption">
-                                <i>Цельностеклянные перегородки </i><a class="btn btn-xs btn-outline-white pull-right" href="#">Заказать</a>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <img src="img/carousel/shower.jpg" alt="Стеклянные душевые кабины">
-                            <div class="carousel-caption">
-                                <i>Стеклянные душевые кабины</i><a class="btn btn-xs btn-outline-white pull-right" href="#">Заказать</a>
-                            </div>
-                            </div>
-                        <div class="item">
-                            <img src="img/carousel/vektor.jpg" alt="Раздвижные цельностеклянные двери">
-                            <div class="carousel-caption">
-                                <i>Раздвижные цельностеклянные двери</i><a class="btn btn-xs btn-outline-white pull-right" href="#">Заказать</a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <img src="img/carousel/polki.jpg" alt="Стеклянные полки">
-                            <div class="carousel-caption">
-                                <i>Стеклянные полки</i><a class="btn btn-xs btn-outline-white pull-right" href="#">Заказать</a>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <img src="img/carousel/decorative.jpg" alt="Пескоструйные рисунки на стекле">
-                            <div class="carousel-caption">
-                                <i>Пескоструйные рисунки на стекле</i><a class="btn btn-xs btn-outline-white pull-right" href="#">Заказать</a>
-                            </div>
-                        </div>
-
-                    </div>
-                    
-                    <div class="carousel-arrow">
-                        <a class="left carousel-control" href="#mainCarousel" data-slide="prev">
-                            <i class="fa fa-angle-left"></i>
-                        </a>
-                        <a class="right carousel-control" href="#mainCarousel" data-slide="next">
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </div>
-    			</div>
+@include('modules.mainslider')
 
 
 <!-- Преимущества стеклянных перегородок -->
@@ -109,4 +66,7 @@
 @include('modules.test')
 </div>
 
+
 @endsection
+
+

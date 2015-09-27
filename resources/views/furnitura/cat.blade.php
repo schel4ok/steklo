@@ -17,13 +17,37 @@
 
   <h1>{{ $category->title }}</h1>
 
-  @foreach ($items as $item)
-      <article class="row">
-        <a href="{{ $category->sef.'/'.$item->sef }}" title="{{ $item->title }}">{{ $item->title }}</a>
-      </article>
-  @endforeach
+@if (count($categories) > 0)
+<div class="category furnitura">
+ @foreach ($categories as $item)
+	<div class="col-xs-6 col-sm-4 col-md-3 padding-5">
+		<a href="{{ $category->sef }}/{{ $item->sef }}" class="thumbnail" title="{{ $item->title }}">
+			<img src="/{{ $item->image }}" alt="{{ $item->title }}">
+			<span class="caption">{{ $item->title }}</span>
+		</a>
+	</div>
+ @endforeach
+</div>
+<div class="clearfix"></div>
+@endif
 
-{!! $items->render() !!}
+
+@if (count($goods) > 0)
+<div class="category furnitura">
+  @foreach ($goods as $item)
+	<div class="col-xs-6 col-sm-4 col-md-3 padding-5">
+		<a href="{{ $category->sef }}/{{ $item->sef }}" class="thumbnail" title="{{ $item->title }}">
+			<img src="/img/furnitura/{{ $item->id }}-small.jpg" alt="{{ $item->title }}">
+			<span class="caption">{{ $item->title }}</span>
+		</a>
+	</div>
+  @endforeach
+</div>
+
+<div class="clearfix"></div>
+{!! $goods->render() !!}
+@endif
+
 
 <ul class="pager">
 @if (!empty($previous))

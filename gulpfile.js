@@ -1,15 +1,5 @@
 var elixir = require('laravel-elixir');
 var gulp = require('gulp');
-var imageResize = require('gulp-image-resize');
-
-// почему-то не работает  gulp img-resize-640 выдает ошибку
-// если заработает, то image-resize поменять на default
-// чтобы ресайз запускался просто командой gulp
-gulp.task('img-resize-640', function () {
-  gulp.src('/resources/img/*')
-    .pipe(imageResize({ width : 640 }))
-    .pipe(gulp.dest('/public/img/resize-640'));
-});
 
 
 elixir(function(mix) {
@@ -27,15 +17,28 @@ elixir(function(mix) {
   .copy('vendor/bower_components/lightbox/src/css/lightbox.css', 'resources/assets/less/lightbox.less')  
   .copy('vendor/bower_components/lightbox/src/images', 'public/build/images')  
 
+  // Copy lightgallery
+  .copy('vendor/bower_components/lightgallery/dist/css/lightgallery.css', 'resources/assets/less/lightgallery.less')  
+  .copy('vendor/bower_components/lightgallery/dist/css/lg-fb-comment-box.css', 'resources/assets/less/lg-fb-comment-box.less')  
+  .copy('vendor/bower_components/lightgallery/dist/css/lg-transitions.css', 'resources/assets/less/lg-transitions.less')  
+  .copy('vendor/bower_components/lightgallery/dist/img', 'public/build/img')  
+
+  // Copy lightslider
+  .copy('vendor/bower_components/lightslider/dist/css/lightslider.css', 'resources/assets/less/lightslider.less')  
+  .copy('vendor/bower_components/lightslider/dist/img', 'public/build/img')  
+
   // Copy fonts
-  .copy('vendor/bower_components/bootstrap/fonts', 'public/fonts')
-  .copy('vendor/bower_components/fontawesome/fonts', 'public/fonts')
+  .copy('vendor/bower_components/bootstrap/fonts', 'public/build/fonts')
+  .copy('vendor/bower_components/fontawesome/fonts', 'public/build/fonts')
   .copy('vendor/bower_components/fontawesome/less', 'resources/assets/less/fontawesome')
+  .copy('vendor/bower_components/lightgallery/dist/fonts', 'public/build/fonts')
 
   // Copy java
   .copy('vendor/bower_components/jquery/dist/jquery.js', 'resources/js/1-jquery.js')  
   .copy('vendor/bower_components/bootstrap/dist/js/bootstrap.js', 'resources/js/2-bootstrap.js')  
   .copy('vendor/bower_components/lightbox/src/js/lightbox.js', 'resources/js/3-lightbox.js')  
+  .copy('vendor/bower_components/lightgallery/dist/js/lightgallery-all.js', 'resources/js/4-lightgallery.js')  
+  .copy('vendor/bower_components/lightslider/dist/js/lightslider.js', 'resources/js/5-lightslider.js')  
 
   .less('app.less')   // если в скобках оставить пустое место, то compile all less files in resources/assets/less
     //.stylesIn('resources/assets/css') // combine all css files in a directory 

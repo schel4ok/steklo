@@ -20,7 +20,7 @@ class CreateCategoriesTable extends Migration {
 			$table->string('type', 20);
 			$table->string('menutype', 20);
 			$table->string('title', 100);
-			$table->string('sef', 50);
+			$table->string('sef', 50)->nullable();
 			$table->string('class', 50);
 			$table->text('body')->nullable();
 			$table->string('image', 255)->nullable();

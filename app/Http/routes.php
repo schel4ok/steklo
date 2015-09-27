@@ -1,5 +1,4 @@
 <?php
-
 Route::get('/', 'HomeController@index');
 Route::get('o-kompanii', 'PageController@o_kompanii');
 Route::get('sitemap', 'CategoryController@sitemap');
@@ -33,18 +32,18 @@ Route::get('foto', 'ImageController@getIndex');
 Route::get('foto/{item}', 'ImageController@getItem');
 
 // Uslugi
-Route::get('uslugi', 'PageController@uslugi_index');
-Route::get('uslugi/{item}', 'PageController@uslugi_item');
+Route::get('uslugi', 'UslugiController@getIndex');
+Route::get('uslugi/{item}', 'UslugiController@getItem');
 
 // Furnitura
 Route::get('furnitura-dlya-stekla', 'FurnituraController@getIndex');
-Route::get('furnitura-dlya-stekla/{cat}', 'FurnituraController@getCategory');
-Route::get('furnitura-dlya-stekla/{cat}/{item}', 'FurnituraController@getItem');
+Route::get('furnitura-dlya-stekla/{cat2}/{cat3?}/{cat4?}', 'FurnituraController@getCategory');
+Route::get('furnitura-dlya-stekla/{cat2}/{cat3?}/{cat4?}/{item?}', 'FurnituraController@getItem');
 
 // Steklo
-Route::get('izdeliya-iz-stekla', 'PageController@steklo_index');
-Route::get('izdeliya-iz-stekla/{cat}', 'PageController@steklo_cat');
-Route::get('izdeliya-iz-stekla/{cat}/{item}', 'PageController@steklo_item');
+Route::get('izdeliya-iz-stekla', 'StekloController@getIndex');
+Route::get('izdeliya-iz-stekla/{cat}', 'StekloController@getCategory');
+Route::get('izdeliya-iz-stekla/{cat}/{item}', 'StekloController@getItem');
 
 
 

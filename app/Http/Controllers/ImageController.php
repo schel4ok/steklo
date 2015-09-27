@@ -24,11 +24,9 @@ class ImageController extends Controller {
 
     public function getItem($item)
     {
-        $category = Category::where('type', '=', 'foto')->first();
         $item = Page::where('sef', '=', $item)->first();
-
-        $path = explode("?", substr($_SERVER['REQUEST_URI'], 1));
-        $link = Page::where('sef', $path[0] )->first();  
+      //  $path = explode("?", substr($_SERVER['REQUEST_URI'], 1));
+      //  $link = Page::where('sef', $path[0] )->first();  
         $img = File::allFiles(public_path(). '/img/foto/'.$item->sef);
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
         if (is_null($currentPage)) {$currentPage = 1;}
@@ -38,11 +36,18 @@ class ImageController extends Controller {
         $paginatedImgResults = new LengthAwarePaginator($currentPageImgResults, count($collection), $perPage);
         $paginatedImgResults->setPath($item->sef);
 
+        $previous = Page::where('id', '<', $item->id)->orderBy('id', 'desc')->first();
+        $next = Page::where('id', '>', $item->id)->orderBy('id', 'asc')->first();
+        $category = Category::where('id', $item->category_id)->first();
+        // список всех ссылок для бокового меню
+        $items = Page::where('category_id', $item->category_id)->get();
+
         return view('foto.item')->withCategory($category)
                                 ->withItem($item)
+                                ->withItems($items)
                                 ->withImg($paginatedImgResults)
-                                ->withPath($path);
-
+                                ->withPrevious($previous)
+                                ->withNext($next);
     }
 
 }
