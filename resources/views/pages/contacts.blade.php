@@ -18,8 +18,8 @@
 <h1>{{ $category->title }}</h1>
 
 <div class="col-md-4 col-xs-12 pull-left alert-message alert-message-danger margin-top-0">
-	<h4>Адрес склада</h4>
-	<p><i class="icon-fa fa fa-home fa-lg" data-toggle="tooltip" data-placement="top" title="Адрес склада" > </i> Московская область, Щелково, Соколовская промзона</p>
+	<h4>Адрес</h4>
+	<p><i class="icon-fa fa fa-home fa-lg" data-toggle="tooltip" data-placement="top" title="Адрес склада" > </i> Московская область, Щелковский район, пос.Краснознаменский, дом 7</p>
 	<p><i class="icon-fa fa fa-phone fa-lg" data-toggle="tooltip" data-placement="top" title="Телефон"> </i> +7 (495) 790-84-15</p>
 	<p><i class="icon-fa fa fa-clock-o fa-lg" data-toggle="tooltip" data-placement="top" title="Время работы"> </i> Пн - Пт: с 9:00 до 18:00</p>
 </div>
@@ -75,7 +75,7 @@
 </div>
 
 <div class="clearfix"></div>
-<h2>Схема проезда на склад</h2>
+<h2>Схема проезда</h2>
 <script type="text/javascript" charset="utf-8" src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=rTSXMVcvJ6NGEZlHEe1QWmygMHrEt9jb&width=100%&height=450"></script>
 
 @endsection

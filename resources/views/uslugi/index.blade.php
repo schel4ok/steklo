@@ -23,9 +23,9 @@
           <h3><a href="/{{ $category->sef }}/{{ $item->sef }}" class="link" title="{{ $item->title }}">{!! $item->title !!}</a>
           </h3>
 
-            <img src="/img/{{ $category->sef }}/{{ $item->image }}" alt="{{ $item->title }}" class="img-responsive pull-left">
-            <div class="introtext">{!!  $item->introtext !!}
-            <a href="/{{ $category->sef }}/{{ $item->sef }}" class="btn btn-default pull-right" title="{{ $item->title }}">Подробнее</a></div>
+           <img src="/img/{{ $category->sef }}/{{ $item->image }}" alt="{{ $item->title }}" class="img-responsive pull-left">
+           <div class="introtext">{!!  $item->introtext !!}
+           <a href="/{{ $category->sef }}/{{ $item->sef }}" class="btn btn-default pull-right" title="{{ $item->title }}">Подробнее</a></div>
         </article>
     @endforeach
 </div>

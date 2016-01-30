@@ -24,22 +24,48 @@ div.category {.center;}
   height: 30px;
 }
 
-.uslugi {padding: 5px; 
-  @media (max-width: @screen-sm) {padding: 0;}
-}
 
-.furnitura a.thumbnail {
-  background: none; 
-  height: 195px; 
-  border-color: @transparent;
-  text-decoration: none;
-  @media (max-width: @screen-sm) {height: 220px;}
+// стили списка товаров в разделе фурнитура
+.category.furnitura {.flex}
+.category.furnitura div {
+  border: 1px solid @transparent; 
   &:hover, &:focus {border-color: @lightgrey;.opacity(1);}
 }
 
-.furnitura a img {width: auto; &:hover, &:focus {.opacity(1);}}
-.furnitura a span.caption  {margin-bottom: 0; color: @blue; width: auto;}
+.category.furnitura a.thumbnail {
+  background: none; 
+//  height: 195px; 
+  border-width: 0px;
+  text-decoration: none;
+}
 
+.category.furnitura a img {width: auto; &:hover, &:focus {.opacity(1);}}
+.category.furnitura a span.caption  {margin-bottom: 0; color: @blue; width: auto;}
+
+
+
+// стили списка статей в разделе стекло
+div.steklo article {
+  padding: 25px 0px;
+  .box-shadow (inset 0 -2px 0 @lightgrey);
+  img {padding: 0px; 
+       @media (min-width: @screen-sm) {padding-right: 15px;} }
+  div { padding: 0px;
+        h3 {margin: 20px 0px 0px 0px; padding-bottom: 30px; 
+            border-bottom: 0px solid @lightgrey; font-size: @font-size-h2;
+            @media (min-width: @screen-sm) {margin: 0px 0px 30px 0px; border-width: 1px;} }; 
+      };
+
+}
+
+div.steklo article:nth-last-child(1) {.box-shadow (none);} // стиль последнего элемента
+
+
+// стили списка статей в разделе услуги
+div.uslugi {padding: 0px;
+  article {}
+
+}
 
 
 

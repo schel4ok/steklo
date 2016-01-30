@@ -1,16 +1,27 @@
 .center {text-align: center;text-align: -webkit-center;}
-
 .text-error {color: #b94a48;}
-.introtext  {padding: 0 0 0 20px; 
-	@media (max-width: @screen-sm) {padding: 0;}
+
+
+// стили статей в разделе стекло
+article.steklo {
+	img {padding: 0px; 
+		@media (min-width: @screen-sm) {padding-right: 15px;} 
+	}
+
 }
 
-
-@media (min-width: @screen-sm) {
-  .uslugi article:nth-child(even){padding-right: 0;}
-  .uslugi article:nth-child(odd) {padding-left: 0;} 
-  }
-
-@media (max-width: @screen-sm) {
-  .uslugi article {padding: 0;}
-  }
+// стили картинок в тексте раздела стекло
+.fulltext a.thumb {
+	img { padding:0px; .img-responsive;}
+	@media (min-width: @screen-sm) {
+		&.right {.pull-right; padding-left: 15px;}
+		&.left  {.pull-left; padding-right: 25px;} // чтобы  маркеры списка не залезали на картинку
+		img {width: 489px;}
+	}
+	@media (max-width: @screen-sm) {
+		padding: 0px;
+	}
+	.vert { 
+	@media (min-width: @screen-sm) {img {width: 244px;}}
+	}
+}

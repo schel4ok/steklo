@@ -20,7 +20,7 @@
 
 <div class="category furnitura">
  @foreach ($categories as $item)
-	<div class="col-xs-6 col-sm-4 col-md-3 padding-5">
+	<div class="col-xs-6 col-sm-4 col-md-3 padding-5 categories">
 		<a href="{{ $category->sef }}/{{ $item->sef }}" class="thumbnail" title="{{ $item->title }}">
 			<img src="/{{ $item->image }}" alt="{{ $item->title }}">
 			<span class="caption">{{ $item->title }}</span>

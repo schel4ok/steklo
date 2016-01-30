@@ -25,6 +25,8 @@ body {background-color: @body-background}
 .padding-15        {padding: 15px;}
 .padding-20        {padding: 20px;}
 
+.padding-left-0  {padding-left: 0px;}
+.padding-right-0  {padding-right: 0px;}
 .padding-left-20  {padding-left: 20px;}
 
 
@@ -79,8 +81,10 @@ body {background-color: @body-background}
 
 
 .flex {
-  display: flex;
+  display: -webkit-box;
   display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   flex-wrap: wrap;
   justify-content: space-between; 
   // выравнивание вдоль главной оси, чтобы крайние элементы были по краям
@@ -90,9 +94,11 @@ body {background-color: @body-background}
 .flexitem {
   display: flex;
   display: -webkit-flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
   flex-direction: column; // теперь главная ось направлена сверху вниз
   flex-wrap: wrap; // перенос осуществляется по направлению кросс оси, сверху вниз
-  justify-content: flex-start; // выравнивание элементов вдоль главной оси
+  justify-content: space-between; // выравнивание элементов вдоль главной оси
   align-items: center; // выравнивание элементов вдоль кросс оси
   // align-content: center; // выравнивание целых строк относительно гибкого контейнера. 
                          // Оно не будет давать эффекта если гибкие элементы занимают одну строку.
@@ -102,6 +108,7 @@ body {background-color: @body-background}
 @import "includes/buttons.less"; // стили кнопок
 @import "includes/category.less"; // стили страниц листинга категории
 @import "includes/css3.less"; // стили css3
+@import "includes/furnitura.less"; // стили furnitura
 @import "includes/headers.less"; // стили заголовков h1...h6
 @import "includes/images.less"; // стили картинок
 @import "includes/links.less"; // стили раздела Ссылки
