@@ -13,11 +13,11 @@ class StekloController extends Controller {
 
 	public function getIndex()
 	{
-		$category = Category::where('sef', '=', 'faq')->first();
-		$categories = $category->descendants()->orderBy('title', 'asc')->paginate(9);
+		$category = Category::where('sef', '=', 'izdeliya-iz-stekla')->first();
+		$categories = $category->descendants()->orderBy('id', 'asc')->paginate(20);
 
-		return view('faq.index')->withCategory($category)
-								->withCategories($categories);
+		return view('steklo.index')->withCategory($category)
+								   ->withCategories($categories);
 	}
 
 	public function getCategory($cat)
@@ -25,8 +25,15 @@ class StekloController extends Controller {
 		$category = Category::where('sef', '=', $cat)->first();
 		$items = Page::where('category_id', $category->id)->paginate(20);
 
-		return view('faq.cat')->withCategory($category)
-								->withItems($items);
+		$previous = $category->getPrevSibling();
+		$next = $category->getNextSibling();
+
+
+		return view('steklo.cat')->withCategory($category)
+								 ->withItems($items)
+                                 ->withPrevious($previous)
+                                 ->withNext($next);
+
 	}
 
 	public function getItem($cat, $item)
@@ -34,8 +41,15 @@ class StekloController extends Controller {
 		$category = Category::where('sef', '=', $cat)->first();
 		$item = Page::where('sef', $item)->first();
 
-		return view('faq.item')->withCategory($category)
-								->withItem($item);
+        $previous = Page::where('id', '<', $item->id)->orderBy('id', 'desc')->first();
+		$next = Page::where('id', '>', $item->id)->orderBy('id', 'asc')->first();
+
+		$category = Category::where('id', $item->category_id)->first();
+
+		return view('steklo.item')->withCategory($category)
+								  ->withItem($item)
+								  ->withPrevious($previous)
+								  ->withNext($next);
 	}
 
 

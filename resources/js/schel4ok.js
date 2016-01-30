@@ -2,10 +2,18 @@
  * Created by Администратор on 24.01.2015.
  */
 
-// call lightgallery from fotogallery page
-$(document).ready(function() {
- $("#fotogallery").lightGallery(); 
-});
+
+$('#fotogallery').lightGallery();  // call lightgallery from fotogallery page
+$('#thumbnail').lightGallery();  // thumbnails of furnitura images
+$('.furnitura-links').lightGallery(); // text links for furnitura dwg and virez
+$('.thumbgallery').lightGallery(); // call lightgallery from tag with thumbgallery class
+
+// call lightgallery from tag with thumb class
+// это одна картинка без галереи
+$('.thumb').lightGallery({
+  selector: 'this'
+  }); 
+
 
 // main lightSlider
 $('#mainSlider').lightSlider({

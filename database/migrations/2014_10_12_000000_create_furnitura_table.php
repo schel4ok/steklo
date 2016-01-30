@@ -14,6 +14,7 @@ class CreateFurnituraTable extends Migration {
 	{
 		Schema::create('furnitura', function(Blueprint $table)
 		{
+			$table->increments('No')->unsigned();
 			$table->string('id')->unique();
 			$table->integer('category_id')->unsigned();
 			$table->foreign('category_id')->references('id')->on('categories');

@@ -1,20 +1,20 @@
 <?php 
 use Illuminate\Database\Seeder;
 use App\Category;
+use App\Faq;
 use App\Furnitura;
 use App\Link;
 use App\News;
+use App\Object;
 use App\Page;
 use App\Uslugi;
-use App\Faq;
-use App\Object;
 
 
 class XLSSeeder extends Seeder {
 
 	public function run()
 	{
-		$xls = 'database/seeds/seeder.xlsx';
+		$xls = 'database/seeds/seeder.xlsm';
 		$book = Excel::load($xls, 'UTF-8')->all();
 
 		foreach($book as $sheet)
@@ -110,7 +110,7 @@ class XLSSeeder extends Seeder {
     		}
 
 
-    		if ($sheet->getTitle() === 'pages') 
+    		if ($sheet->getTitle() === 'steklo') 
 			{	Page::truncate();
 				foreach($sheet as $row)
 				{

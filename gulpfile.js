@@ -14,8 +14,8 @@ elixir(function(mix) {
   .copy('vendor/bower_components/bootstrap-social/bootstrap-social.less', 'resources/assets/less/bootstrap-social.less')
 
   // Copy lightbox
-  .copy('vendor/bower_components/lightbox/src/css/lightbox.css', 'resources/assets/less/lightbox.less')  
-  .copy('vendor/bower_components/lightbox/src/images', 'public/build/images')  
+  //.copy('vendor/bower_components/lightbox/src/css/lightbox.css', 'resources/assets/less/lightbox.less')  
+  //.copy('vendor/bower_components/lightbox/src/images', 'public/build/images')  
 
   // Copy lightgallery
   .copy('vendor/bower_components/lightgallery/dist/css/lightgallery.css', 'resources/assets/less/lightgallery.less')  
@@ -36,7 +36,7 @@ elixir(function(mix) {
   // Copy java
   .copy('vendor/bower_components/jquery/dist/jquery.js', 'resources/js/1-jquery.js')  
   .copy('vendor/bower_components/bootstrap/dist/js/bootstrap.js', 'resources/js/2-bootstrap.js')  
-  .copy('vendor/bower_components/lightbox/src/js/lightbox.js', 'resources/js/3-lightbox.js')  
+  //.copy('vendor/bower_components/lightbox/src/js/lightbox.js', 'resources/js/3-lightbox.js')  
   .copy('vendor/bower_components/lightgallery/dist/js/lightgallery-all.js', 'resources/js/4-lightgallery.js')  
   .copy('vendor/bower_components/lightslider/dist/js/lightslider.js', 'resources/js/5-lightslider.js')  
 

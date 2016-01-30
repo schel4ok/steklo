@@ -1,12 +1,12 @@
 {
   "private": true,
   "dependencies": {
-    "bower": "^1.5.2",
-    "gulp": "^3.9.0",
-    "rimraf": "^2.4.3",
-    "laravel-elixir": "^3.2.6",
-    "bootstrap-sass": "^3.3.5",
-    "gulp-image-resize": "^0.6.0",
-    "gulp-replace": "^0.5.4"
+    "bower": "*",
+    "gulp": "*",
+    "rimraf": "*",
+    "laravel-elixir": "*",
+    "bootstrap-sass": "*",
+    "gulp-image-resize": "*",
+    "gulp-replace": "*"
   }
 }

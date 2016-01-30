@@ -16,7 +16,7 @@ class ImageController extends Controller {
     public function getIndex()
     {
         $category = Category::where('type', '=', 'foto')->first();
-        $categories = Page::where('category_id', '=', $category->id)->orderBy('title', 'asc')->get();
+        $categories = Page::where('category_id', '=', $category->id)->orderBy('id', 'asc')->get();
 
         return view('foto.index')->withCategory($category)
                                  ->withCategories($categories);

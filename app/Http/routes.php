@@ -16,7 +16,7 @@ Route::get('news/{title}', 'NewsController@getItem');
 // Links
 Route::get('links', 'FileController@getIndex');
 Route::get('links/{cat}', 'FileController@getCategory');
-Route::get('links/{cat}/peskostrujnie-risunki', 'FileController@pesok');
+Route::get('links/catalogs/peskostrujnie-risunki', 'FileController@pesok');
 
 Route::get('links/{cat}/{item}', 'FileController@getItem');
 // special Links
@@ -26,6 +26,11 @@ Route::get('links/{cat}/vitrajnie-risunki', 'FileController@vitraj');
 Route::get('faq', 'FAQController@getIndex');
 Route::get('faq/{cat}', 'FAQController@getCategory');
 Route::get('faq/{cat}/{item}', 'FAQController@getItem');
+
+// Steklo
+Route::get('izdeliya-iz-stekla', 'StekloController@getIndex');
+Route::get('izdeliya-iz-stekla/{cat}', 'StekloController@getCategory');
+Route::get('izdeliya-iz-stekla/{cat}/{item}', 'StekloController@getItem');
 
 // Foto
 Route::get('foto', 'ImageController@getIndex');
@@ -38,13 +43,7 @@ Route::get('uslugi/{item}', 'UslugiController@getItem');
 // Furnitura
 Route::get('furnitura-dlya-stekla', 'FurnituraController@getIndex');
 Route::get('furnitura-dlya-stekla/{cat2}/{cat3?}/{cat4?}', 'FurnituraController@getCategory');
-Route::get('furnitura-dlya-stekla/{cat2}/{cat3?}/{cat4?}/{item?}', 'FurnituraController@getItem');
-
-// Steklo
-Route::get('izdeliya-iz-stekla', 'StekloController@getIndex');
-Route::get('izdeliya-iz-stekla/{cat}', 'StekloController@getCategory');
-Route::get('izdeliya-iz-stekla/{cat}/{item}', 'StekloController@getItem');
-
+Route::get('furnitura/{item}', 'FurnituraController@getItem');
 
 
 

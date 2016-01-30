@@ -20,14 +20,6 @@ class CategoryController extends Controller {
 		return view('categories.index')->withTree($result);
 	}
 
-	public function mainmenu()  
-	{
-        $result = Category::descendantsOf(1)->toTree();
-		return view('modules.mainmenu')->withTree($result);
-					//->withPrev($prev)
-					//->withNext($next);
-	}
-
 	public function sitemap()  
 	{
 		$category = Category::where('sef', '=', 'sitemap')->first();

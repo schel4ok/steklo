@@ -8,11 +8,13 @@
 # image files can contain meta data  such as when it was created and the device that created it
 
 gifresize() {
-   mogrify -verbose -path $1 -thumbnail $2 -monochrome -strip $3   
+#   mogrify -path $1 -thumbnail $2 -monochrome -strip $3
+#   делаю при помощи convert, т.к mogrify выдает ошибку Bad file number при количестве более 742 файлов в папке 
+   convert $1 -thumbnail $2 -monochrome -strip $3 
 }
 
 smartresize() {
-   mogrify -verbose -path $1 -filter Triangle -define filter:support=2 -thumbnail $2 \
+   mogrify -path $1 -filter Triangle -define filter:support=2 -thumbnail $2 \
    -unsharp 0.25x0.08+8.3+0.045 -dither None -posterize 136 -quality 82 \
    -define jpeg:fancy-upsampling=off -define png:compression-filter=5 \
    -define png:compression-level=9 -define png:compression-strategy=1 \
@@ -21,11 +23,36 @@ smartresize() {
 }
 
 smartoptimize() {
-   mogrify -verbose -path $1 -filter Triangle -define filter:support=2 \
+   mogrify -path $1 -filter Triangle -define filter:support=2 \
    -unsharp 0.25x0.08+8.3+0.045 -dither None -posterize 136 -quality 82 \
    -define jpeg:fancy-upsampling=off -define png:compression-filter=5 \
    -define png:compression-level=9 -define png:compression-strategy=1 \
    -strip -define png:exclude-chunk=all -interlace none -colorspace sRGB $2
+}
+
+#   делаю при помощи convert, т.к mogrify выдает ошибку Bad file number при количестве более 742 файлов в папке 
+furnoptimize() {
+   convert $1 -filter Triangle -define filter:support=2 \
+   -unsharp 0.25x0.08+8.3+0.045 -dither None -posterize 136 -quality 82 \
+   -define jpeg:fancy-upsampling=off -define png:compression-filter=5 \
+   -define png:compression-level=9 -define png:compression-strategy=1 \
+   -strip -define png:exclude-chunk=all -interlace none -colorspace sRGB $2
+}
+
+furnresize() {
+   convert  $f -thumbnail $2  -gravity center -background white -extent $3  $4
+}
+
+pagethumbs() {
+   convert $1 -filter Triangle -define filter:support=2 -thumbnail $2 \
+   -unsharp 0.25x0.08+8.3+0.045 -dither None -posterize 136 -quality 82 \
+   -define jpeg:fancy-upsampling=off -define png:compression-filter=5 \
+   -define png:compression-level=9 -define png:compression-strategy=1 \
+   -strip -define png:exclude-chunk=all -interlace none -colorspace sRGB $3
+}
+
+resize() {
+   convert -thumbnail $1 -extent $2  $3
 }
 
 # хелп тута http://pingvinus.ru/note/command-find
@@ -66,12 +93,11 @@ if [ ! -e "foto/zerkala" ];            then mkdir foto/zerkala; fi
 if [ ! -e "furnitura" ]; 		         then mkdir furnitura; fi
 if [ ! -e "homepage" ]; 		         then mkdir homepage; fi
 if [ ! -e "menu" ];                    then mkdir menu; fi
-if [ ! -e "news" ];                    then mkdir news; fi
-if [ ! -e "news/big" ]; 		         then mkdir -p news/big; fi
-if [ ! -e "pages" ]; 			         then mkdir pages; fi
-if [ ! -e "risunki" ]; 			         then mkdir risunki; fi
-if [ ! -e "risunki/pesok" ]; 	         then mkdir risunki/pesok; fi
+if [ ! -e "news" ]; 		               then mkdir -p news/big; fi
+if [ ! -e "pages" ];                   then mkdir -p pages/steklo; fi
+if [ ! -e "risunki" ]; 	               then mkdir -p risunki/pesok; fi
 if [ ! -e "risunki/vitraj" ];          then mkdir risunki/vitraj; fi
+if [ ! -e "uslugi" ];                  then mkdir uslugi; fi
 
 cd ../../
 # ресайз картинок
@@ -82,7 +108,8 @@ smartresize 	public/img/carousel/            870       ${w}x${h}  'resources/img
 smartoptimize 	public/img/categories/				                    'resources/img/categories/*'
 smartresize 	public/img/clients/ 	           'x190>'   ${w}x190   'resources/img/clients/*'
 smartoptimize  public/img/file-icons/                               'resources/img/file-icons/*'
-smartresize    public/img/foto/                 234x180^ 234x180    'resources/img/foto/*.jpg'
+
+smartresize    public/img/foto/                 334x259^ 334x259    'resources/img/foto/*.jpg'
 smartresize    public/img/foto/bar              640      ${w}x${h}  'resources/img/foto/bar/*'
 smartresize    public/img/foto/dush             640      ${w}x${h}  'resources/img/foto/dush/*'
 smartresize    public/img/foto/dveri            640      ${w}x${h}  'resources/img/foto/dveri/*'
@@ -92,7 +119,7 @@ smartresize    public/img/foto/kozyrki          640      ${w}x${h}  'resources/i
 smartresize    public/img/foto/lestnica         640      ${w}x${h}  'resources/img/foto/lestnica/*'
 smartresize    public/img/foto/oblicovka-sten   640      ${w}x${h}  'resources/img/foto/oblicovka-sten/*'
 smartresize    public/img/foto/okna             640      ${w}x${h}  'resources/img/foto/okna/*'
-smartresize    public/img/foto/peregorodki      640      ${w}x${h}  'resources/img/foto/dveri/*'
+smartresize    public/img/foto/peregorodki      640      ${w}x${h}  'resources/img/foto/peregorodki/*'
 smartresize    public/img/foto/polki            640      ${w}x${h}  'resources/img/foto/polki/*'
 smartresize    public/img/foto/potolok          640      ${w}x${h}  'resources/img/foto/potolok/*'
 smartresize    public/img/foto/reception        640      ${w}x${h}  'resources/img/foto/reception/*'
@@ -102,17 +129,34 @@ smartresize    public/img/foto/stoly            640      ${w}x${h}  'resources/i
 smartresize    public/img/foto/vitriny          640      ${w}x${h}  'resources/img/foto/vitriny/*'
 smartresize    public/img/foto/zabor            640      ${w}x${h}  'resources/img/foto/zabor/*'
 smartresize    public/img/foto/zerkala          640      ${w}x${h}  'resources/img/foto/zerkala/*'
-# furnitura
-smartresize 	public/img/homepage/             588       ${w}x${h} 'resources/img/homepage/*'
-smartoptimize 	public/img/menu/					                       'resources/img/menu/*'
-smartresize    public/img/news/                 234x180^   234x180  'resources/img/news/*'
+
+smartresize    public/img/homepage/             588       ${w}x${h} 'resources/img/homepage/*'
+smartoptimize  public/img/menu/                                     'resources/img/menu/*'
+smartresize    public/img/news/                 244x190^   244x190  'resources/img/news/*'
 smartresize    public/img/news/big/             640x480^  ${w}x${h} 'resources/img/news/*'
-smartoptimize  public/img/pages/        			                    'resources/img/pages/*'
-gifresize	  	public/img/risunki/pesok/        "480>"              'resources/img/risunki/pesok/*'
+smartoptimize  public/img/pages/                                    'resources/img/pages/*'
 smartoptimize  public/img/risunki/vitraj/                           'resources/img/risunki/vitraj/*'
+smartoptimize  public/img/uslugi/                                   'resources/img/uslugi/*'
 
 
-cd public/img/foto
+cd resources/img/risunki/pesok
+for f in *; do
+gifresize  $f  '480>'   ../../../../public/img/risunki/pesok/$f
+done
+
+# выравнивание картинок фурнитуры в один размер
+# картинки больше, чем 230x185 уменьшаются
+# а у картинок меньше, чем 230x185 увеличивается только белый бэкграунд
+cd ../../furnitura
+for f in *; do
+furnoptimize  $f   ../../../public/img/furnitura/$f
+done
+for f in *-medium.*; do
+furnresize  $f  '230x185>'  230x185   ../../../public/img/furnitura/$f
+done
+
+
+cd ../../../public/img/foto
 # переименование картинок для фотогалереи по шаблону bar/bar-0001.jpg
 find bar/.   -name '*.jpg'          | gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" bar/bar-%04d.jpg\n", $0, a++ }' | bash
 find dveri/. -name '*.jpg'          | gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" dveri/dveri-%04d.jpg\n", $0, a++ }' | bash
@@ -135,22 +179,34 @@ find zabor/.  -name '*.jpg'         | gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" zabo
 find zerkala/.  -name '*.jpg'       | gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" zerkala/zerkala-%04d.jpg\n", $0, a++ }' | bash
 
 # создание миниатюр для фотогалереи
-smartresize   thumbs/   234x180^   234x180   'bar/*.jpg'
-smartresize   thumbs/   234x180^   234x180   'dveri/*.jpg'
-smartresize   thumbs/   234x180^   234x180   'dush/*.jpg'
-smartresize   thumbs/   234x180^   234x180   'facades/*.jpg'
-smartresize   thumbs/   234x180^   234x180   'fartuki/*.jpg'
-smartresize   thumbs/   234x180^   234x180   'kozyrki/*.jpg'
-smartresize   thumbs/   234x180^   234x180   'lestnica/*.jpg'
-smartresize   thumbs/   234x180^   234x180   'oblicovka-sten/*.jpg'
-smartresize   thumbs/   234x180^   234x180   'okna/*.jpg'
-smartresize   thumbs/   234x180^   234x180   'peregorodki/*.jpg'
-smartresize   thumbs/   234x180^   234x180   'polki/*.jpg'
-smartresize   thumbs/   234x180^   234x180   'potolok/*.jpg'
-smartresize   thumbs/   234x180^   234x180   'reception/*.jpg'
-smartresize   thumbs/   234x180^   234x180   'risunki/*.jpg'
-smartresize   thumbs/   234x180^   234x180   'shkafy/*.jpg'
-smartresize   thumbs/   234x180^   234x180   'stoly/*.jpg'
-smartresize   thumbs/   234x180^   234x180   'vitriny/*.jpg'
-smartresize   thumbs/   234x180^   234x180   'zabor/*.jpg'
-smartresize   thumbs/   234x180^   234x180   'zerkala/*.jpg'
+smartresize   thumbs/   334x259^   334x259   'bar/*.jpg'
+smartresize   thumbs/   334x259^   334x259   'dveri/*.jpg'
+smartresize   thumbs/   334x259^   334x259   'dush/*.jpg'
+smartresize   thumbs/   334x259^   334x259   'facades/*.jpg'
+smartresize   thumbs/   334x259^   334x259   'fartuki/*.jpg'
+smartresize   thumbs/   334x259^   334x259   'kozyrki/*.jpg'
+smartresize   thumbs/   334x259^   334x259   'lestnica/*.jpg'
+smartresize   thumbs/   334x259^   334x259   'oblicovka-sten/*.jpg'
+smartresize   thumbs/   334x259^   334x259   'okna/*.jpg'
+smartresize   thumbs/   334x259^   334x259   'peregorodki/*.jpg'
+smartresize   thumbs/   334x259^   334x259   'polki/*.jpg'
+smartresize   thumbs/   334x259^   334x259   'potolok/*.jpg'
+smartresize   thumbs/   334x259^   334x259   'reception/*.jpg'
+smartresize   thumbs/   334x259^   334x259   'risunki/*.jpg'
+smartresize   thumbs/   334x259^   334x259   'shkafy/*.jpg'
+smartresize   thumbs/   334x259^   334x259   'stoly/*.jpg'
+smartresize   thumbs/   334x259^   334x259   'vitriny/*.jpg'
+smartresize   thumbs/   334x259^   334x259   'zabor/*.jpg'
+smartresize   thumbs/   334x259^   334x259   'zerkala/*.jpg'
+
+
+cd ../../../resources/img/foto
+# создание миниатюр для текстовых страниц сайта
+pagethumbs   'dveri/dver-122.jpg'   678   ../../../public/img/pages/steklo/dver-fire.jpg
+pagethumbs   'dveri/2015-02-21-16-07-50.jpg'   678   ../../../public/img/pages/steklo/dver-fire-2.jpg
+pagethumbs   'dveri/dver-154.jpg'   678   ../../../public/img/pages/steklo/dver-office.jpg
+pagethumbs   'dveri/dver-53.jpg'   678   ../../../public/img/pages/steklo/dver-office-2.jpg
+pagethumbs   'dveri/2013-11-27-09-32-42.jpg'   678   ../../../public/img/pages/steklo/dver-office-3.jpg
+pagethumbs   'dveri/dver-123.jpg'   678   ../../../public/img/pages/steklo/dver-vhod.jpg
+pagethumbs   'dveri/dver-150.jpg'   678   ../../../public/img/pages/steklo/dver-slider.jpg
+pagethumbs   'dveri/dver-155.jpg'   678   ../../../public/img/pages/steklo/dver-interium.jpg
