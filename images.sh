@@ -208,5 +208,13 @@ pagethumbs   'dveri/dver-154.jpg'   500   ../../../public/img/pages/steklo/dver-
 pagethumbs   'dveri/dver-53.jpg'   500   ../../../public/img/pages/steklo/dver-office-2.jpg
 pagethumbs   'dveri/2013-11-27-09-32-42.jpg'   500   ../../../public/img/pages/steklo/dver-office-3.jpg
 pagethumbs   'dveri/dver-123.jpg'   500   ../../../public/img/pages/steklo/dver-vhod.jpg
+pagethumbs   'dveri/2013-01-08-17-57-30.jpg'   500   ../../../public/img/pages/steklo/dver-vhod-2.jpg
 pagethumbs   'dveri/dver-150.jpg'   500   ../../../public/img/pages/steklo/dver-slider.jpg
+pagethumbs   'dveri/dver-49.jpg'   500   ../../../public/img/pages/steklo/dver-slider-2.jpg
+pagethumbs   'dveri/dver-66.jpg'   500   ../../../public/img/pages/steklo/dver-slider-3.jpg
 pagethumbs   'dveri/dver-155.jpg'   500   ../../../public/img/pages/steklo/dver-interium.jpg
+pagethumbs   'dveri/dver-166.jpg'   500   ../../../public/img/pages/steklo/dver-interium-2.jpg
+pagethumbs   'dveri/dver-87.jpg'   500   ../../../public/img/pages/steklo/dver-interium-3.jpg
+pagethumbs   'dveri/dver-139.jpg'   500   ../../../public/img/pages/steklo/dver-interium-4.jpg
+
+pagethumbs   'dveri/2016-02-27-16-50-08.jpg'   670   ../../../public/img/pages/steklo/dver-sauna.jpg

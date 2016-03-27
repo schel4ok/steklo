@@ -12,6 +12,7 @@
 
 
 		<form role="form" class="go-right" action="" method='post' enctype="multipart/form-data">
+      {{ csrf_field() }}
 			<div class="form-group">
 			<input id="name" name="name" type="text" class="form-control" required>
 			<label for="name">Ваше имя *</label>

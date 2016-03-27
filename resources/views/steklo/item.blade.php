@@ -24,7 +24,17 @@
         <div class="fulltext">{!! $item->fulltext !!}</div>
        	<div class="clearfix"></div>
 
+       	@if ($item->sef == 'steklyannye-dveri-dlya-sauny')
+        <div class="order">@include('modules.calculators.sauna')</div>
+		<div class="clearfix"></div>
+		@endif
+
   	</article>
+
+
+
+
+
 
 
 <ul class="pager">

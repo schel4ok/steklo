@@ -12,6 +12,7 @@ elixir(function(mix) {
   // Copy other styles
   .copy('vendor/bower_components/bootswatch/paper/bootswatch.less', 'resources/assets/less/bootswatch.less')  
   .copy('vendor/bower_components/bootstrap-social/bootstrap-social.less', 'resources/assets/less/bootstrap-social.less')
+  //.copy('vendor/bower_components/selectize/dist/css/selectize.bootstrap3.css', 'resources/assets/less/selectize.bootstrap3.less')
 
   // Copy lightbox
   //.copy('vendor/bower_components/lightbox/src/css/lightbox.css', 'resources/assets/less/lightbox.less')  
@@ -39,6 +40,7 @@ elixir(function(mix) {
   //.copy('vendor/bower_components/lightbox/src/js/lightbox.js', 'resources/js/3-lightbox.js')  
   .copy('vendor/bower_components/lightgallery/dist/js/lightgallery-all.js', 'resources/js/4-lightgallery.js')  
   .copy('vendor/bower_components/lightslider/dist/js/lightslider.js', 'resources/js/5-lightslider.js')  
+  //.copy('vendor/bower_components/selectize/dist/js/standalone/selectize.js', 'resources/js/6-selectize.js')  
 
   .less('app.less')   // если в скобках оставить пустое место, то compile all less files in resources/assets/less
     //.stylesIn('resources/assets/css') // combine all css files in a directory 

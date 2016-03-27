@@ -1,8 +1,16 @@
 <?php namespace App\Http\Controllers;
+use Form;
+use Input;
+use Mail;
+use Redirect;
+use Request;
+use Session;
+use Validator;
 use App\Category;
 use App\Page;
-
-
+use App\User;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\ContactFormRequest;
 
 class StekloController extends Controller {
 
@@ -52,6 +60,41 @@ class StekloController extends Controller {
 								  ->withNext($next);
 	}
 
+
+
+	public function order(ContactFormRequest $request) 
+	{
+		$category = Category::where('sef', '=', 'contacts')->first();
+		$input = Input::all();
+	//	return var_dump($input['attachment']->getRealPath());
+
+		Mail::send('emails.contacts',
+        	array(
+            	'name' => $request->input('name'),
+            	'tel' => $request->input('tel'),
+            	'email' => $request->input('email'),
+            	'user_message' => $request->input('message'),
+            	'url' => $request->url(),
+            	), 
+        	function($message) use ($request, $input)
+    			{
+        			$message->from('admin@steklo-group.ru', $request->input('name') );
+        			$message->to('ipopov@steklo-group.ru', 'Илья Попов');
+        		//	$message->сс('sales@steklo-group.ru', 'Настя');
+        			$message->replyTo($request->input('email'), $request->input('name') );
+        			$message->subject('Письмо со страницы контактов www.steklo-group.ru.');
+        			if ( isset($input['attachment']) ) 
+        			{
+						$message->attach($input['attachment']->getRealPath(), array(
+							'as' 	=> $input['attachment']->getClientOriginalName(), 
+        					'mime' 	=> $input['attachment']->getMimeType()));
+					}
+					
+
+				});
+    	return Redirect::route('contacts')->withCategory($category)
+    									  ->with('message', 'Ваше сообщение успешно отправлено!');
+	}
 
 
 }

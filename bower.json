@@ -11,6 +11,7 @@
     "lightbox": "*",
     "lightslider": "*",
     "lightgallery": "*",
+    "selectize": "*",
     "photoswipe": "*"
   }
 }

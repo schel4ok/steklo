@@ -2,6 +2,90 @@
  * Created by Администратор on 24.01.2015.
  */
 
+ /* $(document).ready(function(){
+      $('#searchbox').selectize();
+  });
+
+*/
+
+// sauna calculator
+$(document).ready(function () {
+
+
+  $('input[name="door_size_radio"]').change(function () {
+    if ($(this).val() == 'standard') {
+        $('.standard_sizes').show();
+        $('.special_sizes').hide();
+        $('.result > .razmer').html($('.door_size_standard option:selected').html());
+        calculation();
+    }
+    else {
+        $('.special_sizes').show();
+        $('.standard_sizes').hide();
+        $('.result > .razmer').html($('input[name="door_size_b"]').val() +'x'+ $('input[name="door_size_h"]').val());
+        calculation();
+    }
+  });
+
+
+  $('select').change(function () {
+    $('.result > .razmer').html($('.door_size_standard option:selected').html());
+    calculation();
+  });
+
+  $('input[name="door_size_b"]').change(function () {
+    $('.result > .razmer').html($(this).val() +'x'+ $('input[name="door_size_h"]').val());
+    calculation();
+  });
+
+  $('input[name="door_size_h"]').change(function () {
+    $('.result > .razmer').html($('input[name="door_size_b"]').val() +'x'+ $(this).val());
+    calculation();
+  });
+
+  $('input[name="glass"]').change(function () {
+    $('.result > .glass').html($(this).attr('text'));
+    calculation();
+  });
+
+  $('input[name="korobka"]').change(function () {
+    $('.result > .korobka').html($(this).attr('text'));
+    calculation();
+  });
+
+  $('input[name="petli"]').change(function () {
+    $('.result > .petli').html($(this).attr('text'));
+    calculation();
+  });
+
+  $('input[name="dekor"]').change(function () {
+    $('.result > .dekor').html($(this).attr('text'));
+    calculation();
+  });
+
+//  $('form').submit(calculation());
+  
+  function calculation() {
+  
+  if ($('input[name="door_size_radio"]:checked').val() == 'standard') 
+    {var BasePrice  =  $("select option:selected").data('price') * 1;}
+  else 
+    {var BasePrice  =  $('input[name="door_size_b"]').val() * $('input[name="door_size_h"]').val() * 6500 / 1000000;}
+
+    var GlassPrice  = $("input[name='glass']:checked").data('price') * 1; 
+    var DerevoPrice = $("input[name='korobka']:checked").data('price') * 1; 
+    var PetliPrice  = $("input[name='petli']:checked").data('price') * 1; 
+    var DekorPrice  = $("input[name='dekor']:checked").data('price') * 1; 
+
+    var total = BasePrice + GlassPrice + DerevoPrice + PetliPrice + DekorPrice;
+    $('.result > .price').html( total );
+    return false;
+    };
+
+  //отслеживаем изменение данных
+  //$('.calculator').on('click keyup', calculation);
+}); 
+
 
 $('#fotogallery').lightGallery();  // call lightgallery from fotogallery page
 $('#thumbnail').lightGallery();  // thumbnails of furnitura images

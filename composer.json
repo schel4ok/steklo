@@ -10,7 +10,8 @@
         "maatwebsite/excel": "~2.0.0",
         "kalnoy/nestedset": "3.*",
         "orchestra/imagine": "3.1.*",
-        "laravelcollective/html": "5.1.*"
+        "laravelcollective/html": "5.1.*",
+        "aimeos/aimeos-laravel": "~2016.01"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -40,7 +41,10 @@
             "php artisan clear-compiled"
         ],
         "post-update-cmd": [
-            "php artisan optimize"
+            "php artisan optimize",
+            "php artisan vendor:publish --tag=public --force",
+            "php artisan vendor:publish",
+            "php artisan migrate"
         ],
         "post-root-package-install": [
             "php -r \"copy('.env.example', '.env');\""

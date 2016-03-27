@@ -5,6 +5,9 @@ http://texterra.ru/blog/7-sposobov-napisat-uboynyy-vstupitelnyy-abzats.html
 http://texterra.ru/blog/kak-napisat-tekst-na-stranitsu-o-kompanii-poshagovoe-rukovodstvo.html  
 
 
+#Laravel shop tutorial 3 – Implementing Smart Search
+http://maxoffsky.com/code-blog/laravel-shop-tutorial-3-implementing-smart-search/
+
 #Практическое применение FlexBox
 http://habrahabr.ru/post/242545/
 

@@ -31,6 +31,8 @@ Route::get('faq/{cat}/{item}', 'FAQController@getItem');
 Route::get('izdeliya-iz-stekla', 'StekloController@getIndex');
 Route::get('izdeliya-iz-stekla/{cat}', 'StekloController@getCategory');
 Route::get('izdeliya-iz-stekla/{cat}/{item}', 'StekloController@getItem');
+Route::post('izdeliya-iz-stekla/{cat}/{item}', ['as' => 'order', 'uses' => 'StekloController@order']);
+
 
 // Foto
 Route::get('foto', 'ImageController@getIndex');
