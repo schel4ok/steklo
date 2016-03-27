@@ -12,16 +12,22 @@ article.steklo {
 
 // стили картинок в тексте раздела стекло
 .fulltext a.thumb {
-	img { padding:0px; .img-responsive;}
+	.img-responsive;
+	img { padding:0px; .img-responsive; }
+	&.right {.pull-right;}
+	&.left  {.pull-left;}
+
 	@media (min-width: @screen-sm) {
-		&.right {.pull-right; padding-left: 15px;}
-		&.left  {.pull-left; padding-right: 25px;} // чтобы  маркеры списка не залезали на картинку
 		img {width: 489px;}
+		&.right {padding-left: 15px;}
+		&.left  {padding-right: 25px;} // чтобы  маркеры списка не залезали на картинку
 	}
-	@media (max-width: @screen-sm) {
-		padding: 0px;
+
+
+	@media (min-width: @screen-xs) {
+		&.right.vert {padding-left: 15px;}
+		&.left.vert  {padding-right: 15px;} 
+		&.vert  { img {width: 300px;} }
 	}
-	.vert { 
-	@media (min-width: @screen-sm) {img {width: 244px;}}
-	}
+
 }
