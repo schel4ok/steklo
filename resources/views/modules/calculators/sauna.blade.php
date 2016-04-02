@@ -127,7 +127,7 @@
 			<label for="name">Ваше имя *</label>
 		</div>
 		<div class="form-group col-xs-12 col-sm-6">
-			<input id="phone" name="phone" type="tel" class="form-control" required>
+			<input id="phone" name="tel" type="tel" class="form-control" required>
 			<label for="phone">Номер телефона *</label>
 		</div>
 		<div class="form-group col-xs-12 col-sm-6">
@@ -135,7 +135,7 @@
 			<label for="email">Адрес электронной почты *</label>
 		</div>
 		<div class="form-group col-xs-12 col-sm-6">
-			<textarea id="message" name="phone" class="form-control"></textarea>
+			<textarea id="message" name="message" class="form-control"></textarea>
 			<label for="message">Комментарии</label>
 		</div>
 

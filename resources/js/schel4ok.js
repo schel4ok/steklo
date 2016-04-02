@@ -2,15 +2,8 @@
  * Created by Администратор on 24.01.2015.
  */
 
- /* $(document).ready(function(){
-      $('#searchbox').selectize();
-  });
-
-*/
-
 // sauna calculator
 $(document).ready(function () {
-
 
   $('input[name="door_size_radio"]').change(function () {
     if ($(this).val() == 'standard') {
@@ -29,37 +22,37 @@ $(document).ready(function () {
 
 
   $('select').change(function () {
-    $('.result > .razmer').html($('.door_size_standard option:selected').html());
+    $('.result').children('.razmer').html($('.door_size_standard option:selected').html());
     calculation();
   });
 
   $('input[name="door_size_b"]').change(function () {
-    $('.result > .razmer').html($(this).val() +'x'+ $('input[name="door_size_h"]').val());
+    $('.result').children('.razmer').html($(this).val() +'x'+ $('input[name="door_size_h"]').val());
     calculation();
   });
 
   $('input[name="door_size_h"]').change(function () {
-    $('.result > .razmer').html($('input[name="door_size_b"]').val() +'x'+ $(this).val());
+    $('.result').children('.razmer').html($('input[name="door_size_b"]').val() +'x'+ $(this).val());
     calculation();
   });
 
   $('input[name="glass"]').change(function () {
-    $('.result > .glass').html($(this).attr('text'));
+    $('.result').children('.glass').html($(this).attr('text'));
     calculation();
   });
 
   $('input[name="korobka"]').change(function () {
-    $('.result > .korobka').html($(this).attr('text'));
+    $('.result').children('.korobka').html($(this).attr('text'));
     calculation();
   });
 
   $('input[name="petli"]').change(function () {
-    $('.result > .petli').html($(this).attr('text'));
+    $('.result').children('.petli').html($(this).attr('text'));
     calculation();
   });
 
   $('input[name="dekor"]').change(function () {
-    $('.result > .dekor').html($(this).attr('text'));
+    $('.result').children('.dekor').html($(this).attr('text'));
     calculation();
   });
 
@@ -78,13 +71,116 @@ $(document).ready(function () {
     var DekorPrice  = $("input[name='dekor']:checked").data('price') * 1; 
 
     var total = BasePrice + GlassPrice + DerevoPrice + PetliPrice + DekorPrice;
-    $('.result > .price').html( total );
+    $('.result').children('.price').html( total );
     return false;
     };
 
-  //отслеживаем изменение данных
-  //$('.calculator').on('click keyup', calculation);
 }); 
+
+
+
+// душевая перегородка calculator
+$(document).ready(function () {
+
+  $('input[name="size_b"]').change(function () {
+    $('.result').children('.razmer').html($(this).val() +'x'+ $('input[name="size_h"]').val());
+    calculation();
+  });
+
+  $('input[name="size_h"]').change(function () {
+    $('.result').children('.razmer').html($('input[name="size_b"]').val() +'x'+ $(this).val());
+    calculation();
+  });
+
+  $('input[name="glass"]').change(function () {
+    $('.result').children('.glass').html($(this).attr('text'));
+    calculation();
+  });
+
+  $('input[name="furnitura"]').change(function () {
+    $('.result').children('.furnitura').html($(this).attr('text'));
+    calculation();
+  });
+
+  $('input[name="verh_truba"]').change(function () {
+    if ( $(this).is(":checked") ) {
+      $('.result').children('.verh_truba').html($(this).attr('text'));
+      calculation();    
+    }
+    else {
+      $('.result').children('.verh_truba').html('нет');
+      calculation();
+    }
+ 
+  });
+
+  $('input[name="uplotniteli"]').change(function () {
+    if ( $(this).is(":checked") ) {
+      $('.result').children('.uplotniteli').html($(this).attr('text'));
+      calculation();    
+    }
+    else {
+      $('.result').children('.uplotniteli').html('нет');
+      calculation();
+    }
+ 
+  });
+
+
+  $('input[name="dostavka"]').change(function () {
+    if ( $(this).is(":checked") ) {
+      $('.result').children('.dostavka').html($(this).attr('text'));
+      calculation();    
+    }
+    else {
+      $('.result').children('.dostavka').html('нет');
+      calculation();
+    }
+ 
+  });
+
+  $('input[name="montazh"]').change(function () {
+    if ( $(this).is(":checked") ) {
+      $('.result').children('.montazh').html($(this).attr('text'));
+      calculation();    
+    }
+    else {
+      $('.result').children('.montazh').html('нет');
+      calculation();
+    }
+ 
+  });
+ 
+
+
+  function calculation() {
+
+    var Size  =  $('input[name="size_b"]').val() * $('input[name="size_h"]').val() / 1000000;
+    var GlassPrice  = $("input[name='glass']:checked").data('price') * Size;
+    var FurnituraPrice = $("input[name='furnitura']:checked").data('price') * 1;
+    var VerhTrubaPrice  = $("input[name='verh_truba']").is(":checked") ? $("input[name='verh_truba']:checked").data('price') * 1 : 0; 
+    var UplotniteliPrice  = $("input[name='uplotniteli']").is(":checked") ? $("input[name='uplotniteli']:checked").data('price') * 1 : 0; 
+    var DostavkaPrice  = $("input[name='dostavka']").is(":checked") ? $("input[name='dostavka']:checked").data('price') * 1 : 0; 
+    var MontazhPrice  = $("input[name='montazh']").is(":checked") ? $("input[name='montazh']:checked").data('price') * 1 : 0; 
+
+    var total = GlassPrice + FurnituraPrice + VerhTrubaPrice + UplotniteliPrice + DostavkaPrice + MontazhPrice;
+
+
+    $('.result').children('.price').html( total );
+    return false;
+    };
+
+});
+
+
+
+// проверка, что размер файла не превышает 10мб
+$('#file').change(function() {
+  var filesize = (this.files[0].size/1048576).toPrecision(3); //this.files[0].size gets the size of your file in bytes.
+  if (filesize > 10)    {$('.filesize').html('Размер файла превышает 10мб. Замените файл ссылкой на файлообменник.');}
+  else {$('.filesize').html('Размер файла ' + filesize + ' Мб');}
+});
+
 
 
 $('#fotogallery').lightGallery();  // call lightgallery from fotogallery page

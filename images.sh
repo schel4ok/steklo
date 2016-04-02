@@ -216,5 +216,22 @@ pagethumbs   'dveri/dver-155.jpg'   500   ../../../public/img/pages/steklo/dver-
 pagethumbs   'dveri/dver-166.jpg'   500   ../../../public/img/pages/steklo/dver-interium-2.jpg
 pagethumbs   'dveri/dver-87.jpg'   500   ../../../public/img/pages/steklo/dver-interium-3.jpg
 pagethumbs   'dveri/dver-139.jpg'   500   ../../../public/img/pages/steklo/dver-interium-4.jpg
-
 pagethumbs   'dveri/2016-02-27-16-50-08.jpg'   670   ../../../public/img/pages/steklo/dver-sauna.jpg
+
+pagethumbs   'dush/dush-89.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-santekh.jpg
+
+pagethumbs   'peregorodki/peregorodka-58.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-karkas.jpg
+
+pagethumbs   'peregorodki/peregorodka-18.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-fire.jpg
+
+pagethumbs   'peregorodki/peregorodka-89.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-office.jpg
+
+pagethumbs   'peregorodki/peregorodka-98.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-mobile.jpg
+
+pagethumbs   'peregorodki/peregorodka-28.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-glass.jpg
+
+pagethumbs   'peregorodki/2013-08-02-15-17-01.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-interium.jpg
+
+pagethumbs   'peregorodki/2013-02-14-19-35-57.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-dekor.jpg
+
+pagethumbs   'peregorodki/peregorodka-76.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-slider.jpg

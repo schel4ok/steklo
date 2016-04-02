@@ -26,10 +26,13 @@
 
        	@if ($item->sef == 'steklyannye-dveri-dlya-sauny')
         <div class="order">@include('modules.calculators.sauna')</div>
-		<div class="clearfix"></div>
-		@endif
+		    <div class="clearfix"></div>
+        @elseif ($item->sef == 'santehnicheskie-peregorodki')
+        <div class="order">@include('modules.calculators.dush-peregorodka')</div>
+        <div class="clearfix"></div>
+		    @endif
 
-  	</article>
+  </article>
 
 
 

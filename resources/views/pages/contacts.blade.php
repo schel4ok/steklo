@@ -37,7 +37,7 @@
 
 
 
-{!! Form::open(array('route' => 'sendmail', 'class' => 'form', 'files' => true)) !!}
+{!! Form::open(array('route' => 'sendmail', 'class' => 'go-right', 'files' => true)) !!}
 @if(Session::has('message'))
     <div class="alert alert-info">{{Session::get('message')}}</div>
 @endif
@@ -47,19 +47,36 @@
 @endif
 
 
-<input class="form-control" placeholder="введите имя" name="name" type="text" required maxlength="30" minlength="2">
-<input class="form-control" placeholder="введите телефон в любом формате" name="tel" type="tel" required>
-<input class="form-control" placeholder="введите адрес электронной почты" name="email" type="email" required>
-<textarea class="form-control" placeholder="введите сообщение" name="message" rows="4" required></textarea>
+<div class="form-group">
+    <input class="form-control" name="name" type="text" required maxlength="30" minlength="2">
+    <label for="name">Ваше имя *</label>
+</div>
+
+<div class="form-group">
+    <input class="form-control" name="tel" type="tel" required>
+    <label for="tel">Ваш телефон в любом формате *</label>
+</div>
+
+<div class="form-group">
+    <input class="form-control" name="email" type="email" required>
+    <label for="email">Адрес электронной почты *</label>
+</div>
+
+<div class="form-group">
+    <textarea class="form-control" name="message" rows="4" required></textarea>
+    <label for="message">Ваше сообщение *</label>
+</div>
+
 
 	<div class="input-group margin-bottom-20">
         <span class="input-group-btn">
             <span class="btn btn-primary btn-file">
             <i class="fa fa-paperclip"> </i> Прикрепить файл 
-            <input type="file" name="attachment" id='file'>
+            <input type="file" name="attachment" id="file">
             </span>
         </span>
-        <input type="text" class="form-control" readonly="">
+        <input type="text" class="form-control filename" readonly="" value="не более 10мб">
+        <span class="filesize padding-20" style="color: #9C27B0;"></span>
     </div>
 
 <input class="btn btn-primary" type="submit" value="Отправить">

@@ -5,6 +5,7 @@ return [
     'active_url'           => 'Поле ":attribute" is not a valid URL.',
     'after'                => 'Поле ":attribute" должно быть a date after :date.',
     'alpha'                => 'Поле ":attribute" может содержать только буквы.',
+    'alpha_spaces'         => 'Поле ":attribute" может содержать только буквы и пробелы.',
     'alpha_dash'           => 'Поле ":attribute" may only contain letters, numbers, and dashes.',
     'alpha_num'            => 'Поле ":attribute" may only contain letters and numbers.',
     'array'                => 'Поле ":attribute" должно быть an array.',

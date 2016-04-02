@@ -4,12 +4,22 @@ use Illuminate\Support\ServiceProvider;
 use App\Category;
 use App\Link;
 use App\News;
+use Validator;
 
 
 class AppServiceProvider extends ServiceProvider {
 
     public function boot()
     {
+
+        // validator for alphabetic characters and spaces http://blog.elenakolevska.com/laravel-alpha-validator-that-allows-spaces/
+        // It matches unicode characters, so even João Gabriel won't have his name marked as invalid anymore :)
+        Validator::extend('alpha_spaces', function($attribute, $value, $parameters, $validator) {
+            return preg_match('/^[\pL\s]+$/u', $value);
+        });
+
+
+        // элементы шаблона сайта
         view()->composer('modules.topmenu', function($view)
         {
             $view->withTree(Category::descendantsOf(1)->toTree());
@@ -51,5 +61,7 @@ class AppServiceProvider extends ServiceProvider {
             'App\Services\Registrar'
         );
     }
+
+
 
 }

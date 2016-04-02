@@ -19,6 +19,7 @@ form input, form textarea {
 }
 form input:valid, form textarea:valid {
 	background: white;
+	color: @blue;
 }
 form input:focus, form textarea:focus {
 	border-color: #357EBD;
@@ -82,12 +83,20 @@ form.go-right input:focus + label, form.go-right textarea:focus + label {
 // калькулятор стоимости двери для сауны
 form.calculator {
 	.form-group {
-		> input.radio {height:13px; margin:6px 0 0 3px; width:13px;}
+		> input.radio, input.check {height:13px; margin:6px 0 0 3px; width:13px;}
 		> label  {padding-left: 15px;}
-		> label.radio {margin: -23px 0 0 25px; padding:4px 0 5px; right: 0; .transition (none); color: #999;}
-		> input.radio:focus + label {border-color: #357EBD; background: none; padding: 4px 0 5px; text-transform: none; font-size: 100%; font-weight: bold; color: @link-color;}
-		> select      {width:95px;}
+		> label.radio {margin: -23px 0 0 25px; padding: 4px 0 5px; right: inherit; .transition (none); color: #999;}
+		> input.radio:focus + label, input.radio:checked + label {
+				background: none; 
+				text-transform: none; 
+				font-size: 100%; 
+				font-weight: bold; 
+				color: @link-color;}
 
+
+		> label.check {margin: 0; padding: 0 0 0 10px; right: auto!important; .transition (none); color: #999;}
+		> input.check:focus + label, input.check:checked + label {background: none; color: @link-color; text-transform: none; font-size: 100%; font-weight: bold; right: 100%;}
+		
 	}
 
 	.special_sizes {display:none;}

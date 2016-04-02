@@ -10,7 +10,8 @@ use App\Category;
 use App\Page;
 use App\User;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ContactFormRequest;
+use App\Http\Requests\CalculatorRequest;
+
 
 class StekloController extends Controller {
 
@@ -62,19 +63,28 @@ class StekloController extends Controller {
 
 
 
-	public function order(ContactFormRequest $request) 
+	public function order($cat, $item, CalculatorRequest $request) 
 	{
-		$category = Category::where('sef', '=', 'contacts')->first();
+		$category = Category::where('sef', '=', $cat)->first();
 		$input = Input::all();
 	//	return var_dump($input['attachment']->getRealPath());
 
-		Mail::send('emails.contacts',
+		Mail::send('emails.calculator',
         	array(
+            	'size_b' => $request->input('size_b'),
+            	'size_h' => $request->input('size_h'),
+            	'glass' => $request->input('glass'),
+            	'furnitura' => $request->input('furnitura'),
+            	'verh_truba' => $request->input('verh_truba'),
+            	'uplotniteli' => $request->input('uplotniteli'),
+            	'dostavka' => $request->input('dostavka'),
+            	'montazh' => $request->input('montazh'),
             	'name' => $request->input('name'),
             	'tel' => $request->input('tel'),
             	'email' => $request->input('email'),
             	'user_message' => $request->input('message'),
             	'url' => $request->url(),
+            	'title' => $request->title,
             	), 
         	function($message) use ($request, $input)
     			{
@@ -82,7 +92,7 @@ class StekloController extends Controller {
         			$message->to('ipopov@steklo-group.ru', 'Илья Попов');
         		//	$message->сс('sales@steklo-group.ru', 'Настя');
         			$message->replyTo($request->input('email'), $request->input('name') );
-        			$message->subject('Письмо со страницы контактов www.steklo-group.ru.');
+        			$message->subject('Заказ с сайта' );
         			if ( isset($input['attachment']) ) 
         			{
 						$message->attach($input['attachment']->getRealPath(), array(
@@ -92,8 +102,9 @@ class StekloController extends Controller {
 					
 
 				});
-    	return Redirect::route('contacts')->withCategory($category)
-    									  ->with('message', 'Ваше сообщение успешно отправлено!');
+    	return Redirect::back()->withCategory($category)
+    						   ->withItem($item)
+    						   ->with('message', 'Ваше сообщение отправлен! Менеджер свяжется с вами в ближайшее время для уточнения деталей заказа');
 	}
 
 
