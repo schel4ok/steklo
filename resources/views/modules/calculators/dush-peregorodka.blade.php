@@ -1,4 +1,4 @@
-<h4 class="title"><i class="fa fa-shopping-cart fa-lg text-primary"></i>  Заказать стеклянную перегородку для душевой</h4>
+<h4 class="title google-alert alert-notice"><i class="fa fa-shopping-cart fa-lg text-primary"></i>  <span>Заказать стеклянную перегородку для душевой</span></h4>
 <div class="text-primary">* обязательное поле</div>
 
 
@@ -10,6 +10,9 @@
 	<div class="alert alert-info">@foreach($errors->all() as $error){{ $error }}<br>@endforeach
 </div>
 @endif
+
+	<input name="calc" type="hidden" value="dush-peregorodka">
+
 
 	<div class="form-group col-xs-12 col-sm-6"><h4>Размер стекла (в миллиметрах)</h4></div>
 
@@ -25,17 +28,17 @@
 
 
 	<div class="form-group glass col-xs-12 col-sm-6"><h4>Стекло</h4>
-
-		<input type="radio" value="clear" data-price="3000" name="glass" class="radio" text="Прозрачное">
+ 
+		<input type="radio" data-price="3000" name="glass" class="radio" value="Прозрачное">
 		<label for="glass" class="radio">Прозрачное (стандарт)</label>
 
-		<input type="radio" value="matelux" data-price="4000" name="glass" class="radio" text="Матовое">
+		<input type="radio" data-price="4000" name="glass" class="radio" value="Матовое">
 		<label for="glass" class="radio">Матовое</label>
 
-		<input type="radio" value="bronza" data-price="5200" name="glass" class="radio" text="Бронза">
+		<input type="radio" data-price="5200" name="glass" class="radio" value="Бронза">
 		<label for="glass" class="radio">Бронза</label>
 
-		<input type="radio" value="bronza_matelux" data-price="6200" name="glass" class="radio" text="Матовая бронза">
+		<input type="radio" data-price="6200" name="glass" class="radio" value="Матовая бронза">
 		<label for="glass" class="radio">Матовая бронза</label>
 
 	</div>
@@ -43,41 +46,41 @@
 
 	<div class="form-group furnitura col-xs-12 col-sm-6"><h4>Фурнитура для крепления стекла</h4>
 
-		<input type="radio" value="profil-10-anod" data-price="1500" name="furnitura" class="radio" text="П-образный профиль 10мм анодированный">
+		<input type="radio" data-price="1500" name="furnitura" class="radio" value="П-образный профиль 10мм анодированный">
 		<label for="furnitura" class="radio">П-образный профиль 10мм анодированный</label>
 
-		<input type="radio" value="profil-10-nerzh" data-price="3000" name="furnitura" class="radio" text="П-образный профиль 10мм нержавеющий">
+		<input type="radio" data-price="3000" name="furnitura" class="radio" value="П-образный профиль 10мм нержавеющий">
 		<label for="furnitura" class="radio">П-образный профиль 10мм нержавеющий</label>
 
-		<input type="radio" value="connectors" data-price="2600" name="furnitura" class="radio" text="Коннекторы (4шт)">
+		<input type="radio" data-price="2600" name="furnitura" class="radio" value="Коннекторы (4шт)">
 		<label for="furnitura" class="radio">Коннекторы (4шт)</label>
 
-		<input type="radio" value="profil-30" data-price="9000" name="furnitura" class="radio" text="Зажимной профиль 30мм">
+		<input type="radio" data-price="9000" name="furnitura" class="radio" value="Зажимной профиль 30мм">
 		<label for="furnitura" class="radio">Зажимной профиль 30мм</label>
 
-		<input type="radio" value="profil-40" data-price="4400" name="furnitura" class="radio" text="Зажимной профиль 40мм">
+		<input type="radio" data-price="4400" name="furnitura" class="radio" value="Зажимной профиль 40мм">
 		<label for="furnitura" class="radio">Зажимной профиль 40мм</label>
 
 	</div>
 
 
 	<div class="form-group verh-truba col-xs-12 col-sm-6">
-		<input type="checkbox" data-price="3100" name="verh_truba" class="check" text="Штанга длиной 1м, коннектор штанга-стена, коннектор штанга-стекло">
+		<input type="checkbox" data-price="3100" name="verh_truba" class="check" value="Штанга длиной 1м, коннектор штанга-стена, коннектор штанга-стекло">
 		<label for="verh_truba" class="check">Доп крепление верхней штангой</label>
 	</div>
 
 	<div class="form-group uplotniteli col-xs-12 col-sm-6">
-		<input type="checkbox" data-price="500" name="uplotniteli" class="check" text="2 шт по 2200мм">
+		<input type="checkbox" data-price="500" name="uplotniteli" class="check" value="2 шт по 2200мм">
 		<label for="uplotniteli" class="check">Силиконовые уплотнители</label>
 	</div>
 
 	<div class="form-group dostavka col-xs-12 col-sm-6">
-		<input type="checkbox" data-price="2000" name="dostavka" class="check" text="в пределах МКАД">
+		<input type="checkbox" data-price="2000" name="dostavka" class="check" value="в пределах МКАД">
 		<label for="dostavka" class="check">Доставка</label>
 	</div>
 
 	<div class="form-group montazh col-xs-12 col-sm-6">
-		<input type="checkbox" data-price="1500" name="montazh" class="check" text="с монтажом">
+		<input type="checkbox" data-price="1500" name="montazh" class="check" value="с монтажом">
 		<label for="montazh" class="check">Монтаж</label>
 	</div>
 

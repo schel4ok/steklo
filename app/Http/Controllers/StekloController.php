@@ -63,14 +63,48 @@ class StekloController extends Controller {
 
 
 
-	public function order($cat, $item, CalculatorRequest $request) 
+	public function order(CalculatorRequest $request) 
 	{
-		$category = Category::where('sef', '=', $cat)->first();
 		$input = Input::all();
-	//	return var_dump($input['attachment']->getRealPath());
+		$calc = $request->input('calc');
 
-		Mail::send('emails.calculator',
-        	array(
+        //check if its our form
+        if ( Session::token() !== Input::get( '_token' ) ) {
+            return Response::json( array(
+                'msg' => 'Несанкционированная попытка отправки письма'
+            ) );
+        }
+
+
+		if ( $calc == 'sauna' ) {
+			$mailtemplate = 'emails.sauna-calculator';
+            // $pagetitle = 'Стеклянные двери для сауны';
+            // $pageurl = $_SERVER['SERVER_NAME'] .'/izdeliya-iz-stekla/steklyannye-dveri/steklyannye-dveri-dlya-sauny';
+            $mailarray = array(
+                'door_size_radio' => $request->input('door_size_radio'),
+                'door_size_standard' => $request->input('door_size_standard'),
+            	'door_size_b' => $request->input('door_size_b'),
+            	'door_size_h' => $request->input('door_size_h'),
+            	'glass' => $request->input('glass'),
+            	'korobka' => $request->input('korobka'),
+            	'petli' => $request->input('petli'),
+            	'dekor' => $request->input('dekor'),
+            	'dostavka' => $request->input('dostavka'),
+            	'montazh' => $request->input('montazh'),
+            	'name' => $request->input('name'),
+            	'tel' => $request->input('tel'),
+            	'email' => $request->input('email'),
+            	'user_message' => $request->input('message'),
+            	);
+
+		}
+
+		elseif ( $calc == 'dush-peregorodka' ) {
+			$mailtemplate = 'emails.dush-calculator';
+           // $pagetitle = 'Стеклянные сантехнические перегородки';
+           // $pageurl = $_SERVER['SERVER_NAME'] .'/izdeliya-iz-stekla/steklyannye-peregorodki/santehnicheskie-peregorodki';
+			$mailarray = array(
+            	'calc' => $request->input('calc'),
             	'size_b' => $request->input('size_b'),
             	'size_h' => $request->input('size_h'),
             	'glass' => $request->input('glass'),
@@ -83,28 +117,21 @@ class StekloController extends Controller {
             	'tel' => $request->input('tel'),
             	'email' => $request->input('email'),
             	'user_message' => $request->input('message'),
-            	'url' => $request->url(),
-            	'title' => $request->title,
-            	), 
+            	);
+		}
+
+
+		Mail::send($mailtemplate, $mailarray,
+
         	function($message) use ($request, $input)
     			{
         			$message->from('admin@steklo-group.ru', $request->input('name') );
         			$message->to('ipopov@steklo-group.ru', 'Илья Попов');
-        		//	$message->сс('sales@steklo-group.ru', 'Настя');
+                    $message->setCc($request->input('email'), $request->input('name'));
         			$message->replyTo($request->input('email'), $request->input('name') );
-        			$message->subject('Заказ с сайта' );
-        			if ( isset($input['attachment']) ) 
-        			{
-						$message->attach($input['attachment']->getRealPath(), array(
-							'as' 	=> $input['attachment']->getClientOriginalName(), 
-        					'mime' 	=> $input['attachment']->getMimeType()));
-					}
-					
-
+        			$message->subject('Заказ с сайта');
 				});
-    	return Redirect::back()->withCategory($category)
-    						   ->withItem($item)
-    						   ->with('message', 'Ваше сообщение отправлен! Менеджер свяжется с вами в ближайшее время для уточнения деталей заказа');
+    	return Redirect::back()->with('message', 'Ваше сообщение отправлено! Менеджер свяжется с вами в ближайшее время для уточнения деталей заказа');
 	}
 
 

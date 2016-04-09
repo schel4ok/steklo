@@ -11,6 +11,8 @@ http://maxoffsky.com/code-blog/laravel-shop-tutorial-3-implementing-smart-search
 #Практическое применение FlexBox
 http://habrahabr.ru/post/242545/
 
+#Laravel 5 Shopping Cart.
+http://www.tutorials.kode-blog.com/laravel-5-shopping-cart
 
 #Optimal Settings For ImageMagick
 крутая статья про настройки фильтров imagemagick для ресайза картинок для сайта, чтобы получить максимальное сжатие по сравнению со стандартными настройками и даже фотошоопм
