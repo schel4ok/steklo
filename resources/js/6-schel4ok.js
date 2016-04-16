@@ -218,7 +218,7 @@ $('.thumbgallery').lightGallery(); // call lightgallery from tag with thumbgalle
 
 // call lightgallery from tag with thumb class
 // это картинки в тексте статьи
-$('.fulltext').lightGallery({
+$('article').lightGallery({
   selector: '.thumb'
   }); 
 
@@ -337,3 +337,29 @@ $(function(){
 });
 
 
+// Image Overlay Hover Effects With CSS3 Transitions
+$(document).ready(function($) {
+  $.fn.showImgAlt=function(options){
+    var settings={
+      tag:'<span>',
+      class:'imgalt',
+      before:false
+    };
+    $.extend(settings,options);
+    this.each(function(){
+      var o=this;
+      var alt=$(o).attr('alt');
+      if(alt){
+        var alttext=$(settings.tag).html(alt).addClass(settings.class).animate({"height":"30%"}, 500);
+        if(settings.before){alttext.insertBefore(o);}
+        else{alttext.insertAfter(o);}
+      }
+    });
+    return(this);
+  };
+});
+
+
+$(".thumb").hover( function () { $(this).children('img').showImgAlt(); },
+  function () { $(this).find("span.imgalt").remove(); }
+);

@@ -7,8 +7,25 @@
 .panel-title   {color: @text-color;}
 h3.panel-title   {font-size: @font-size-h4;}
 
-// icon list-style-type: square;
-.icon-list {list-style: none; display: table-row-group;}
+
 blockquote.homepage {border-left: 2px solid #eee; font-size: @font-size-base; line-height: @line-height-base;}
 blockquote:hover {border-color:  @brand-primary;}
 
+// список с иконками из fontawesome 
+.calendar-list {list-style: none; display: table-row-group; 
+	> li > i {padding-right: 5px;}
+}
+
+
+// блоки на главной странице
+.lastworks {
+	padding-right: 0;
+	@media (max-width: @screen-md) {padding: 0;}
+	
+}
+
+.preimuschestva {
+	padding-left: 0;
+	@media (max-width: @screen-md) {padding: 0;}
+	
+}

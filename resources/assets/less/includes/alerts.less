@@ -39,7 +39,9 @@
 {
     margin: 20px 0;
     padding: 20px;
-    border-left: 3px solid #eee;
+    border-color: #eee;
+    border-left: 3px solid;
+    &.right {border-left: 0; border-right: 3px solid;}
 }
 .alert-message h4
 {
@@ -159,7 +161,6 @@
     background-color: rgba(0, 0, 0, 0);
     border: 0;
     color: @text-color;
-    clear: both;
     border-top:    1px solid @color; 
     border-bottom: 1px solid @color;
     > i.icon-fa {color: @color;}
@@ -175,7 +176,7 @@
     .google-alert (limegreen)  // light green
 }
 .google-alert.alert-notice {
-    .google-alert (@lightblue)  // light green
+    .google-alert (@blue)  // light blue
 }
 .google-alert.alert-violet {
     .google-alert (rgba(156, 39, 176, 1))  // violet

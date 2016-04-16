@@ -12,6 +12,7 @@
     "lightslider": "*",
     "lightgallery": "*",
     "selectize": "*",
-    "photoswipe": "*"
+    "photoswipe": "*",
+    "modernizr":"*"
   }
 }

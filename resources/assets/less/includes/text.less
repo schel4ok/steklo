@@ -11,26 +11,49 @@ article.steklo {
 }
 
 // стили картинок в тексте раздела стекло
-.fulltext a.thumb {
+article a.thumb {
+	position: relative;
 	.img-responsive;
 	img { padding:0px; .img-responsive; }
 	&.right {.pull-right;}
-	&.left  {.pull-left;}
+	&.left  {.pull-left; padding-right: 10px; 
+			> span.imgalt {margin-right: 10px;}
+		}
+
+	> span.imgalt {
+		display: block;
+		color: @white;
+		font-weight: normal;
+		position: absolute;
+		z-index: 20;
+		background: rgba(0, 0, 0, 0.4);
+		overflow: hidden;
+		padding: 10px;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
 
 	@media (min-width: @screen-sm) {
 		img {width: 489px;}
-		&.right {padding-left: 15px;}
-		&.left  {padding-right: 25px;} // чтобы  маркеры списка не залезали на картинку
+		&.right {padding-left: 15px; > span.imgalt {margin-left: 15px;} }
+		&.left  {padding-right: 25px; // чтобы  маркеры списка не залезали на картинку
+			> span.imgalt {margin-right: 25px;}
+			} 
+		   
 	}
 
 
 	@media (min-width: @screen-xs) {
-		&.right.vert {padding-left: 15px;}
-		&.left.vert  {padding-right: 15px;} 
+		&.right.vert {padding-left: 15px;  > span.imgalt {margin-left: 15px;}   }
+		&.left.vert  {padding-right: 15px;  > span.imgalt {margin-right: 15px;}   }
 		&.vert  { img {width: 300px;} }
 	}
 
 }
+
+
+
 // стили ссылок в тексте
 article a { font-weight: bold;
 	&.textthumb {   // стили текстовых ссылок на картинки, открывающиеся в лайтбоксе
@@ -55,3 +78,26 @@ div.ral  {
 	div {.alert; margin-bottom: 10px; .padding-5; border: 0.2px white solid;}
  }
 
+// стили списков   
+// список с иконками из fontawesome 
+.list-icons {
+	display:table;
+	> div {display:table-row; 
+		> div {display:table-cell;
+			&.fa {padding-right: 10px; .text-primary;}
+		}
+	}
+}
+
+// список с галочками
+.list-check { list-style: none; padding: 0;
+   > li:before {content: '✔';margin-right: 1em;}
+}
+
+
+// араграф с большой первой буквой
+p.first-letter::first-letter {
+    font-size: 2em;
+    color: @blue;
+    font-weight: bold;
+}

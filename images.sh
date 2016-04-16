@@ -103,8 +103,8 @@ cd ../../
 # ресайз картинок
 smartoptimize 	public/img/ 						                       'resources/img/*.{jpg,png,gif}'
 smartresize 	public/img/carousel/            640       ${w}x${h}  'resources/img/carousel/furnitura/*'
-smartresize 	public/img/carousel/            912x294   ${w}x${h}  'resources/img/carousel/main/*'
-smartresize 	public/img/carousel/            870       ${w}x${h}  'resources/img/carousel/works/*'
+smartresize 	public/img/carousel/            978x294   ${w}x${h}  'resources/img/carousel/main/*'
+smartresize 	public/img/carousel/            905       ${w}x${h}  'resources/img/carousel/works/*'
 smartoptimize 	public/img/categories/				                    'resources/img/categories/*'
 smartresize 	public/img/clients/ 	           'x190>'   ${w}x190   'resources/img/clients/*'
 smartoptimize  public/img/file-icons/                               'resources/img/file-icons/*'
@@ -202,6 +202,7 @@ smartresize   thumbs/   334x259^   334x259   'zerkala/*.jpg'
 
 cd ../../../resources/img/foto
 # создание миниатюр для текстовых страниц сайта
+# стеклянные двери
 pagethumbs   'dveri/dver-122.jpg'   500   ../../../public/img/pages/steklo/dver-fire.jpg
 pagethumbs   'dveri/2015-02-21-16-07-50.jpg'   500   ../../../public/img/pages/steklo/dver-fire-2.jpg
 pagethumbs   'dveri/dver-154.jpg'   500   ../../../public/img/pages/steklo/dver-office.jpg
@@ -217,10 +218,14 @@ pagethumbs   'dveri/dver-166.jpg'   500   ../../../public/img/pages/steklo/dver-
 pagethumbs   'dveri/dver-87.jpg'   500   ../../../public/img/pages/steklo/dver-interium-3.jpg
 pagethumbs   'dveri/dver-139.jpg'   500   ../../../public/img/pages/steklo/dver-interium-4.jpg
 pagethumbs   'dveri/2016-02-27-16-50-08.jpg'   670   ../../../public/img/pages/steklo/dver-sauna.jpg
-
+# стеклянные перегородки
 pagethumbs   'dush/dush-89.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-santekh.jpg
-
+pagethumbs   'lestnica/lestnica-19.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-santekh-2.jpg
+pagethumbs   'dush/dush-28.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-santekh-3.jpg
 pagethumbs   'peregorodki/peregorodka-58.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-karkas.jpg
+pagethumbs   'peregorodki/2013-11-09-10-26-56.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-karkas-2.jpg
+pagethumbs   'peregorodki/peregorodka-27.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-karkas-3.jpg
+
 
 pagethumbs   'peregorodki/peregorodka-18.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-fire.jpg
 

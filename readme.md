@@ -1,3 +1,6 @@
+jquery img alt overlay
+http://callmenick.com/post/image-overlay-hover-effects-with-css3-transitions
+
 
 
 
@@ -97,3 +100,9 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ### License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+
+
+### modernizr
+после обновления пакета modernizr в bower надо еще вручную скомпилировать modernizr.js вот таким образом
+cd vendor\bower_components\modernizr
+node .\bin\modernizr -c .\lib\config-all.json`  // works. Relying on the shebang fails on Windows. 

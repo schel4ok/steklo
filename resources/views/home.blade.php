@@ -9,7 +9,7 @@
 
 
 <!-- Преимущества стеклянных перегородок -->
-	<div class="col-md-8">
+	<div class="col-md-8 preimuschestva">
 		<div class="panel-primary">
 		  <div class="panel-heading">
 		      <h3 class="panel-title"><i class="fa fa-line-chart text-primary"></i> Преимущества стеклянных перегородок</h3>
@@ -23,12 +23,13 @@
 
 		  		<div class="col-sm-8">
 		  			Стекло - натуральный, экологически чистый материал, делающий интерьер более изысканным, лёгким, светлым и современным.
-		  			<ul class="icon-list" >
-        				<li><i class="fa fa-check text-primary "></i> большой простор для фантазии при оформлении помещения</li>
-        				<li><i class="fa fa-check text-primary "></i> простота и скорость установки</li>
-        				<li><i class="fa fa-check text-primary "></i> отсутствие грязных работ</li>
-       					<li><i class="fa fa-check text-primary "></i> больше света в помещении</li>
-        			</ul> 
+		  			
+            <div class="list-icons">
+              <div><div class="fa fa-check"></div><div>большой простор для фантазии при оформлении помещения</div></div>
+              <div><div class="fa fa-check"></div><div>простота и скорость установки</div></div>
+              <div><div class="fa fa-check"></div><div>отсутствие грязных работ</div></div>
+              <div><div class="fa fa-check"></div><div>больше света в помещении</div></div>
+        		</div> 
         		</div>
         	</div>
 
@@ -42,7 +43,7 @@
   	</div>
 
 
-<div class="col-md-4">
+<div class="col-md-4 lastworks">
 @include('modules.lastworks')
 </div>
 
