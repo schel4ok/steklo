@@ -48,7 +48,7 @@ pagethumbs() {
    -unsharp 0.25x0.08+8.3+0.045 -dither None -posterize 136 -quality 82 \
    -define jpeg:fancy-upsampling=off -define png:compression-filter=5 \
    -define png:compression-level=9 -define png:compression-strategy=1 \
-   -strip -define png:exclude-chunk=all -interlace none -colorspace sRGB $3
+   -strip -define png:exclude-chunk=all -interlace none -extent $3 -colorspace sRGB $4
 }
 
 resize() {
@@ -247,10 +247,11 @@ pagethumbs   'dveri/dver-72.jpg'   680  ${w}x${h} ../../../public/img/pages/stek
 pagethumbs   'peregorodki/peregorodka-24.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-interium-5.jpg
 pagethumbs   'peregorodki/peregorodka-55.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-interium-6.jpg
 pagethumbs   'peregorodki/2013-08-17-17-36-47.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-interium-7.jpg
+pagethumbs   'dveri/2013-02-14-15.35.50.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-dekor.jpg
+pagethumbs   'risunki/pesok-25.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-dekor-2.jpg
+pagethumbs   'dveri/dver-138.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-dekor-3.jpg
+pagethumbs   'dveri/dver-55.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-dekor-4.jpg
 
 
 
-
-pagethumbs   'peregorodki/2013-02-14-19-35-57.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-dekor.jpg
-
-pagethumbs   'peregorodki/peregorodka-76.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-slider.jpg
+pagethumbs   'peregorodki/peregorodka-76.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-slider.jpg
