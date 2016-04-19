@@ -11,15 +11,15 @@ article.steklo {
 }
 
 // стили картинок в тексте раздела стекло
+// padding: top, right, bottom left
+
 article a.thumb {
 	position: relative;
 	.img-responsive;
-	img { padding:0px; .img-responsive; }
 	&.right {.pull-right;}
-	&.left  {.pull-left; padding-right: 10px; 
-			> span.imgalt {margin-right: 10px;}
-		}
-
+	&.left  {.pull-left;}
+	padding: 0px;
+	> img { padding: 0px; .img-responsive; }
 	> span.imgalt {
 		display: block;
 		color: @white;
@@ -34,15 +34,22 @@ article a.thumb {
 		right: 0;
 	}
 
-	@media (min-width: @screen-sm) {
-		img {width: 489px;}
-		&.right {padding-left: 15px; > span.imgalt {margin-left: 15px;} }
-		&.left  {padding-right: 25px; // чтобы  маркеры списка не залезали на картинку
-			> span.imgalt {margin-right: 25px;}
-			} 
-		   
+	@media (max-width: @screen-xs) {
+		padding: 5px 0; 
+		> span.imgalt {margin: 5px 0;} 		   
 	}
 
+	@media (min-width: @screen-xs) and (max-width: @screen-sm) {
+		padding: 5px 0; 
+		> span.imgalt {margin: 5px 0;} 		   
+	}
+
+	@media (min-width: @screen-sm) {
+		&.right {padding: 0 0 0 15px; > span.imgalt {margin: 0 0 0 15px;} }
+		&.left  {padding: 0 25px 0 0; > span.imgalt {margin: 0 25px 0 0;}
+		// тут чуть больше, чтобы  маркеры списка не залезали на картинку
+			} 
+	}
 
 	@media (min-width: @screen-xs) {
 		&.right.vert {padding-left: 15px;  > span.imgalt {margin-left: 15px;}   }
@@ -51,6 +58,38 @@ article a.thumb {
 	}
 
 }
+
+
+// фотогалерея в тексте статьи
+// padding: top, right, bottom left
+.page-gallery a > img {width: 100%;}
+
+@media (max-width: @screen-sm) {
+  .page-gallery a {padding: 5px 0px;
+  				   > img {height: 342px!important;}
+  				   > span.imgalt {margin: 5px 0px;} 
+  				  }
+  }
+
+@media (min-width: @screen-sm) and (max-width: @screen-md) {
+  .page-gallery a > img {height: 342px!important;}
+  .page-gallery a:nth-child(even){padding: 5px 0 5px 5px; > span.imgalt {margin: 5px 0 5px 5px;} } // Каждый четный : nth-child(even)
+  .page-gallery a:nth-child(odd) {padding: 5px 5px 5px 0; > span.imgalt {margin: 5px 5px 5px 0;} }  // Каждый нечетный : nth-child(odd)
+  }
+
+@media (min-width: @screen-md) and (max-width: @screen-lg) {
+	.page-gallery a > img {height: 258px!important;}
+  .page-gallery a:nth-child(3n+3) {padding: 5px 0 5px 5px; > span.imgalt {margin: 5px 0 5px 5px;}}
+  .page-gallery a:nth-child(3n+2) {padding: 5px 2.5px; > span.imgalt {margin: 5px 2.5px;}}
+  .page-gallery a:nth-child(3n+1) {padding: 5px 5px 5px 0; > span.imgalt {margin: 5px 5px 5px 0;}}
+  }
+
+@media (min-width: @screen-lg) {
+	.page-gallery a > img {height: 195px!important;}
+  .page-gallery a:nth-child(4n+4) {padding: 5px 0 5px 5px; > span.imgalt {margin: 5px 0 5px 5px;}} // каждый 4 элемент
+  .page-gallery a:nth-child(4n+2), .page-gallery a:nth-child(4n+3) {padding: 5px 2.5px; > span.imgalt {margin: 5px 2.5px;}}
+  .page-gallery a:nth-child(4n+1) {padding: 5px 5px 5px 0; > span.imgalt {margin: 5px 5px 5px 0;}} // каждый 1 элемент в ряду
+  }
 
 
 
@@ -95,9 +134,10 @@ div.ral  {
 }
 
 
-// араграф с большой первой буквой
+// параграф с большой первой буквой
 p.first-letter::first-letter {
     font-size: 2em;
     color: @blue;
     font-weight: bold;
 }
+

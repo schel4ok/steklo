@@ -70,7 +70,7 @@ if [ ! -e "carousel" ];                then mkdir carousel; fi
 if [ ! -e "categories" ];              then mkdir categories; fi
 if [ ! -e "clients" ];                 then mkdir clients; fi
 if [ ! -e "file-icons" ];              then mkdir file-icons; fi
-if [ ! -e "foto" ];                    then mkdir -p foto/thumbs; fi
+if [ ! -e "foto/thumbs" ];             then mkdir -p foto/thumbs; fi
 if [ ! -e "foto/bar" ];                then mkdir foto/bar; fi
 if [ ! -e "foto/dush" ];               then mkdir foto/dush; fi
 if [ ! -e "foto/dveri" ];              then mkdir foto/dveri; fi
@@ -97,7 +97,7 @@ if [ ! -e "news" ]; 		               then mkdir -p news/big; fi
 if [ ! -e "pages" ];                   then mkdir -p pages/steklo; fi
 if [ ! -e "risunki" ]; 	               then mkdir -p risunki/pesok; fi
 if [ ! -e "risunki/vitraj" ];          then mkdir risunki/vitraj; fi
-if [ ! -e "uslugi" ];                  then mkdir uslugi; fi
+if [ ! -e "uslugi/montazh" ];          then mkdir -p uslugi/montazh; fi
 
 cd ../../
 # ресайз картинок
@@ -136,7 +136,8 @@ smartresize    public/img/news/                 244x190^   244x190  'resources/i
 smartresize    public/img/news/big/             640x480^  ${w}x${h} 'resources/img/news/*'
 smartoptimize  public/img/pages/                                    'resources/img/pages/*'
 smartoptimize  public/img/risunki/vitraj/                           'resources/img/risunki/vitraj/*'
-smartoptimize  public/img/uslugi/                                   'resources/img/uslugi/*'
+smartoptimize  public/img/uslugi/                                   'resources/img/uslugi/*.{jpg,png,gif}'
+smartresize    public/img/uslugi/montazh/       680      ${w}x${h}  'resources/img/uslugi/montazh/*'
 
 
 cd resources/img/risunki/pesok
@@ -177,6 +178,10 @@ find stoly/.  -name '*.jpg'         | gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" stol
 find vitriny/.  -name '*.jpg'       | gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" vitriny/vitriny-%04d.jpg\n", $0, a++ }' | bash
 find zabor/.  -name '*.jpg'         | gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" zabor/zabor-%04d.jpg\n", $0, a++ }' | bash
 find zerkala/.  -name '*.jpg'       | gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" zerkala/zerkala-%04d.jpg\n", $0, a++ }' | bash
+# переименование картинок для страницы монтаж по шаблону bar/bar-0001.jpg
+cd ../uslugi
+find montazh/.  -name '*.jpg'       | gawk 'BEGIN{ a=1 }{ printf "mv \"%s\" montazh/montazh-%04d.jpg\n", $0, a++ }' | bash
+
 
 # создание миниатюр для фотогалереи
 smartresize   thumbs/   334x259^   334x259   'bar/*.jpg'
@@ -203,39 +208,48 @@ smartresize   thumbs/   334x259^   334x259   'zerkala/*.jpg'
 cd ../../../resources/img/foto
 # создание миниатюр для текстовых страниц сайта
 # стеклянные двери
-pagethumbs   'dveri/dver-122.jpg'   500   ../../../public/img/pages/steklo/dver-fire.jpg
-pagethumbs   'dveri/2015-02-21-16-07-50.jpg'   500   ../../../public/img/pages/steklo/dver-fire-2.jpg
-pagethumbs   'dveri/dver-154.jpg'   500   ../../../public/img/pages/steklo/dver-office.jpg
-pagethumbs   'dveri/dver-53.jpg'   500   ../../../public/img/pages/steklo/dver-office-2.jpg
-pagethumbs   'dveri/2013-11-27-09-32-42.jpg'   500   ../../../public/img/pages/steklo/dver-office-3.jpg
-pagethumbs   'dveri/dver-123.jpg'   500   ../../../public/img/pages/steklo/dver-vhod.jpg
-pagethumbs   'dveri/2013-01-08-17-57-30.jpg'   500   ../../../public/img/pages/steklo/dver-vhod-2.jpg
-pagethumbs   'dveri/dver-150.jpg'   500   ../../../public/img/pages/steklo/dver-slider.jpg
-pagethumbs   'dveri/dver-49.jpg'   500   ../../../public/img/pages/steklo/dver-slider-2.jpg
-pagethumbs   'dveri/dver-66.jpg'   500   ../../../public/img/pages/steklo/dver-slider-3.jpg
-pagethumbs   'dveri/dver-155.jpg'   500   ../../../public/img/pages/steklo/dver-interium.jpg
-pagethumbs   'dveri/dver-166.jpg'   500   ../../../public/img/pages/steklo/dver-interium-2.jpg
-pagethumbs   'dveri/dver-87.jpg'   500   ../../../public/img/pages/steklo/dver-interium-3.jpg
-pagethumbs   'dveri/dver-139.jpg'   500   ../../../public/img/pages/steklo/dver-interium-4.jpg
-pagethumbs   'dveri/2016-02-27-16-50-08.jpg'   670   ../../../public/img/pages/steklo/dver-sauna.jpg
+pagethumbs   'dveri/dver-122.jpg'   680   ../../../public/img/pages/steklo/dver-fire.jpg
+pagethumbs   'dveri/2015-02-21-16-07-50.jpg'   680   ../../../public/img/pages/steklo/dver-fire-2.jpg
+pagethumbs   'dveri/dver-154.jpg'   680   ../../../public/img/pages/steklo/dver-office.jpg
+pagethumbs   'dveri/dver-53.jpg'   680   ../../../public/img/pages/steklo/dver-office-2.jpg
+pagethumbs   'dveri/2013-11-27-09-32-42.jpg'   680   ../../../public/img/pages/steklo/dver-office-3.jpg
+pagethumbs   'dveri/dver-123.jpg'   680   ../../../public/img/pages/steklo/dver-vhod.jpg
+pagethumbs   'dveri/2013-01-08-17-57-30.jpg'   680   ../../../public/img/pages/steklo/dver-vhod-2.jpg
+pagethumbs   'dveri/dver-150.jpg'   680   ../../../public/img/pages/steklo/dver-slider.jpg
+pagethumbs   'dveri/dver-49.jpg'   680   ../../../public/img/pages/steklo/dver-slider-2.jpg
+pagethumbs   'dveri/dver-66.jpg'   680   ../../../public/img/pages/steklo/dver-slider-3.jpg
+pagethumbs   'dveri/dver-155.jpg'   680   ../../../public/img/pages/steklo/dver-interium.jpg
+pagethumbs   'dveri/dver-166.jpg'   680   ../../../public/img/pages/steklo/dver-interium-2.jpg
+pagethumbs   'dveri/dver-87.jpg'   680   ../../../public/img/pages/steklo/dver-interium-3.jpg
+pagethumbs   'dveri/dver-139.jpg'   680   ../../../public/img/pages/steklo/dver-interium-4.jpg
+pagethumbs   'dveri/2016-02-27-16-50-08.jpg'   680   ../../../public/img/pages/steklo/dver-sauna.jpg
 # стеклянные перегородки
-pagethumbs   'dush/dush-89.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-santekh.jpg
-pagethumbs   'lestnica/lestnica-19.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-santekh-2.jpg
-pagethumbs   'dush/dush-28.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-santekh-3.jpg
-pagethumbs   'peregorodki/peregorodka-58.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-karkas.jpg
-pagethumbs   'peregorodki/2013-11-09-10-26-56.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-karkas-2.jpg
-pagethumbs   'peregorodki/peregorodka-27.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-karkas-3.jpg
+pagethumbs   'dush/dush-89.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-santekh.jpg
+pagethumbs   'lestnica/lestnica-19.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-santekh-2.jpg
+pagethumbs   'dush/dush-28.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-santekh-3.jpg
+pagethumbs   'peregorodki/peregorodka-58.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-karkas.jpg
+pagethumbs   'peregorodki/2013-11-09-10-26-56.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-karkas-2.jpg
+pagethumbs   'peregorodki/peregorodka-27.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-karkas-3.jpg
+pagethumbs   'peregorodki/peregorodka-18.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-fire.jpg
+pagethumbs   'dveri/dver-170.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-fire-2.jpg
+pagethumbs   'peregorodki/peregorodka-89.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-office.jpg
+pagethumbs   'dveri/dver-47.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-office-2.jpg
+pagethumbs   'peregorodki/peregorodka-92.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-office-3.jpg
+pagethumbs   'peregorodki/peregorodka-98.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-mobile.jpg
+pagethumbs   'peregorodki/peregorodka-99.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-mobile-2.jpg
+pagethumbs   'peregorodki/08_impressive-glazed-corridor.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-glass.jpg
+pagethumbs   'peregorodki/peregorodka-54.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-glass-2.jpg
+pagethumbs   'peregorodki/peregorodka-87.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-glass-3.jpg
+pagethumbs   'peregorodki/2013-08-02-15-17-01.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-interium.jpg
+pagethumbs   'peregorodki/peregorodka-26.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-interium-2.jpg
+pagethumbs   'peregorodki/2013-02-14-19-35-57.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-interium-3.jpg
+pagethumbs   'dveri/dver-72.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-interium-4.jpg
+pagethumbs   'peregorodki/peregorodka-24.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-interium-5.jpg
+pagethumbs   'peregorodki/peregorodka-55.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-interium-6.jpg
+pagethumbs   'peregorodki/2013-08-17-17-36-47.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-interium-7.jpg
 
 
-pagethumbs   'peregorodki/peregorodka-18.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-fire.jpg
 
-pagethumbs   'peregorodki/peregorodka-89.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-office.jpg
-
-pagethumbs   'peregorodki/peregorodka-98.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-mobile.jpg
-
-pagethumbs   'peregorodki/peregorodka-28.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-glass.jpg
-
-pagethumbs   'peregorodki/2013-08-02-15-17-01.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-interium.jpg
 
 pagethumbs   'peregorodki/2013-02-14-19-35-57.jpg'   500  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-dekor.jpg
 

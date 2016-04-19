@@ -19,8 +19,8 @@
     	<h1>{{ $item->title }}</h1>
 
 
-        <a href="{{ $item->image }}" class="thumb left" data-sub-html="{{ $item->title }}"> 	
-        <img src="{{ $item->image }}" alt="{{ $item->title }}" class="img img-responsive col-sm-6 col-xs-12"></a>
+        <a href="{{ $item->image }}" class="thumb left col-sm-6 col-xs-12" data-sub-html="{{ $item->title }}"> 	
+        <img src="{{ $item->image }}" alt="{{ $item->title }}"></a>
 
         <div class="introtext">{!! $item->introtext !!}</div>
         <div class="fulltext">{!! $item->fulltext !!}</div>
