@@ -70,3 +70,7 @@ gulp
 после обновления пакета modernizr в bower надо еще вручную скомпилировать modernizr.js вот таким образом
 cd vendor\bower_components\modernizr
 node .\bin\modernizr -c .\lib\config-all.json`  // works. Relying on the shebang fails on Windows. 
+
+
+### цены на скинали
+https://fartuk.ru/uslugi_i_ceny/kuhonnye_fartuki/

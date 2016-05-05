@@ -32,6 +32,9 @@
         @elseif ($item->sef == 'santehnicheskie-peregorodki')
         <div class="order">@include('modules.calculators.dush-peregorodka')</div>
         <div class="clearfix"></div>
+        @elseif ($item->sef == 'steklyannye-fartuki-dlya-kukhni-skinali')
+        <div class="order">@include('modules.calculators.skinali')</div>
+        <div class="clearfix"></div>
 		    @endif
 
   </article>

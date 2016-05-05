@@ -251,7 +251,16 @@ pagethumbs   'dveri/2013-02-14-15.35.50.jpg'   680  ${w}x${h} ../../../public/im
 pagethumbs   'risunki/pesok-25.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-dekor-2.jpg
 pagethumbs   'dveri/dver-138.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-dekor-3.jpg
 pagethumbs   'dveri/dver-55.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-dekor-4.jpg
-
+pagethumbs   'peregorodki/peregorodka-76.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-slider.jpg
+pagethumbs   'peregorodki/peregorodka-74.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-slider-2.jpg
+pagethumbs   'peregorodki/peregorodka-80.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-slider-3.jpg
+# вместо peregorodka-slider-5 у меня тут peregorodka-interium-2
+cd ../sketch
+for i in parking*; 
+do cp $i ../../../public/img/pages/steklo/$i; 
+done 
+cd ../foto
+# душевые кабины
 
 
 pagethumbs   'peregorodki/peregorodka-76.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/peregorodka-slider.jpg
