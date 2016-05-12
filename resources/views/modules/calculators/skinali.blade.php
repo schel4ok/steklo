@@ -27,7 +27,10 @@
 </div>
 
 	<div class="row field_wrapper"></div>
-	<div class="row"><a href="javascript:void(0);" class="add_button" title="Add field">ещё стекло</a></div>
+	<div class="row add_button"><a href="javascript:void(0);" title="Add field">ещё стекло</a></div>
+	<div class="row del_button"></div>
+
+
 
 
 	<div class="form-group col-xs-6"><h4>Кол-во блоков розеток, шт.</h4></div>
@@ -89,7 +92,7 @@
     	</select>
 	</div></div>
 
-	<div class="col-xs-6"><h4>Доставка</h4></div>
+	<div class="col-xs-6"><h4>Монтаж</h4></div>
 	<div class="col-xs-6"><div class="custom-dropdown custom-dropdown--white">
     	<select class="montazh custom-dropdown__select custom-dropdown__select--white">
         	<option data-price="0" value="Нет" selected="selected">Нет</option>
@@ -109,16 +112,16 @@
 
 
 <div class="result col-xs-12 col-sm-6"><h4>Итоговая спецификация</h4>
-Стекло: <span class="glass"></span> <span class="razmer"></span><br />
-Подсветка: <span class="led"></span><br />
-Кол-во блоков розеток: <span class="rozetki"></span> шт.<br />
-Кол-во отверстий: <span class="otverstija"></span> шт.<br />
-Кол-во крепежей: <span class="krepej"></span> шт.<br />
-Декор: <span class="dekor"></span><br />
-Доставка: <span class="dostavka"></span><br />
-Расстояние за МКАД: <span class="zamkad"></span>км<br />
-Монтаж: <span class="montazh"></span><br />
-<br />Стоимость фартука: <span class="price"></span>
+Стекло: <span class="glass"></span> <span class="razmer"></span> <span class="GlassPrice">0</span>руб<br />
+Подсветка: <span class="led"></span> <span class="LedPrice">0</span>руб<br />
+Кол-во блоков розеток: <span class="rozetki"></span> шт. <span class="RozetkiPrice">0</span>руб<br />
+Кол-во отверстий: <span class="otverstija"></span> шт. <span class="OtverstijaPrice">0</span>руб<br />
+Кол-во крепежей: <span class="krepej"></span> шт. <span class="KrepejPrice">0</span><br />
+Декор: <span class="dekor"></span> <span class="DekorPrice">0</span>руб<br />
+Доставка: <span class="dostavka"></span> <span class="DostavkaPrice">0</span>руб<br />
+Расстояние за МКАД: <span class="zamkad"></span>км <span class="ZamkadPrice">0</span>руб<br />
+Монтаж: <span class="montazh"></span> <span class="MontazhPrice">0</span>руб<br />
+<br />Стоимость фартука: <span class="price">0</span>руб
 </div>
 
 

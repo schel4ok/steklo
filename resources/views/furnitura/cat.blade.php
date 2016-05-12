@@ -20,7 +20,7 @@
 @if (count($categories) > 0)
 <div class="category furnitura">
  @foreach ($categories as $item)
-	<div class="col-xs-6 col-sm-4 col-md-3 padding-5 categories">
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 padding-5 categories">
 		<a href="{{ $category->sef }}/{{ $item->sef }}" class="thumbnail" title="{{ $item->title }}">
 			<img src="/{{ $item->image }}" alt="{{ $item->title }}">
 			<span class="caption">{{ $item->title }}</span>
@@ -35,7 +35,7 @@
 @if (count($goods) > 0)
 <div class="category furnitura">
   @foreach ($goods as $item)
-	<div class="col-xs-6 col-sm-4 col-md-3 padding-5 items">
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 padding-5 items">
 		<a href="/furnitura/{{ $item->sef }}" class="thumbnail" title="{{ $item->title }}">
 			<img src="/img/furnitura/{{ $item->id }}-medium.jpg" alt="{{ $item->title }}">
 			<span class="caption">{{ $item->title }}</span>

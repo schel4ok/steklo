@@ -6,23 +6,31 @@ $(document).ready(function () {
   // Add/Remove Input Fields Dynamically
     var maxField = 10; //Input fields increment limitation
     var addButton = $('.add_button'); //Add button selector
+    var delButton = $('.del_button'); //Del button selector
+    var delButtonHTML = '<a href="javascript:void(0);" class="remove_button" title="Remove field">удалить стекло</a>'; //Add button selector
+
+
     var wrapper = $('.field_wrapper'); //Input field wrapper
     var x = 1; //Initial field counter is 1
-    
+
 
     $(addButton).click(function(e){ //Once add button is clicked
         e.preventDefault();
         if(x < maxField){ //Check maximum number of input fields
             var y = x + 1;
-            var fieldHTML = '<div class="row"><div class="form-group col-xs-6 col-sm-4"><h4>' + y + '-е стекло</h4></div><div class="form-group col-xs-3 col-sm-4"><input name="size_b' + y + '" type="text" class="form-control"><label for="size_b">Ширина, мм</label></div><div class="form-group col-xs-3 col-sm-4"><input name="size_h' + y + '" type="text" class="form-control"><label for="size_h">Высота, мм</label></div><a href="javascript:void(0);" class="remove_button" title="Remove field">удалить стекло</a></div>'; //New input field html 
+            var fieldHTML = '<div class="row moreglass"><div class="form-group col-xs-6 col-sm-4"><h4>' + y + '-е стекло</h4></div><div class="form-group col-xs-3 col-sm-4"><input name="size_b' + y + '" type="text" class="form-control"><label for="size_b">Ширина, мм</label></div><div class="form-group col-xs-3 col-sm-4"><input name="size_h' + y + '" type="text" class="form-control"><label for="size_h">Высота, мм</label></div></div>'; //New input field html 
+
             $(wrapper).append(fieldHTML); // Add field html
+            $("a.remove_button").remove(); // Add delete button html
+            $(delButton).append(delButtonHTML); // Add delete button html
+
             x++; //Increment field counter
 
         }
     });
     $(wrapper).on('click', '.remove_button', function(e){ //Once remove button is clicked
         e.preventDefault();
-        $(this).parent('div').remove(); //Remove field html
+        $('.field_wrapper :last-child').remove(); //Remove field html
         x--; //Decrement field counter
         y--;
     });
@@ -122,6 +130,16 @@ $(document).ready(function () {
 
     var TotalSkinali = GlassPrice + DekorPrice + MontazhPrice + LedPrice + RozetkiPrice + OtverstijaPrice + KrepejPrice + DostavkaPrice + ZamkadPrice;
 
+
+    $('.result').children('.GlassPrice').html( GlassPrice );
+    $('.result').children('.LedPrice').html( LedPrice );
+    $('.result').children('.RozetkiPrice').html( RozetkiPrice );
+    $('.result').children('.OtverstijaPrice').html( OtverstijaPrice );
+    $('.result').children('.KrepejPrice').html( KrepejPrice );
+    $('.result').children('.DekorPrice').html( DekorPrice );
+    $('.result').children('.DostavkaPrice').html( DostavkaPrice );
+    $('.result').children('.ZamkadPrice').html( ZamkadPrice );
+    $('.result').children('.MontazhPrice').html( MontazhPrice );
 
     $('.result').children('.price').html( TotalSkinali );
     return false;
