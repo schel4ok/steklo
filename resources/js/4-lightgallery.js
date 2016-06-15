@@ -1,4 +1,4 @@
-/*! lightgallery - v1.2.15 - 2016-03-10
+/*! lightgallery - v1.2.19 - 2016-05-17
 * http://sachinchoolur.github.io/lightGallery/
 * Copyright (c) 2016 Sachin N; Licensed Apache 2.0 */
 (function($, window, document, undefined) {
@@ -32,6 +32,8 @@
         slideEndAnimatoin: true,
         hideControlOnEnd: false,
         mousewheel: true,
+
+        getCaptionFromTitleOrAlt: true,
 
         // .lg-item || '.lg-sub-html'
         appendSubHtmlTo: '.lg-sub-html',
@@ -462,7 +464,11 @@
             if (this.$items.eq(index).attr('data-sub-html-url')) {
                 subHtmlUrl = this.$items.eq(index).attr('data-sub-html-url');
             } else {
+
                 subHtml = this.$items.eq(index).attr('data-sub-html');
+                if (this.s.getCaptionFromTitleOrAlt && !subHtml) {
+                    subHtml = this.$items.eq(index).attr('title') || this.$items.eq(index).find('img').first().attr('alt');
+                }
             }
         }
 
@@ -474,8 +480,6 @@
                 var fL = subHtml.substring(0, 1);
                 if (fL === '.' || fL === '#') {
                     subHtml = $(subHtml).html();
-                } else {
-                    subHtml = subHtml;
                 }
             } else {
                 subHtml = '';
@@ -2134,7 +2138,8 @@
         vimeoPlayerParams: false,
         dailymotionPlayerParams: false,
         vkPlayerParams: false,
-        videojs: false
+        videojs: false,
+        videojsOptions: {}
     };
 
     var Video = function(element) {
@@ -2159,7 +2164,7 @@
             if (html) {
                 if (_this.core.s.videojs) {
                     try {
-                        videojs(_this.core.$slide.eq(index).find('.lg-html5').get(0), {}, function() {
+                        videojs(_this.core.$slide.eq(index).find('.lg-html5').get(0), _this.core.s.videojsOptions, function() {
                             if (!_this.videoLoaded) {
                                 this.play();
                             }
@@ -2197,7 +2202,7 @@
                         if (_html) {
                             if (_this.core.s.videojs) {
                                 try {
-                                    videojs(_this.core.$slide.eq(_this.core.index).find('.lg-html5').get(0), {}, function() {
+                                    videojs(_this.core.$slide.eq(_this.core.index).find('.lg-html5').get(0), _this.core.s.videojsOptions, function() {
                                         this.play();
                                     });
                                 } catch (e) {
@@ -2267,7 +2272,7 @@
                         }
                     }
 
-                    $el.addClass('lg-video-palying');
+                    $el.addClass('lg-video-playing');
 
                 }
             }
@@ -2337,7 +2342,7 @@
         });
 
         _this.core.$el.on('onAfterSlide.lg.tm', function(event, prevIndex) {
-            _this.core.$slide.eq(prevIndex).removeClass('lg-video-palying');
+            _this.core.$slide.eq(prevIndex).removeClass('lg-video-playing');
         });
     };
 
@@ -2420,6 +2425,7 @@
     var defaults = {
         scale: 1,
         zoom: true,
+        actualSize: true,
         enableZoomAfter: 300
     };
 
@@ -2447,6 +2453,10 @@
 
         var _this = this;
         var zoomIcons = '<span id="lg-zoom-in" class="lg-icon"></span><span id="lg-zoom-out" class="lg-icon"></span>';
+
+        if (_this.core.s.actualSize) {
+            zoomIcons += '<span id="lg-actual-size" class="lg-icon"></span>';
+        }
 
         this.core.$outer.find('.lg-toolbar').append(zoomIcons);
 
@@ -2497,7 +2507,10 @@
 
             $image.css('transform', 'scale3d(' + scaleVal + ', ' + scaleVal + ', 1)').attr('data-scale', scaleVal);
 
-            $image.parent().css('transform', 'translate3d(-' + x + 'px, -' + y + 'px, 0)').attr('data-x', x).attr('data-y', y);
+            $image.parent().css({
+                left: -x + 'px',
+                top: -y + 'px'
+            }).attr('data-x', x).attr('data-y', y);
         };
 
         var callScale = function() {
@@ -2514,7 +2527,7 @@
             zoom(scale);
         };
 
-        var actualSize = function(event, $image, index) {
+        var actualSize = function(event, $image, index, fromIcon) {
             var w = $image.width();
             var nw;
             if (_this.core.s.dynamic) {
@@ -2534,8 +2547,14 @@
                 }
             }
 
-            _this.pageX = event.pageX || event.originalEvent.targetTouches[0].pageX;
-            _this.pageY = event.pageY || event.originalEvent.targetTouches[0].pageY;
+            if (fromIcon) {
+                _this.pageX = $(window).width() / 2;
+                _this.pageY = ($(window).height() / 2) + $(window).scrollTop();
+            } else {
+                _this.pageX = event.pageX || event.originalEvent.targetTouches[0].pageX;
+                _this.pageY = event.pageY || event.originalEvent.targetTouches[0].pageY;
+            }
+
             callScale();
             setTimeout(function() {
                 _this.core.$outer.removeClass('lg-grabbing').addClass('lg-grab');
@@ -2589,6 +2608,10 @@
                 scale += _this.core.s.scale;
                 callScale();
             }
+        });
+
+        $('#lg-actual-size').on('click.lg', function(event) {
+            actualSize(event, _this.core.$slide.eq(_this.core.index).find('.lg-image'), _this.core.index, true);
         });
 
         // Reset zoom on slide change
@@ -2681,7 +2704,10 @@
                 }
 
                 if ((Math.abs(endCoords.x - startCoords.x) > 15) || (Math.abs(endCoords.y - startCoords.y) > 15)) {
-                    _$el.css('transform', 'translate3d(' + distanceX + 'px, ' + distanceY + 'px, 0)');
+                    _$el.css({
+                        left: distanceX + 'px',
+                        top: distanceY + 'px'
+                    });
                 }
 
             }
@@ -2769,7 +2795,10 @@
                     distanceX = -Math.abs(_$el.attr('data-x'));
                 }
 
-                _$el.css('transform', 'translate3d(' + distanceX + 'px, ' + distanceY + 'px, 0)');
+                _$el.css({
+                    left: distanceX + 'px',
+                    top: distanceY + 'px'
+                });
             }
         });
 
@@ -2838,7 +2867,11 @@
                 distanceX = -Math.abs(_$el.attr('data-x'));
             }
 
-            _$el.css('transform', 'translate3d(' + distanceX + 'px, ' + distanceY + 'px, 0)');
+            _$el.css({
+                left: distanceX + 'px',
+                top: distanceY + 'px'
+            });
+
         }
     };
 
@@ -2859,7 +2892,6 @@
     $.fn.lightGallery.modules.zoom = Zoom;
 
 })(jQuery, window, document);
-
 (function($, window, document, undefined) {
 
     'use strict';
@@ -2892,13 +2924,13 @@
         });
 
         // Listen hash change and change the slide according to slide value
-        $(window).on('hashchange', function() {
+        $(window).on('hashchange.lg.hash', function() {
             _hash = window.location.hash;
             var _idx = parseInt(_hash.split('&slide=')[1], 10);
 
             // it galleryId doesn't exist in the url close the gallery
             if ((_hash.indexOf('lg=' + _this.core.s.galleryId) > -1)) {
-                _this.core.slide(_idx);
+                _this.core.slide(_idx, false, false);
             } else if (_this.core.lGalleryOn) {
                 _this.core.destroy();
             }
@@ -2907,6 +2939,10 @@
     };
 
     Hash.prototype.destroy = function() {
+
+        if (!this.core.s.hash) {
+            return;
+        }
 
         // Reset to old hash value
         if (this.oldHash && this.oldHash.indexOf('lg=' + this.core.s.galleryId) < 0) {
@@ -2918,6 +2954,8 @@
                 window.location.hash = '';
             }
         }
+
+        this.core.$el.off('.lg.hash');
 
     };
 

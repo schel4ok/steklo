@@ -1,5 +1,8 @@
 <h4 class="title google-alert alert-notice"><i class="fa fa-shopping-cart fa-lg text-primary"></i>  <span>Заказать стеклянный фартук для кухни</span></h4>
-<div class="text-primary">* обязательное поле</div>
+<div class="text-primary">
+	* обязательное поле<br />
+	** введите общую ширину и высоту фартука для расчета стоимости
+</div>
 
 
 
@@ -15,7 +18,7 @@
 	<input name="calc" type="hidden" value="skinali">
 
 <div class="row">
-	<div class="form-group col-xs-6 col-sm-4"><h4>1-ое стекло</h4></div>
+	<div class="form-group col-xs-6 col-sm-4"><h4>Размеры фартука</h4></div>
 	<div class="form-group col-xs-3 col-sm-4">
 		<input name="size_b1" type="text" class="form-control">
 		<label for="size_b">Ширина, мм</label>
@@ -26,12 +29,10 @@
 	</div>
 </div>
 
-	<div class="row field_wrapper"></div>
-	<div class="row add_button"><a href="javascript:void(0);" title="Add field">ещё стекло</a></div>
-	<div class="row del_button"></div>
-
-
-
+	<!-- для добавления нескольких стекол
+	<div class="row fieldwrapper"><div class="row"></div></div>
+	<div class="row add_button"><a href="javascript:void(0);" title="ещё стекло">ещё стекло</a></div>
+	-->
 
 	<div class="form-group col-xs-6"><h4>Кол-во блоков розеток, шт.</h4></div>
 	<div class="form-group col-xs-6">
@@ -58,7 +59,7 @@
 
 	<div class="col-xs-6"><h4>Стекло</h4></div>
 	<div class="col-xs-6"><div class="custom-dropdown custom-dropdown--white">
-    	<select class="glass custom-dropdown__select custom-dropdown__select--white">
+    	<select class="glass custom-dropdown__select custom-dropdown__select--white" name="glass">
         	<option data-price="2200" value="Прозрачное" selected="selected">Прозрачное (стандарт)</option>
         	<option data-price="2800" value="Матовое">Matelux (Матовое)</option>
         	<option data-price="4000" value="Осветленное">Optiwhite (Осветленное)</option>
@@ -67,8 +68,8 @@
 
 	<div class="col-xs-6"><h4>Подсветка</h4></div>
 	<div class="col-xs-6"><div class="custom-dropdown custom-dropdown--white">
-    	<select class="led custom-dropdown__select custom-dropdown__select--white">
-        	<option data-price="0" value="Нет" selected="selected">Нет</option>
+    	<select class="led custom-dropdown__select custom-dropdown__select--white" name="led">
+        	<option data-price="0" value="нет" selected="selected">нет</option>
         	<option data-price="2500" value="Однотонная">Однотонная</option>
         	<option data-price="3000" value="Цветная RGB">Цветная RGB</option>
     	</select>
@@ -76,8 +77,8 @@
 
 	<div class="col-xs-6"><h4>Декор</h4></div>
 	<div class="col-xs-6"><div class="custom-dropdown custom-dropdown--white">
-    	<select class="dekor custom-dropdown__select custom-dropdown__select--white">
-        	<option data-price="0" value="Нет" selected="selected">Нет</option>
+    	<select class="dekor custom-dropdown__select custom-dropdown__select--white" name="dekor">
+        	<option data-price="0" value="нет" selected="selected">нет</option>
         	<option data-price="1500" value="Покраска одним цветом">Покраска одним цветом</option>
         	<option data-price="2500" value="Фотопечать">Фотопечать</option>
     	</select>
@@ -85,43 +86,41 @@
 
 	<div class="col-xs-6"><h4>Доставка</h4></div>
 	<div class="col-xs-6"><div class="custom-dropdown custom-dropdown--white">
-    	<select class="dostavka custom-dropdown__select custom-dropdown__select--white">
-        	<option data-price="0" value="Нет" selected="selected">Нет</option>
-        	<option data-price="1500" value="в пределах МКАД">в пределах МКАД</option>
-        	<option data-price="1500" value="за МКАД">за МКАД</option>
+    	<select class="dostavka custom-dropdown__select custom-dropdown__select--white" name="dostavka">
+        	<option data-price="0" value="нет" selected="selected" data-text="нет">нет</option>
+        	<option data-price="1500" value="в пределах МКАД" data-text="в пределах МКАД">в пределах МКАД</option>
+        	<option data-price="1500" value="zamkad" data-text="за МКАД">за МКАД</option>
     	</select>
 	</div></div>
 
+	<div class="col-xs-6 zamkad"><h4>Расстояние за МКАД, км</h4></div>
+	<div class="form-group zamkad col-xs-6">
+		<input type="text" name="zamkad" class="form-control">
+		<label for="zamkad">Расстояние за МКАД</label>
+	</div>
+	<div class="row" style="width:100%;"></div>
+
 	<div class="col-xs-6"><h4>Монтаж</h4></div>
 	<div class="col-xs-6"><div class="custom-dropdown custom-dropdown--white">
-    	<select class="montazh custom-dropdown__select custom-dropdown__select--white">
-        	<option data-price="0" value="Нет" selected="selected">Нет</option>
+    	<select class="montazh custom-dropdown__select custom-dropdown__select--white" name="montazh">
+        	<option data-price="0" value="нет" selected="selected">нет</option>
         	<option data-price="1500" value="на саморезы">на саморезы</option>
         	<option data-price="1800" value="на клей">на клей</option>
     	</select>
 	</div></div>
 
 
-	<div class="col-xs-6"><h4>Расстояние за МКАД, км</h4></div>
-	<div class="form-group col-xs-6">
-		<input type="text" name="zamkad" class="form-control">
-		<label for="zamkad">Расстояние за МКАД</label>
-	</div>
-	<div class="row" style="width:100%;"></div>
-
-
-
 <div class="result col-xs-12 col-sm-6"><h4>Итоговая спецификация</h4>
-Стекло: <span class="glass"></span> <span class="razmer"></span> <span class="GlassPrice">0</span>руб<br />
-Подсветка: <span class="led"></span> <span class="LedPrice">0</span>руб<br />
-Кол-во блоков розеток: <span class="rozetki"></span> шт. <span class="RozetkiPrice">0</span>руб<br />
-Кол-во отверстий: <span class="otverstija"></span> шт. <span class="OtverstijaPrice">0</span>руб<br />
-Кол-во крепежей: <span class="krepej"></span> шт. <span class="KrepejPrice">0</span><br />
-Декор: <span class="dekor"></span> <span class="DekorPrice">0</span>руб<br />
-Доставка: <span class="dostavka"></span> <span class="DostavkaPrice">0</span>руб<br />
-Расстояние за МКАД: <span class="zamkad"></span>км <span class="ZamkadPrice">0</span>руб<br />
-Монтаж: <span class="montazh"></span> <span class="MontazhPrice">0</span>руб<br />
-<br />Стоимость фартука: <span class="price">0</span>руб
+Стекло: <span class="glass">Прозрачное</span> <span class="razmer"></span>  <span class="GlassPrice">0</span>руб<br />
+Кол-во блоков розеток: <span class="rozetki">0</span> шт. <span class="RozetkiPrice">0</span>руб<br />
+Кол-во отверстий: <span class="otverstija">0</span> шт. <span class="OtverstijaPrice">0</span>руб<br />
+Кол-во крепежей: <span class="krepej">0</span> шт. <span class="KrepejPrice">0</span>руб<br />
+Подсветка: <span class="led">нет</span> <span class="LedPrice">0</span>руб<br />
+Декор: <span class="dekor">нет</span> <span class="DekorPrice">0</span>руб<br />
+Доставка: <span class="dostavka">нет</span> <span class="DostavkaPrice">0</span>руб<br />
+Расстояние за МКАД: <span class="zamkad">0</span>км <span class="ZamkadPrice">0</span>руб<br />
+Монтаж: <span class="montazh">нет</span> <span class="MontazhPrice">0</span>руб<br />
+<br />Стоимость фартука: <span class="total">0</span>руб
 </div>
 
 

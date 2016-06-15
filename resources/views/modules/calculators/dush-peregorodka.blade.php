@@ -27,73 +27,71 @@
 	</div>
 
 
-	<div class="form-group glass col-xs-12 col-sm-6"><h4>Стекло</h4>
- 
-		<input type="radio" data-price="3000" name="glass" class="radio" value="Прозрачное">
-		<label for="glass" class="radio">Прозрачное (стандарт)</label>
+	<div class="col-xs-6"><h4>Стекло</h4></div>
+	<div class="col-xs-6"><div class="custom-dropdown custom-dropdown--white">
+    	<select class="glass custom-dropdown__select custom-dropdown__select--white">
+        	<option data-price="3000" value="Прозрачное" selected="selected">Прозрачное (стандарт)</option>
+        	<option data-price="4000" value="Матовое">Матовое (Matelux)</option>
+        	<option data-price="5200" value="Бронза">Бронза (Bronze)</option>
+        	<option data-price="6200" value="Матовая Бронза">Матовая Бронза (Matelux Bronze)</option>
+        	<option data-price="7500" value="Черное">Черное (Black pearl)</option>
+    	</select>
+	</div></div>
 
-		<input type="radio" data-price="4000" name="glass" class="radio" value="Матовое">
-		<label for="glass" class="radio">Матовое</label>
-
-		<input type="radio" data-price="5200" name="glass" class="radio" value="Бронза">
-		<label for="glass" class="radio">Бронза</label>
-
-		<input type="radio" data-price="6200" name="glass" class="radio" value="Матовая бронза">
-		<label for="glass" class="radio">Матовая бронза</label>
-
-	</div>
- 
-
-	<div class="form-group furnitura col-xs-12 col-sm-6"><h4>Фурнитура для крепления стекла</h4>
-
-		<input type="radio" data-price="1500" name="furnitura" class="radio" value="П-образный профиль 10мм анодированный">
-		<label for="furnitura" class="radio">П-образный профиль 10мм анодированный</label>
-
-		<input type="radio" data-price="3000" name="furnitura" class="radio" value="П-образный профиль 10мм нержавеющий">
-		<label for="furnitura" class="radio">П-образный профиль 10мм нержавеющий</label>
-
-		<input type="radio" data-price="2600" name="furnitura" class="radio" value="Коннекторы (4шт)">
-		<label for="furnitura" class="radio">Коннекторы (4шт)</label>
-
-		<input type="radio" data-price="9000" name="furnitura" class="radio" value="Зажимной профиль 30мм">
-		<label for="furnitura" class="radio">Зажимной профиль 30мм</label>
-
-		<input type="radio" data-price="4400" name="furnitura" class="radio" value="Зажимной профиль 40мм">
-		<label for="furnitura" class="radio">Зажимной профиль 40мм</label>
-
-	</div>
+	<div class="col-xs-6"><h4>Фурнитура для крепления стекла</h4></div>
+	<div class="col-xs-6"><div class="custom-dropdown custom-dropdown--white">
+    	<select class="furnitura custom-dropdown__select custom-dropdown__select--white">
+        	<option data-price="1500" value="П-образный профиль 10мм анодированный" selected="selected">П-образный профиль 10мм анодированный</option>
+        	<option data-price="3000" value="П-образный профиль 10мм нержавеющий">П-образный профиль 10мм нержавеющий</option>
+        	<option data-price="2600" value="Коннекторы (4шт)">Коннекторы (4шт)</option>
+        	<option data-price="9000" value="Зажимной профиль 30мм">Зажимной профиль 30мм</option>
+        	<option data-price="4400" value="Зажимной профиль 40мм">Зажимной профиль 40мм</option>
+    	</select>
+	</div></div>
 
 
-	<div class="form-group verh-truba col-xs-12 col-sm-6">
+	<div class="form-group verh-truba col-xs-12 col-sm-4">
 		<input type="checkbox" data-price="3100" name="verh_truba" class="check" value="Штанга длиной 1м, коннектор штанга-стена, коннектор штанга-стекло">
 		<label for="verh_truba" class="check">Доп крепление верхней штангой</label>
 	</div>
 
-	<div class="form-group uplotniteli col-xs-12 col-sm-6">
+	<div class="form-group uplotniteli col-xs-12 col-sm-4">
 		<input type="checkbox" data-price="500" name="uplotniteli" class="check" value="2 шт по 2200мм">
 		<label for="uplotniteli" class="check">Силиконовые уплотнители</label>
 	</div>
 
-	<div class="form-group dostavka col-xs-12 col-sm-6">
-		<input type="checkbox" data-price="2000" name="dostavka" class="check" value="в пределах МКАД">
-		<label for="dostavka" class="check">Доставка</label>
-	</div>
-
-	<div class="form-group montazh col-xs-12 col-sm-6">
+	<div class="form-group montazh col-xs-12 col-sm-4">
 		<input type="checkbox" data-price="1500" name="montazh" class="check" value="с монтажом">
 		<label for="montazh" class="check">Монтаж</label>
 	</div>
 
+	<div class="col-xs-6"><h4>Доставка</h4></div>
+	<div class="col-xs-6"><div class="custom-dropdown custom-dropdown--white">
+    	<select class="dostavka custom-dropdown__select custom-dropdown__select--white">
+        	<option data-price="0" value="нет" selected="selected">нет</option>
+        	<option data-price="1500" value="в пределах МКАД">в пределах МКАД</option>
+        	<option data-price="1500" value="за МКАД">за МКАД</option>
+    	</select>
+	</div></div>
+
+	<div class="col-xs-6"><h4>Расстояние за МКАД, км</h4></div>
+	<div class="form-group col-xs-6">
+		<input type="text" name="zamkad" class="form-control">
+		<label for="zamkad">Расстояние за МКАД</label>
+	</div>
+	<div class="row" style="width:100%;"></div>
+
 
 <div class="result col-xs-12 col-sm-6"><h4>Итоговая спецификация</h4>
-Размер (в миллиметрах): <span class="razmer"></span><br />
-Стекло: <span class="glass"></span><br />
-Фурнитура: <span class="furnitura"></span><br />
-Доп крепление верхней штангой: <span class="verh_truba"></span><br />
-Силиконовые уплотнители: <span class="uplotniteli"></span><br />
-Доставка: <span class="dostavka"></span><br />
-Монтаж: <span class="montazh"></span><br />
-<br />Стоимость двери: <span class="price"></span>
+Размер (в миллиметрах): <span class="razmer"></span>  <br />
+Стекло: <span class="glass">Прозрачное</span> <span class="GlassPrice">0</span>руб<br />
+Фурнитура: <span class="furnitura">П-образный профиль 10мм анодированный</span> <span class="FurnituraPrice">0</span>руб<br />
+Доп крепление верхней штангой: <span class="verh_truba">нет</span> <span class="VerhTrubaPrice">0</span>руб<br />
+Силиконовые уплотнители: <span class="uplotniteli">нет</span> <span class="UplotniteliPrice">0</span>руб<br />
+Доставка: <span class="dostavka">нет</span> <span class="DostavkaPrice">0</span>руб<br />
+Расстояние за МКАД: <span class="zamkad">0</span>км <span class="ZamkadPrice">0</span>руб<br />
+Монтаж: <span class="montazh">нет</span> <span class="MontazhPrice">0</span>руб<br />
+<br />Стоимость перегородки: <span class="price">0</span>руб
 </div>
 
 

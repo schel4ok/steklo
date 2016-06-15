@@ -62,3 +62,8 @@ http://code.tutsplus.com/tutorials/testing-laravel-controllers--net-31456
 
 Laravel Cheat Sheet
 http://cheats.jesse-obrien.ca/
+
+
+#на странице Стеклянные фартуки для кухни "Скинали" сделать:
+- добавление нескольких стекол как тут https://fartuk.ru/uslugi_i_ceny/kuhonnye_fartuki/
+- и расчет общей квадратуры стекла

@@ -24,7 +24,7 @@
 	<![endif]-->
 	
 </head>
-<body>
+<body ng-app="app">
 
 <div id="main" class="container-fluid">
 

@@ -37,10 +37,11 @@ elixir(function(mix) {
   // Copy java
   .copy('vendor/bower_components/jquery/dist/jquery.js', 'resources/js/1-jquery.js')  
   .copy('vendor/bower_components/bootstrap/dist/js/bootstrap.js', 'resources/js/2-bootstrap.js')  
- // .copy('vendor/bower_components/modernizr/modernizr.js', 'resources/js/3-modernizr.js')  
+  .copy('vendor/bower_components/angular/angular.js', 'resources/js/3-angular.js')  
   .copy('vendor/bower_components/lightgallery/dist/js/lightgallery-all.js', 'resources/js/4-lightgallery.js')  
   .copy('vendor/bower_components/lightslider/dist/js/lightslider.js', 'resources/js/5-lightslider.js')  
-  //.copy('vendor/bower_components/selectize/dist/js/standalone/selectize.js', 'resources/js/6-selectize.js')  
+
+
 
 //vendor\bower_components\modernizr
 

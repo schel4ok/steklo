@@ -24,12 +24,12 @@
 		  		<div class="col-sm-8">
 		  			Стекло - натуральный, экологически чистый материал, делающий интерьер более изысканным, лёгким, светлым и современным.
 		  			
-            <div class="list-icons">
-              <div><div class="fa fa-check"></div><div>большой простор для фантазии при оформлении помещения</div></div>
-              <div><div class="fa fa-check"></div><div>простота и скорость установки</div></div>
-              <div><div class="fa fa-check"></div><div>отсутствие грязных работ</div></div>
-              <div><div class="fa fa-check"></div><div>больше света в помещении</div></div>
-        		</div> 
+            <ul class="list-icons">
+              <li><i class="fa fa-check"></i>большой простор для фантазии при оформлении помещения</li>
+              <li><i class="fa fa-check"></i>простота и скорость установки</li>
+              <li><i class="fa fa-check"></i>отсутствие грязных работ</li>
+              <li><i class="fa fa-check"></i>больше света в помещении</li>
+        		</ul> 
 
         	</div>
           

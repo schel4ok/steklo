@@ -4,14 +4,11 @@
 		  </div>
 		  <div class="panel-body">
 
-		  			<div class="list-icons">
+		  			<ul class="list-icons">
 		  			@foreach ($popular as $item)
-		  				<div>
-        				<div class="fa fa-hand-o-right"></div> 
-        				<div>{{ $item->title }}</div>
-        				</div>
+		  				<li><i class="fa fa-hand-o-right"></i>{{ $item->title }}</li>
         			@endforeach
-        			</div> 
+        			</ul> 
 
   		  </div>
   		</div>

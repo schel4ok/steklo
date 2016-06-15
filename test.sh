@@ -16,15 +16,10 @@ gifresize() {
 
 
 cd resources/img/foto
-# стеклянные душевые
-pagethumbs   'polki/polka-04.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/polka-01.jpg
-pagethumbs   'polki/polka-14.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/mebel-01.jpg
-pagethumbs   'risunki/IMG_20150419_192650.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/mebel-02.jpg
-pagethumbs   'reception/reception-05.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/reception-01.jpg
-pagethumbs   'stoly/stol-10.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/stol-01.jpg
-pagethumbs   'bar/bar-01.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/bar-01.jpg
-pagethumbs   'shkafy/shkaf-04.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/shkaf-01.jpg
-pagethumbs   'vitriny/2013-05-03-19-24-14.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/vitrina-01.jpg
-pagethumbs   'vitriny/vitrina-02.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/vitrina-02.jpg
-pagethumbs   'fartuki/fartuk-02.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/fartuk-01.jpg
-pagethumbs   'oblicovka-sten/oblicovka-sten-05.jpg'   680  ${w}x${h} ../../../public/img/pages/steklo/oblicovka-01.jpg
+# рисунки
+pagethumbs   'peregorodki/peregorodka-35.jpg'   680  ${w}x${h} ../../../public/img/faq/peregorodka-01.jpg
+pagethumbs   'peregorodki/peregorodka-30.jpg'   680  ${w}x${h} ../../../public/img/faq/peregorodka-02.jpg
+pagethumbs   'peregorodki/peregorodka-44.jpg'   680  ${w}x${h} ../../../public/img/faq/peregorodka-03.jpg
+pagethumbs   'peregorodki/peregorodka-91.jpg'   680  ${w}x${h} ../../../public/img/faq/peregorodka-04.jpg
+pagethumbs   'peregorodki/peregorodka-92.jpg'   680  ${w}x${h} ../../../public/img/faq/peregorodka-05.jpg
+pagethumbs   'peregorodki/2013-05-03-19-23-50.jpg'   680  ${w}x${h} ../../../public/img/faq/peregorodka-06.jpg

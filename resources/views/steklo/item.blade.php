@@ -26,6 +26,15 @@
         <div class="fulltext">{!! $item->fulltext !!}</div>
        	<div class="clearfix"></div>
 
+ 
+
+<div class="list-icons">
+<li class="panel-title"><i class="fa fa-camera fa-lg"></i>Посмотреть больше фотографий стеклянных дверей в <a href="/foto/risunki">галерее</a>.</li>
+</div>
+
+        <div class="clearfix"></div>
+
+
        	@if ($item->sef == 'steklyannye-dveri-dlya-sauny')
         <div class="order">@include('modules.calculators.sauna')</div>
 		    <div class="clearfix"></div>

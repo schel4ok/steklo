@@ -17,7 +17,7 @@
 
 @section('content')
 
-	<article>
+	<article class="news">
 
         <i class="fa fa-calendar text-primary"> {{ date('d M Y', strtotime($item->created_at)) }} </i>
         <h1>{{ $item->title }}</h1>

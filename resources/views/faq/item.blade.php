@@ -14,7 +14,7 @@
 
 @section('content')
 
-	<article>
+	<article class="faq">
 
     <h1>{{ $item->title }}</h1>
         <div class="introtext">{!! $item->introtext !!}</div>
@@ -23,17 +23,17 @@
 
   	</article>
 
-
 <ul class="pager">
 @if (!empty($previous) and $previous->category_id === $item->category_id )
-<li class="previous"><a href="/{{ $previous->url }}" data-toggle="tooltip" data-placement="top" title="{{ $previous->title }}">← Пред</a></li>
+<li class="previous"><a href="{{ $previous->sef }}" data-toggle="tooltip" data-placement="top" title="{{ $previous->title }}">← Пред</a></li>
 @endif
 
 <li><a href="/{{ $category->parent->sef }}/{{ $category->sef }}" data-toggle="tooltip" data-placement="top" title="{{ $category->title }}">&uarr; в раздел</a></li>
 
 @if (!empty($next) and $next->category_id === $item->category_id )
-<li class="next"><a href="/{{ $next->url }}" data-toggle="tooltip" data-placement="top" title="{{ $next->title }}">След →</a></li>
+<li class="next"><a href="{{ $next->sef }}" data-toggle="tooltip" data-placement="top" title="{{ $next->title }}">След →</a></li>
 @endif
 </ul>
+
 
 @stop

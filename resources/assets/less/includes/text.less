@@ -119,18 +119,19 @@ div.ral  {
 
 // стили списков   
 // список с иконками из fontawesome 
-.list-icons {
-	display:table;
-	> div {display:table-row; 
-		> div {display:table-cell;
-			&.fa {padding-right: 10px; .text-primary;}
-		}
-	}
+.list-icons { list-style: none; padding: 0; display:table;
+   > li {display:table-row;}
+   > li > i {display:table-cell; .text-primary; padding-right: 1em;}
+
+   > li.panel-title > i {padding: 10px;}
+   &.calendar > li > i {display: inline; color: @text-color; padding-right: 0;}
 }
 
+
 // список с галочками
-.list-check { list-style: none; padding: 0;
-   > li:before {content: '✔';margin-right: 1em;}
+.list-check { list-style: none; padding: 0; display:table;
+   > li {display:table-row;}
+   > li:before {content: '✔'; padding-right: 1em; display:table-cell;}
 }
 
 

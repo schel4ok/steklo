@@ -7,7 +7,7 @@ $(document).ready(function () {
         $('.special_sizes').hide();
         $('.standard_sizes').attr("required", true);
         $('.special_sizes').attr("required", false);
-        $('.result > .razmer').html($('.door_size_standard option:selected').html());
+        $('.result > .razmer').html($('.standard_sizes option:selected').html());
         calculation();
     }
     else {
@@ -21,8 +21,8 @@ $(document).ready(function () {
   });
 
 
-  $('select').change(function () {
-    $('.result').children('.razmer').html($('.door_size_standard option:selected').html());
+  $('.standard_sizes').change(function () {
+    $('.result').children('.razmer').html($('.standard_sizes option:selected').val());
     calculation();
   });
 
@@ -36,22 +36,22 @@ $(document).ready(function () {
     calculation();
   });
 
-  $('input[name="glass"]').change(function () {
+  $('.glass').change(function () {
     $('.result').children('.glass').html($(this).val());
     calculation();
   });
 
-  $('input[name="korobka"]').change(function () {
+  $('.korobka').change(function () {
     $('.result').children('.korobka').html($(this).val());
     calculation();
   });
 
-  $('input[name="petli"]').change(function () {
+  $('.petli').change(function () {
     $('.result').children('.petli').html($(this).val());
     calculation();
   });
 
-  $('input[name="dekor"]').change(function () {
+  $('.dekor').change(function () {
     $('.result').children('.dekor').html($(this).val());
     calculation();
   });
@@ -85,14 +85,14 @@ $(document).ready(function () {
   function calculation() {
   
   if ($('input[name="door_size_radio"]:checked').val() == 'standard') 
-    {var BasePrice  =  $("select option:selected").data('price') * 1;}
+    {var BasePrice  =  $(".standard_sizes option:selected").data('price') * 1;}
   else 
     {var BasePrice  =  $('input[name="door_size_b"]').val() * $('input[name="door_size_h"]').val() * 6500 / 1000000;}
 
-    var GlassPrice  = $("input[name='glass']:checked").data('price') * 1; 
-    var DerevoPrice = $("input[name='korobka']:checked").data('price') * 1; 
-    var PetliPrice  = $("input[name='petli']:checked").data('price') * 1; 
-    var DekorPrice  = $("input[name='dekor']:checked").data('price') * 1; 
+    var GlassPrice  = $(".glass option:selected").data('price') * 1;
+    var DerevoPrice = $(".korobka option:selected").data('price') * 1;
+    var PetliPrice  = $(".petli option:selected").data('price') * 1;
+    var DekorPrice  = $(".dekor option:selected").data('price') * 1;
     var DostavkaPrice  = $("input[name='dostavka']").is(":checked") ? $("input[name='dostavka']:checked").data('price') * 1 : 0; 
     var MontazhPrice  = $("input[name='montazh']").is(":checked") ? $("input[name='montazh']:checked").data('price') * 1 : 0; 
 
@@ -100,5 +100,4 @@ $(document).ready(function () {
     $('.result').children('.price').html( total );
     return false;
     };
-}); 
-
+});
