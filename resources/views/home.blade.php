@@ -2,6 +2,13 @@
 
 @section('content')
 
+@if(Session::has('message'))
+    <div class="alert alert-info">{{Session::get('message')}}</div>
+@endif
+@if(Session::has('errors'))
+  <div class="alert alert-info">@foreach($errors->all() as $error){{ $error }}<br>@endforeach
+</div>
+@endif
 <!-- слайдер (карусель) картинок на главной -->
 
 <!-- слайдер (карусель) картинок на главной -->

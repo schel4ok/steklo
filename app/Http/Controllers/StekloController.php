@@ -4,14 +4,16 @@ use Input;
 use Mail;
 use Redirect;
 use Request;
+use Response;
 use Session;
 use Validator;
 use App\Category;
 use App\Page;
 use App\User;
 use App\Http\Controllers\Controller;
+use Event;
+use App\Events\SendMail;
 use App\Http\Requests\CalculatorRequest;
-
 
 class StekloController extends Controller {
 
@@ -65,101 +67,21 @@ class StekloController extends Controller {
 
 	public function order(CalculatorRequest $request) 
 	{
-		$input = Input::all();
-		$calc = $request->calc;
+
+    $result = $request->all();
+    Event::fire(new SendMail($result));
+
 
         //check if its our form
-        if ( Session::token() !== Input::get( '_token' ) ) {
+        // пока неработает не могу понять почему
+/*
+        if ( csrf_token() !== Input::get( '_token' ) ) {
             return Response::json( array(
                 'msg' => 'Несанкционированная попытка отправки письма'
             ) );
         }
-
-
-		if ( $calc == 'saunadoor' ) {
-			$mailtemplate = 'emails.sauna-calculator';
-            // $pagetitle = 'Стеклянные двери для сауны';
-            // $pageurl = $_SERVER['SERVER_NAME'] .'/izdeliya-iz-stekla/steklyannye-dveri/steklyannye-dveri-dlya-sauny';
-            $mailarray = array(
-                'door_size_radio' => $request->door_size_radio,
-                'door_size_standard' => $request->door_size_standard,
-            	'door_size_b' => $request->door_size_b,
-            	'door_size_h' => $request->door_size_h,
-            	'glass' => $request->glass,
-            	'korobka' => $request->korobka,
-            	'petli' => $request->petli,
-            	'dekor' => $request->dekor,
-            	'dostavka' => $request->dostavka,
-            	'montazh' => $request->montazh,
-            	'name' => $request->name,
-            	'tel' => $request->tel,
-            	'email' => $request->email,
-            	'user_message' => $request->message,
-            	);
-
-		}
-
-		elseif ( $calc == 'dush-peregorodka' ) {
-			$mailtemplate = 'emails.dush-calculator';
-           // $pagetitle = 'Стеклянные сантехнические перегородки';
-           // $pageurl = $_SERVER['SERVER_NAME'] .'/izdeliya-iz-stekla/steklyannye-peregorodki/santehnicheskie-peregorodki';
-			$mailarray = array(
-            	'calc' => $request->calc,
-            	'size_b' => $request->size_b,
-            	'size_h' => $request->size_h,
-            	'glass' => $request->glass,
-            	'furnitura' => $request->furnitura,
-            	'verh_truba' => $request->verh_truba,
-            	'uplotniteli' => $request->uplotniteli,
-            	'dostavka' => $request->dostavka,
-            	'montazh' => $request->montazh,
-            	'name' => $request->name,
-            	'tel' => $request->tel,
-            	'email' => $request->email,
-            	'user_message' => $request->message,
-            	);
-		}
-
-        elseif ( $calc == 'skinali' ) {
-            $mailtemplate = 'emails.skinali';
-           // $pagetitle = 'Стеклянные фартуки для кухни';
-           // $pageurl = $_SERVER['SERVER_NAME'] .'/izdeliya-iz-stekla/steklyannaya-mebel/steklyannye-fartuki-dlya-kukhni-skinali';
-            $mailarray = array(
-                'calc' => $request->calc,
-                'size_b1' => $request->size_b1,
-                'size_h1' => $request->size_h1,
-                'rozetki' => $request->rozetki,
-                'otverstija' => $request->otverstija,
-                'krepej' => $request->krepej,
-                'glass' => $request->glass,
-                'led' => $request->led,
-                'dekor' => $request->dekor,
-                'dostavka' => $request->dostavka,
-                'zamkad' => $request->zamkad,
-                'montazh' => $request->montazh,
-                'total' => $request->total,
-                'name' => $request->name,
-                'tel' => $request->tel,
-                'email' => $request->email,
-                'user_message' => $request->message,
-                );
-        }
-
-
-
-		Mail::send($mailtemplate, $mailarray,
-
-        	function($message) use ($request, $input)
-    			{
-        			$message->from('admin@steklo-group.ru', $request->name );
-        			$message->to('ipopov@steklo-group.ru', 'Илья Попов');
-                    $message->setCc($request->email, $request->name);
-        			$message->replyTo($request->email, $request->name );
-        			$message->subject('Заказ с сайта');
-				});
-    //  return Redirect::back()->with('message', 'Ваше сообщение отправлено! Менеджер свяжется с вами в ближайшее время для уточнения деталей заказа');
-      return Redirect::back()->with( dd($request->all()) );
-
+*/
+        
 
         
 	}

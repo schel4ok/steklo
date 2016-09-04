@@ -18,6 +18,8 @@ class Kernel extends HttpKernel
         \Illuminate\Session\Middleware\StartSession::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
         \App\Http\Middleware\VerifyCsrfToken::class,
+    //    \App\Http\Middleware\PostMiddleware::class,
+    //  mail is sending fine, but always return error 405 when sending POST request
     ];
 
     /**

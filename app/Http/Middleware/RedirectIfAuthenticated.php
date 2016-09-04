@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use URL;
 use Illuminate\Contracts\Auth\Guard;
 
 class RedirectIfAuthenticated
@@ -35,7 +36,7 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next)
     {
         if ($this->auth->check()) {
-            return redirect('/home');
+            return redirect( URL::route('home') );
         }
 
         return $next($request);

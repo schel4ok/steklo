@@ -33,11 +33,8 @@ class BackendController extends Controller {
 	 */
 	public function index()
 	{
-		$errorstree = Category::countErrors();
-        $brokentree = Category::isBroken();
 
-		return view('backend.dashboard')->withErrorstree($errorstree)
-										->withBrokentree($brokentree);
+		return view('backend.dashboard');
 	}
 
 }

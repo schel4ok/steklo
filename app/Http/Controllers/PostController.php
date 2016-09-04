@@ -2,18 +2,18 @@
 use Form;
 use Input;
 use Mail;
-use Redirect;
+use Illuminate\Support\Facades\Redirect;
 use Request;
 use Session;
 use Validator;
-use App\Category;
-use App\Page;
-use App\User;
-use App\Uslugi;
+use Event;
+use App\Events\SendMail;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CallbackRequest;
 use App\Http\Requests\ContactFormRequest;
+use App\Http\Requests\CalculatorRequest;
 
-class PageController extends Controller {
+class PostController extends Controller {
 
 	/**
 	 * Create a new controller instance.
@@ -24,18 +24,34 @@ class PageController extends Controller {
 	{
 	}
 
-	public function o_kompanii()
+	public function callback(CallbackRequest $request) 
 	{
-		$category = Category::where('sef', '=', 'o-kompanii')->first();
-		return view('pages.o-kompanii')->withCategory($category);
+	    $result = $request->all();
+    	Event::fire(new SendMail($result));
+    	return 'callback-success';
 	}
 
-	public function contacts()
+	public function order(CallbackRequest $request) 
 	{
-		$category = Category::where('sef', '=', 'contacts')->first();
-		return view('pages.contacts')->withCategory($category);
+	    $result = $request->all();
+    	Event::fire(new SendMail($result));
+    	return 'order-success';
 
+
+        //check if its our form
+        // пока неработает не могу понять почему
+/*
+        if ( csrf_token() !== Input::get( '_token' ) ) {
+            return Response::json( array(
+                'msg' => 'Несанкционированная попытка отправки письма'
+            ) );
+        }
+*/
+        
+
+        
 	}
+
 
 	public function sendmail(ContactFormRequest $request) 
 	{

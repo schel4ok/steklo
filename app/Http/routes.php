@@ -1,13 +1,28 @@
 <?php
-Route::get('/', 'HomeController@index');
-Route::get('o-kompanii', 'PageController@o_kompanii');
-Route::get('sitemap', 'CategoryController@sitemap');
+//Route::post('*', 'PostController@callback');
+
+// admin section
+Route::get('schel4ok', ['as' => 'admin', 'uses' => 'BackendController@index']);
+Route::get('login', ['as' => 'login', 'uses' => 'BackendController@login']);
+Route::get('password', ['as' => 'password', 'uses' => 'BackendController@password']);
+
+
+
+Route::post('/', ['as' => 'callback', 'uses' => 'PostController@callback']);
+// this route allows sending callback request from every page!!! but I don't know why?
+
+
+Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+
+Route::get('o-kompanii', ['as' => 'about-us', 'uses' => 'PageController@o_kompanii']);
+Route::get('sitemap', ['as' => 'sitemap', 'uses' => 'CategoryController@sitemap']);
+
+// named routes  
+// With a named route, you can link to it in your application views using {{ URL::route('contacts') }}
+// more info here https://scotch.io/tutorials/simple-and-easy-laravel-routing
             // uri      // route name       // controller action
 Route::get('contacts',  ['as' => 'contacts', 'uses' => 'PageController@contacts']);
 Route::post('contacts', ['as' => 'sendmail', 'uses' => 'PageController@sendmail']);
-
-//Route::get('contacts', 'PageController@testmail');
-//Route::post('contacts', 'PageController@sendmail');
 
 // News
 Route::get('news', 'NewsController@getIndex');
@@ -31,7 +46,7 @@ Route::get('faq/{cat}/{item}', 'FAQController@getItem');
 Route::get('izdeliya-iz-stekla', 'StekloController@getIndex');
 Route::get('izdeliya-iz-stekla/{cat}', 'StekloController@getCategory');
 Route::get('izdeliya-iz-stekla/{cat}/{item}', 'StekloController@getItem');
-Route::post('izdeliya-iz-stekla/{cat}/{item}', ['as' => 'order', 'uses' => 'StekloController@order']);
+Route::post('izdeliya-iz-stekla/{cat}/{item}', ['as' => 'order', 'uses' => 'PostController@order']);
 
 
 // Foto
@@ -64,3 +79,4 @@ Route::get('categories', 'CategoryController@all');
 
 // Route::get('{slug}', array('as' => 'category', 'uses' => 'CategoryController@show'))
 //    ->where('slug', Category::$slugPattern);
+

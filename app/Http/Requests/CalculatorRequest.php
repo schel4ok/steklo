@@ -13,7 +13,7 @@ class CalculatorRequest extends Request {
   {
    return [
     'name' => 'required|alpha_spaces|max:30|min:2',
-    'tel' => 'required',
+    'tel' => 'regex:^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$|required',
     'email' => 'required|email',
    ];
   }

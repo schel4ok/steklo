@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myapp">
 <head>
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   	<meta name="rights" content="schel4ok" />
@@ -24,7 +24,7 @@
 	<![endif]-->
 	
 </head>
-<body ng-app="app">
+<body>
 
 <div id="main" class="container-fluid">
 
@@ -62,6 +62,7 @@
 	<script src="{{ elixir("js/all.js") }}"></script>
 
 
+{!! csrf_field() !!}
 </body>
 </html>
 

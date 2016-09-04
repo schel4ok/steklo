@@ -26,7 +26,7 @@ class CreateNewsTable extends Migration {
 			$table->string('metakey', 255)->nullable();
 			$table->string('metadesc', 255)->nullable();
 			$table->integer('hits');
-			$table->timestamps();
+			$table->timestamps()->useCurrent();
 		});
 	}
 

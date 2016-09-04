@@ -1,18 +1,19 @@
 {
   "name": "steklo.dev",
   "dependencies": {
+    "angular": "*",
     "bootstrap": "*",
+    "bootstrap-material-design": "*",
+    "inputs": "*",
     "fontawesome": "*",
     "bootswatch": "gh-pages",
     "bootswatch-dist": "paper",
     "jquery-bootswatch": "*",
     "paper-less": "*",
 	  "bootstrap-social": "*",
-    "lightbox": "*",
     "lightslider": "*",
     "lightgallery": "*",
-    "selectize": "*",
-    "photoswipe": "*",
-    "modernizr":"*"
+    "angular-file-upload": "*",
+    "es5-shim": "*"
   }
 }

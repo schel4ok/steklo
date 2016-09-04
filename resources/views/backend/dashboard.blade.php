@@ -14,8 +14,8 @@
 					
 
 <h3>Check nested set tree</h3>
-<h5>Дерево сломано?</h5> {{ var_dump($brokentree) }}
-<h5>Список ошибок дерева:</h5> {{ var_dump($errorstree) }}
+<h5>Дерево сломано?</h5> 
+<h5>Список ошибок дерева:</h5> 
 
 
 <h3>Generate thumbnails</h3>

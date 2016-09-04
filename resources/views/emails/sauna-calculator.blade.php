@@ -1,17 +1,24 @@
-<p>
-Формат двери: {{ $door_size_radio }}<br>
-Размер дверной коробки (в миллиметрах): {{{ ($door_size_radio == 'standard') ? $door_size_standard :  $door_size_b . 'x' . $door_size_h }}}<br>
-Стекло: {{ $glass }}<br>
-Материал дверной коробки: {{ $korobka }}<br>
-Цвет фурнитуры: {{ $petli }}<br>
-Декор стекла: {{ $dekor }}<br>
-Доставка: {{ $dostavka }}<br>
-Монтаж: {{ $montazh }}<br>
+<table>
+<tbody>
+<tr><td>Опция</td>							<td>Значение</td>							<td>Цена, руб</td></tr>
+<tr><td>Размер дверной коробки (мм):</td>	<td>{{$doorsize}}</td>						<td>{{$baseprice}}</td></tr>
+<tr><td>Стекло</td>							<td>{{$glass['label']}}</td>				<td>{{$glass['price']}}</td></tr>
+<tr><td>Материал дверной коробки:</td>		<td>{{$korobka['label']}}</td>				<td>{{$korobka['price']}}</td></tr>
+<tr><td>Петли:</td>							<td>{{$petli['label']}}</td>				<td>{{$petli['price']}}</td></tr>
+<tr><td>Декор:</td>							<td>{{$dekor['label']}}</td>				<td>{{$dekor['price']}}</td></tr>
+<tr><td>Доставка:</td>						<td>{{$dostavka['label']}}</td>				<td>{{$dostavka['price']}}</td></tr>
+<tr><td>Монтаж:</td>						<td>{{$montazh}}</td>						<td>{{$montazh}}</td></tr>
+
+<tr><td>Стоимость двери:</td>				<td></td>
+  <td>{{$fullprice}}</td>
+</tr>
+</tbody>
+</table>
+
 -------------------------<br>
 Имя: {{ $name }}<br>
 Телефон : {{ $tel }}<br>
 Email :{{ $email }}<br>
 -------------------------<br>
-Сообщение :{{ $user_message }}
+Сообщение : {{ isset($msg) ? $msg : ' ' }}
 </p>
-<p>Это сообщение отправлено со страницы  $pagetitle  -  {{ $_SERVER['SERVER_NAME'] }} $pageurl</p>
